@@ -6,7 +6,7 @@ HOW TO USE:
 - Make a script inside the scripts folder (or anywhere but you'd have to manually use the file path)
 - print("hello world");
 - Open a terminal and type "slate script_name", this will compile it and run it immediately
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Additional features #
 - You can only compile something by doing "slate script_name --compile" or "--c"
 # Note that if you dont add a file extension it will always run the compiled files if they exist # 
