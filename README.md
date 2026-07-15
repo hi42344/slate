@@ -10,8 +10,8 @@ print("hello world");
 - Open a terminal and type ```"slate script_name"```, this will compile it and run it immediately
 
 **Additional features**
-- You can only compile something by doing "slate script_name --compile" or "--c"
-- You can run that compiled file by doing "slate script_name" (if you dont add a file extension it will always run the compiled file if they exist, eg: "script.slatebin" instead of "script.slate")
+- You can compile something by doing ```"slate script_name --compile"``` or ```"--c"```
+- You can run that compiled file by doing ```"slate script_name"``` (if you dont add a file extension it will always run the compiled file if they exist, eg: ```"script.slatebin"``` instead of ```"script.slate"```)
 
 **Flags**
 ```bash
