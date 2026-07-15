@@ -8,7 +8,7 @@ Interpreted language with lua/python/cpp syntax
 - Open a terminal and type "slate script_name", this will compile it and run it immediately
 **Additional features**
 - You can only compile something by doing "slate script_name --compile" or "--c"
-**Note that if you dont add a file extension it will always run the compiled files if they exist**
+**Note that if you dont add a file extension it will always run the compiled file if they exist**
 - You can run that compiled file by doing "slate script_name"
 **Flags**
 - "--compile" to compile
