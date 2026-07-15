@@ -5,7 +5,7 @@ A interpreted language with lua/python/cpp syntax
 
 # HOW TO USE #
 - Download the binary and open it
-- Make a script inside the scripts folder (or anywhere but you'd have to manually use the file path)
+- Make a script inside the scripts folder (or anywhere but you'd have to manually use the file path in the script name)
 ```cpp
 print("hello world");
 ```
