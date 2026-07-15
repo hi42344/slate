@@ -13,7 +13,7 @@ print("hello world");
 
 **Additional features**
 - You can compile something by doing ```"slate script_name --compile"``` or ```"--c"```
-- You can run that compiled file by doing ```"slate script_name"``` (if you dont add a file extension it will always run the compiled file if they exist, eg: ```"script.slatebin"``` instead of ```"script.slate"```)
+- You can run that compiled file by doing ```"slate script_name"``` (if you dont add a file extension it will always run compiled files that have the same name first like ```"script.slatebin"``` instead of ```"script.slate"```)
 
 **Flags**
 ```bash
