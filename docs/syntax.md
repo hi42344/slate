@@ -34,4 +34,22 @@ function_name(params)
 - &&, ||, !
 
   *Comparison*
-- '>, <, ==, !=, <=, >= 
+- '>, <, ==, !=, <=, >=
+
+**Arrays**
+- Makes a copy by default for variables, eg: 
+```slate
+var a = [1, 2, 3, 4];
+var b = 5;
+a[0] = b;
+a[0] = 100;
+print(b); // prints 5 since the variable in the array is a copy
+```
+You can pass a variables reference to not make a copy, eg:
+```slate
+var a = [1, 2, 3, 4];
+var b = 5;
+a[0] = &b;
+a[0] = 100;
+print(b); // prints 100 since b is actually in the array
+```
