@@ -1,8 +1,8 @@
-## slate ##
-Interpreted language with lua/python/cpp syntax
+## Slate ##
+A interpreted language with lua/python/cpp syntax
 
 # HOW TO USE #
-- Download the binary and open/start it
+- Download the binary and open it
 - Make a script inside the scripts folder (or anywhere but you'd have to manually use the file path)
 - print("hello world");
 - Open a terminal and type "slate script_name", this will compile it and run it immediately
@@ -40,10 +40,3 @@ Interpreted language with lua/python/cpp syntax
 - Default Scripts:           ~/.local/share/slate/scripts/
 - Default Libraries:         ~/.local/share/slate/libraries/
 - Path Added To:             ~/.zshrc
-
-
-
-
-
-
-
