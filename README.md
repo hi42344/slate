@@ -23,9 +23,9 @@ print("hello world");
 ```
 **Short flags**
 ```bash
-- "--c" to compile
-- "--b" to see the compiled bytecode
-- "slate --v" to check your version
+- "--c" compile
+- "--b" bytecode
+- "slate --v" version
 ```
 
 # WHERE IT IS #
