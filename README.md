@@ -17,9 +17,9 @@ print("hello world");
 
 **Flags**
 ```bash
-- "--compile" compile
-- "--bytecode" bytecode
-- "slate --version" version
+- "--compile" to compile a .slate file
+- "--bytecode" to see the compiled bytecode
+- "slate --version" to see what version you're on
 ```
 **Short flags**
 ```bash
