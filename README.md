@@ -21,16 +21,19 @@ Interpreted language with lua/python/cpp syntax
 - "slate --v" to check your version
 
 # WHERE IT IS #
+
 **WINDOWS**
 - Executable Location:       C:\Developer\slate\bin\slate.exe
 - Default Scripts:           C:\Developer\slate\Scripts\
 - Default Libraries:         C:\Developer\slate\Libraries\
 - Path Added To:             HKEY_CURRENT_USER\Environment\Path
+
 **LINUX**
 - Executable Location:       ~/.local/bin/slate
 - Default Scripts:           ~/.local/share/slate/scripts/
 - Default Libraries:         ~/.local/share/slate/libraries/
 - Path Added To:             ~/.bashrc
+
 **MACOS**
 - Executable Location:       ~/.local/bin/slate
 - Default Scripts:           ~/.local/share/slate/scripts/
