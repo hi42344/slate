@@ -20,6 +20,7 @@ Interpreted language with lua/python/cpp syntax
 - "slate --v" to check your version
 
 # WHERE IT IS #
+**Not Cross platform yet, only windows currently**
 **WINDOWS**
 - Executable Location:       C:\Developer\slate\bin\slate.exe
 - Default Scripts:           C:\Developer\slate\Scripts\
@@ -35,7 +36,6 @@ Interpreted language with lua/python/cpp syntax
 - Default Scripts:           ~/.local/share/slate/scripts/
 - Default Libraries:         ~/.local/share/slate/libraries/
 - Path Added To:             ~/.zshrc
-**Not Cross platform yet, only windows currently**
 
 
 
