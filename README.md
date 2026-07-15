@@ -1,6 +1,8 @@
 ## Slate ##
 A interpreted language with lua/python/cpp syntax
 
+**IN DEVELEMENT CURRENTLY, EXPECTATION FOR WHEN THE FIRST VERSION IS OUT IS AROUND THE 21TH OF JULY**
+
 # HOW TO USE #
 - Download the binary and open it
 - Make a script inside the scripts folder (or anywhere but you'd have to manually use the file path)
