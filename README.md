@@ -53,3 +53,5 @@ Default Scripts:           ~/.local/share/slate/scripts/
 Default Libraries:         ~/.local/share/slate/libraries/
 Path Added To:             ~/.zshrc
 ```
+# Documentation
+- [Syntax](./docs/syntax.md)
