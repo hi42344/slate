@@ -25,13 +25,13 @@ Interpreted language with lua/python/cpp syntax
 - Default Scripts:           C:\Developer\slate\Scripts\
 - Default Libraries:         C:\Developer\slate\Libraries\
 - Path Added To:             HKEY_CURRENT_USER\Environment\Path
-# Not Cross platform yet, only windows since i don't know how to cross compile
+# Not Cross platform yet, only windows currently
 # LINUX #
 - Executable Location:       ~/.local/bin/slate
 - Default Scripts:           ~/.local/share/slate/scripts/
 - Default Libraries:         ~/.local/share/slate/libraries/
 - Path Added To:             ~/.bashrc
-# Not Cross platform yet, only windows since i don't know how to cross compile
+# Not Cross platform yet, only windows currently
 # MACOS #
 - Executable Location:       ~/.local/bin/slate
 - Default Scripts:           ~/.local/share/slate/scripts/
