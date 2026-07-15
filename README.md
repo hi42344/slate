@@ -6,21 +6,24 @@ Interpreted language with lua/python/cpp syntax
 - Make a script inside the scripts folder (or anywhere but you'd have to manually use the file path)
 - print("hello world");
 - Open a terminal and type "slate script_name", this will compile it and run it immediately
+
 **Additional features**
 - You can only compile something by doing "slate script_name --compile" or "--c"
+
 **Note that if you dont add a file extension it will always run the compiled file if they exist**
 - You can run that compiled file by doing "slate script_name"
+
 **Flags**
 - "--compile" to compile
 - "--bytecode" to see the compiled bytecode
 - "slate --version" to check your version
+
 **Short flags**
 - "--c" to compile
 - "--b" to see the compiled bytecode
 - "slate --v" to check your version
 
 # WHERE IT IS #
-**Not Cross platform yet, only windows currently**
 **WINDOWS**
 - Executable Location:       C:\Developer\slate\bin\slate.exe
 - Default Scripts:           C:\Developer\slate\Scripts\
