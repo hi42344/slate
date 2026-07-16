@@ -162,6 +162,10 @@ fn set_ptr(ptr_a, new_value) {
 var ptr = make(100);
 set_ptr(&ptr, 5); // must still pass in the refrence 
 print(*ptr); // prints 5
+
+// Note that passing a reference (&x) of a regular variable and then dereferencing it (*param) does
+// not write through to the original variable, only a pointer supports
+// this. If you passed a reference, just assign directly (param = new_value;)
 ```
 
 # Strings #
