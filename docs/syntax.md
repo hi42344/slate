@@ -66,6 +66,7 @@ function_name(params)
 
 # Strings #
 - Reading ```string[index] // Runtime error if out of range```
+
 *Properties/methods*
 - .length ```// Returns the size/length of the string```
 - .append(content) ```// Returns a new string with the contents appended```
