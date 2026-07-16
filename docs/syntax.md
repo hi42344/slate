@@ -119,10 +119,10 @@ print(add100(10)); // 110
 - +, -, *, /, %
 - +=, -=, /=, *=
 
-*Logical*
+**Logical**
 - &&, ||, !
 
-*Comparison*
+**Comparison**
 - '>, <, ==, !=, <=, >=
 
 # Comments #
@@ -219,7 +219,7 @@ fn set_ptr(ptr_a, new_value) {
     *ptr_a = new_value; // if no * dereference operator printing "ptr" will print 0
 }
 var ptr = make(100);
-set_ptr(&ptr, 5); // must still pass in the refrence 
+set_ptr(&ptr, 5); // must still pass in the refrence, everything makes a reference
 print(*ptr); // prints 5
 
 // Note that passing a reference (&x) of a regular variable and then dereferencing it (*param) does
