@@ -1,4 +1,4 @@
-# The built in c++ library's #
+# The c++ library's #
 
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
@@ -40,19 +40,19 @@
 # os #
 - ```os.sleep(time)``` // sleeps the program for the time in seconds
 - ```os.throw(message)``` // throws/crashes the program and prints the message
-- ```os.platform()``` // Returns the current platform, eg: ```"windows", "linux", "macos", "ios", "android"``` else ```"unknown"```
+- ```os.platform()``` // Returns the current platform, eg: **```"windows", "linux", "macos", "ios", "android"```** else **```"unknown"```**
 - ```os.time()``` // Returns the time **(in seconds)** since the **computer has turned on** or **epoch time**
-- ```os.clock()``` // Returns the CPU time (in seconds) since the program has started
-- ```os.date()``` // Returns a locally formatted string of the current date and time
-- ```os.date_time_year()``` // Returns the current time and year formatted as "Hours:Minutes:Seconds Year"
-- ```os.date_time()``` // Returns the current time formatted as "Hours:Minutes:Seconds"
-- ```os.getenv(env_var)``` // Returns the value of an environment variable, or an empty string if not found
-- ```os.file_save(path, content)``` // Saves content to a file (overwriting if it exists), returns true if successful
-- ```os.file_load(path)``` // Returns the entire contents of a file as a string
-- ```os.file_exists(path)``` // Returns true if a file or directory exists at the path, otherwise false
-- ```os.file_delete(path)``` // Deletes a file or empty directory, returns true if successful
-- ```os.file_size(path)``` // Returns the size of a file in bytes, or -1 if the file is not found
-- ```os.file_append(path, content)``` // Appends content to the end of a file, returns true if successful
+- ```os.clock()``` // Returns the CPU time **(in seconds)** since the program has started
+- ```os.date()``` // Returns a **locally formatted string** of the current date and time
+- ```os.date_time_year()``` // Returns the current time and year formatted as **"Hours:Minutes:Seconds Year"**
+- ```os.date_time()``` // Returns the current time formatted as **"Hours:Minutes:Seconds"**
+- ```os.getenv(env_var)``` // Returns the value of an **environment variable**, or an empty string if not found
+- ```os.file_save(path, content)``` // Saves content to a file **(overwriting if it exists)**, returns true if successful
+- ```os.file_load(path)``` // Returns the **entire contents** of a file as a **string**
+- ```os.file_exists(path)``` // Returns true if a **file or directory** exists at the path, otherwise false
+- ```os.file_delete(path)``` // Deletes a **file or empty directory**, returns true if successful
+- ```os.file_size(path)``` // Returns the **size of a file in bytes**, or -1 if the file is not found
+- ```os.file_append(path, content)``` // Appends content to the **end of a file**, returns true if successful
 
 # string #
 - ```string.charCode(string, index)``` // Returns the ASCII value of the character at the index, Runtime error if out of bounds
@@ -76,7 +76,7 @@
 - ```type.is_function(val)``` // Returns true if the value is a function **(any type of function)**, otherwise false
 - ```type.is_pointer(val)``` // Returns true if the value is a pointer, otherwise false
 - ```type.is_null(val)``` // Returns true if the value is null, otherwise false
-- ```type.name(val)``` // Returns the type name of the value as a string **("int", "double", "string", "pointer", "null", "struct_type", "class_type", "function", "class", "struct", "array", and if none it returns "unknown")**
+- ```type.name(val)``` // Returns the type name of the value as a string **```("int", "double", "string", "pointer", "null", "struct_type", "class_type", "function", "class", "struct", "array", and if none it returns "unknown")```**
 - ```type.double_to_int(num)``` // Converts a double to a 64-bit integer
 - ```type.int_to_double(num)``` // Converts a 64-bit integer to a double
 - ```type.to_string(val)``` // Converts a value (int, double, string, bool) to their string representation
