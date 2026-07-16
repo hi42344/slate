@@ -25,7 +25,10 @@ elif(condition/conditions) {
 else {
     code
 }
+
+// there is also "condition ? : " aka Ternary
 ```
+- There is continue and break keywords, like any other language. 
 - **For loops (C/C++ style)**
 ```slate
 for(initialization; condition; update) {
@@ -63,6 +66,10 @@ function_name(params)
 
   *Comparison*
 - '>, <, ==, !=, <=, >=
+
+# Comments #
+- single line ```// ```
+- multiline ```/* */```
 
 # Basic Structures #
 **Structs**
@@ -118,6 +125,7 @@ print(math.factorial(5));
 ```
 
 # Pointers and References #
+- Deletion ```var b = &a; delete b; /*deletes a*/, var a = make(5); delete a; var b = 5; delete b; (deletion can be done on anything, even normal variables that get auto deleted after scope)```
 - Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
 - dereferencing ```*ptr```
 - referencing ```var a = 10; var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
