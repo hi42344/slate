@@ -64,12 +64,20 @@ function_name(params)
   *Comparison*
 - '>, <, ==, !=, <=, >=
 
+# Strings #
+- Reading ```string[index] // Runtime error if out of range```
+*Properties/methods*
+- .length ```// Returns the size/length of the string```
+- .append(content) ```// Returns a new string with the contents appended```
+- .insert(content, index) ```// Returns a new string with the inserted content```
+- .at(index) ```// Returns null if out of range```
+
 # Arrays #
 - Assignment: ```var array = [1, 2, 3, 4, 5];```
 - Reading ```array[index] // Runtime error if out of range```
 - Writing ```array[index] = value; // Runtime error if out of range```
 
-  *Properties/methods*
+*Properties/methods*
 - .length ```// Returns the size/length of the array```
 - .at(index) ```// Returns null if out of range```
 - .push(value); ```// like c++ vector.push_back, grows array```
@@ -78,7 +86,7 @@ function_name(params)
 - .insert(index, value) ```// like c++ vector.insert()```
 - .remove(index) ```// like c++ vector.erase(), returns the deleted value at the index```
 
-  *Behavior*
+*Behavior*
 - Makes a copy by default for variables
 ```slate
 var a = [1, 2, 3, 4];
