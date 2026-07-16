@@ -101,7 +101,21 @@ print(d); // 3 since it's set
 print(e); // 4 since it's 1 more than the last
 // Rule is that a enum is always 1 more than the last value
 ```
-
+**Namespaces**
+```slate
+//Note that if there is random code inside a namespace like "print("hello world")" then it will execute
+namespace math {
+    fn factorial(n) {
+        var result = 1;
+        for (var i = 2; i <= n; i += 1) {
+            result *= i;
+        }
+        return result;
+    }
+}
+// You use the "." scope resolution operator for all scopes
+print(math.factorial(5));
+```
 
 # Strings #
 - Reading ```string[index] // Runtime error if out of range```
