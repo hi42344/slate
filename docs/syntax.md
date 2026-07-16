@@ -18,7 +18,7 @@
 # imports #
 - import "path.slate" // Goes to the librarys folder first (my_library) or (folder(or folders)/my_library) otherwise just uses the path
 - import "path.slate" as namespace_name // imports and wraps everything in a namespace
-- Auto manages infinite imports like ```import "otherlibrary.slate"``` and inside ```otherlibrary.slate``` it imports ```librarythatimported.slate```
+- Auto manages infinite imports like ex: ```import "otherlibrary.slate"``` and inside ```otherlibrary.slate``` it imports ```librarythatimported.slate```
 - **No linking or any other library annoyances required**
 
 # Variable Creation #
