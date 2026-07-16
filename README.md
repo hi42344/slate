@@ -1,7 +1,7 @@
 ## Slate ##
-A interpreted language with lua/python/cpp syntax
+A dynamically typed interpreted language with lua/python/cpp syntax
 
->**Note:** Slate is currently in active development. All features are subject to change
+>**Note:** Slate is currently in development. All features are subject to change
 
 # HOW TO USE #
 - Download the binary and open it
