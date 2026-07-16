@@ -28,7 +28,7 @@ else {
 
 // there is also "condition ? : " aka Ternary
 ```
-- There is continue and break keywords, like any other language. 
+- There is continue and break keywords, continue skips the rest of the loop and break stops it.
 - **For loops (C/C++ style)**
 ```slate
 for(initialization; condition; update) {
