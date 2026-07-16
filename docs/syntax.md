@@ -117,6 +117,32 @@ namespace math {
 print(math.factorial(5));
 ```
 
+# Pointers and References #
+- Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
+- dereferencing ```*ptr```
+- referencing ```var a = 10; var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
+*functions*
+- Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
+```slate
+fn set(a, new_value) {
+    a = new_value;
+}
+
+var test = 100;
+set(test, 0);
+print(test); // prints 100 since the function made a copy
+set(&test, 0);
+print(test); // prints 0
+// pointer example
+fn set_ptr(ptr_a, new_value) {
+    *ptr_a = new_value; // if no * dereference operator printing "ptr" will print 0
+}
+var ptr = make(100);
+set_ptr(&ptr, 5); // must still pass in the refrence 
+print(*ptr); // prints 5
+// Like other languages I dont recommend using pointers a lot of the time, a refrence does most of what you need anyway
+```
+
 # Strings #
 - Reading ```string[index] // Runtime error if out of range```
 
