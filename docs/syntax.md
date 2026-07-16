@@ -64,6 +64,45 @@ function_name(params)
   *Comparison*
 - '>, <, ==, !=, <=, >=
 
+# Basic Structures #
+**Structs**
+```slate
+struct vector2 {
+    var a = 5; // Default values
+    var b = 5; // Default values, if no values are set in either the struct or initialization then the value will be 0
+    b; // Starts at 0
+
+    // Functions/other things are not supported in structs, you must use a class for those
+} 
+
+var struct_a = vector2(100, 1); // Overwritting defaults, goes in order
+print(struct_a.a); // prints 100
+print(struct_a.b); // prints 1
+```
+**Enums**
+```slate
+enum name {
+    something_1;
+    something_2 = 100;
+    something_3;
+    something_4 = 3;
+    something_5;
+}
+
+var a = name.something_1;
+var b = name.something_2;
+var c = name.something_3;
+var d = name.something_4;
+var e = name.something_5;
+print(a); // 0 since it has no value set and is at the first index
+print(b); // 100
+print(c); // 101 since it's 1 more than the last value unless set
+print(d); // 3 since it's set
+print(e); // 4 since it's 1 more than the last
+// Rule is that a enum is always 1 more than the last value
+```
+
+
 # Strings #
 - Reading ```string[index] // Runtime error if out of range```
 
