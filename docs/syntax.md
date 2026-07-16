@@ -1,7 +1,7 @@
 # Keywords #
 | Keyword | Section |
 |---|---|
-| `comments` | [Comments](#comments) |
+| `//` / `/**/` | [Comments](#comments) |
 | `var` | [Variable Creation](#variable-creation) |
 | `fn` | [Functions](#functions) |
 | `if` / `elif` / `else` | [Control flow](#control-flow) |
