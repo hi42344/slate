@@ -26,7 +26,11 @@
 # Variable Creation #
 - Keyword ```var```
 - Declaration ```var name = value;```
-- Usage ```name = value;```, ```print(name);```
+- Usage:
+```slate
+name = value;
+print(name);
+```
 
 **Five basic types**
 - *long long* ```var name = 10;```
@@ -95,7 +99,9 @@ print(add(2, 3)); // prints 5
 fn apply(value, transform) {
     return transform(value);
 }
-print(apply(10, fn(x) { return x * 2; })); // prints 20
+print(apply(10, fn(x) {
+    return x * 2; // prints 20
+}));
 ```
 - **Closures**: a lambda captures the enclosing function's variables by reference at the moment it's created. Later changes to the captured variable are visible through the closure, and each call gets its own independent capture
 ```slate
