@@ -273,7 +273,15 @@ print(b); // prints 100 since b is actually in the array
 - Note that there is no Polymorphism or Inheritance
 - There is only public and private access modifiers
 
-*Example code*
+**Classes have 6 default methods**
+- Constructer // class name
+- Deconstructor // class name with a ! before it, eg: "!person()"
+- Copied // in code it's the "copy()" method
+- Assigned // in code it's the "assignment(new_value)" method // note that you cant use "new_value" thats just one of the language's quirks
+- Referenced (lowercase in code)
+- Dereferenced (lowercase in code)
+
+**Example code**
 ```slate
 class person {
     private:
