@@ -191,7 +191,7 @@ var b = 5; delete b; // deletion can be done on anything, even normal variables 
 ```
 Usage after deletion will give a error ["Runtime Error: Undefined variable 'variable name'"]
 
-*Example*
+**Example**
 ```slate
 var a = 5;
 delete a;
@@ -201,7 +201,8 @@ print(a); // "Runtime Error: Undefined variable 'a'" error
 - Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
 - dereferencing ```*ptr``` Note that if you are using a field you must wrap (*ptr) or you will get errors
 - referencing ```var a = 10; var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
-*functions*
+
+**functions**
 - Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
 ```slate
 fn set(a, new_value) {
@@ -229,7 +230,7 @@ print(*ptr); // prints 5
 # Strings #
 - Reading ```string[index] // Runtime error if out of range```
 
-*Properties/methods*
+**Properties/methods**
 - .length ```// Returns the size/length of the string```
 - .append(content) ```// Returns a new string with the contents appended```
 - .insert(content, index) ```// Returns a new string with the inserted content```
@@ -240,7 +241,7 @@ print(*ptr); // prints 5
 - Reading ```array[index] // Runtime error if out of range```
 - Writing ```array[index] = value; // Runtime error if out of range```
 
-*Properties/methods*
+**Properties/methods**
 - .length ```// Returns the size/length of the array```
 - .at(index) ```// Returns null if out of range```
 - .push(value); ```// like c++ vector.push_back, grows array```
@@ -249,7 +250,7 @@ print(*ptr); // prints 5
 - .insert(index, value) ```// like c++ vector.insert()```
 - .remove(index) ```// like c++ vector.erase(), returns the deleted value at the index```
 
-*Behavior*
+**Behavior**
 - Makes a copy by default for variables
 ```slate
 var a = [1, 2, 3, 4];
