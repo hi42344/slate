@@ -1,5 +1,4 @@
-# Syntax # 
-**Variable Creation**
+# Variable Creation #
 >Dynamically typed
 - Keyword ```var```
 - Declaration ```var name = value;```
@@ -11,7 +10,7 @@
 - *boolean* ```var name = true;```
 - *null* ```var name = null;```
 
-**Control flow**
+# Control flow #
 
 - **if statements**
 ```slate
@@ -39,7 +38,7 @@ while(condition/conditions) {
     code
 }
 ```
-**Functions**
+# Functions #
 ```slate
 fn function_name(params) {
     [code]
@@ -55,7 +54,7 @@ fn add(a, b) {
 ```slate
 function_name(params)
 ```
-**Operators**
+# Operators #
 - +, -, *, /, %
 - +=, -=, /=, *=
 
@@ -65,7 +64,7 @@ function_name(params)
   *Comparison*
 - '>, <, ==, !=, <=, >=
 
-**Arrays**
+# Arrays #
 - Assignment: ```var array = [1, 2, 3, 4, 5];```
 - Reading ```array[index] // Runtime error if out of range```
 - Writing ```array[index] = value; // Runtime error if out of range```
