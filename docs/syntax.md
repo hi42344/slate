@@ -137,7 +137,7 @@ Usage after deletion will give a error ["Runtime Error: Undefined variable 'vari
 ```slate
 var a = 5;
 delete a;
-print(a); // Gives a "Runtime Error: Undefined variable 'a'" error
+print(a); // "Runtime Error: Undefined variable 'a'" error
 ```
 
 - Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
