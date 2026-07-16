@@ -60,7 +60,7 @@ a[0] = b;
 a[0] = 100;
 print(b); // prints 5 since b in the array is a copy
 ```
-You can pass a variables reference to not make a copy
+- You can pass a variables reference to not make a copy
 ```slate
 var a = [1, 2, 3, 4];
 var b = 5;
