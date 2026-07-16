@@ -57,6 +57,33 @@ fn add(a, b) {
 ```slate
 function_name(params)
 ```
+**Lambdas**
+- Not named functions, use the `fn` keyword directly
+```slate
+var add = fn(a, b) {
+    return a + b;
+};
+print(add(2, 3)); // prints 5
+```
+- Commonly passed directly as an argument:
+```slate
+fn apply(value, transform) {
+    return transform(value);
+}
+print(apply(10, fn(x) { return x * 2; })); // prints 20
+```
+- **Closures**: a lambda captures the enclosing function's variables by reference at the moment it's created. Later changes to the captured variable are visible through the closure, and each call gets its own independent capture
+```slate
+fn make_adder(offset) {
+    return fn(base) {
+        return base + offset;
+    };
+}
+var add5 = make_adder(5);
+var add100 = make_adder(100);
+print(add5(10));   // 15
+print(add100(10)); // 110
+```
 # Operators #
 - +, -, *, /, %
 - +=, -=, /=, *=
