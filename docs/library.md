@@ -1,5 +1,7 @@
 # The built in c++ library's #
 
+- ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
+
 # Math #
 - ```math.abs(number);``` // Returns the absolute value of a number
 - ```math.acos(number);``` // Returns the arc cosine of a number in radians
@@ -34,3 +36,5 @@
 - ```math.lerp(a, b, t);``` // Linearly interpolates between a and b by t
 - ```math.map(value, in_min, in_max, out_min, out_max);``` // Linearly maps a value from an input range to an output range
 - ```math.noise(x, y, z);``` // Generates 3D Perlin noise based on the input coordinates x, y, and z
+
+#  #
