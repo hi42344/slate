@@ -272,6 +272,7 @@ class person {
         var a = 5;
         b;
     public:
+        // Native methods
         person(value) {
             this.a = value;
             print("constructed");
