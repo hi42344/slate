@@ -3,6 +3,7 @@
 |---|---|
 | `//` / `/**/` | [Comments](#comments) |
 | `[]` | [Arrays](#arrays) |
+| `"string"` | [Strings](#strings) |
 | `var` | [Variable Creation](#variable-creation) |
 | `fn` | [Functions](#functions) |
 | `if` / `elif` / `else` | [Control flow](#control-flow) |
