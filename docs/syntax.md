@@ -125,7 +125,7 @@ print(math.factorial(5));
 ```
 
 # Pointers and References #
-- Deletion
+**Deletion**
 ```slate
 var b = &a; delete b; /*deletes a*/
 var a = make(5); delete a;
