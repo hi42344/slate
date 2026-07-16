@@ -26,7 +26,7 @@ else {
     code
 }
 
-// there is also "condition ? : " aka Ternary
+// there is also the Ternary operator like C/C++
 ```
 - There is continue and break keywords, continue skips the rest of the loop and break stops it.
 - **For loops (C/C++ style)**
@@ -127,7 +127,7 @@ print(math.factorial(5));
 # Pointers and References #
 - Deletion ```var b = &a; delete b; /*deletes a*/, var a = make(5); delete a; var b = 5; delete b; (deletion can be done on anything, even normal variables that get auto deleted after scope)```
 - Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
-- dereferencing ```*ptr```
+- dereferencing ```*ptr``` Note that if you are getting a field you must wrap this in (*ptr) or you will get errors
 - referencing ```var a = 10; var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
 *functions*
 - Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
@@ -190,4 +190,58 @@ var b = 5;
 a[0] = &b;
 a[0] = 100;
 print(b); // prints 100 since b is actually in the array
+```
+
+# Classes #
+- Makes deep copies by default
+- Note that you should always use ```this.something``` instead of ```something``` inside a class
+- Note that there is no Polymorphism or Inheritance
+- There is only public and private access modifiers
+*Example code*
+```slate
+class person {
+    private:
+        var a = 5;
+        b;
+    public:
+        person(value) {
+            this.a = value;
+            print("constructed");
+        }
+        !person() {
+            print("deconstructed");
+        }
+
+        copy() {
+            print("copied");
+        }
+        assignment(new_value) {
+            print("assigned");
+        }
+        referenced() {
+            print("referenced");
+        }
+        dereferenced() {
+            print("dereferenced");
+        }
+        // methods
+        fn set(new_value) {
+            this.a = new_value;
+        }
+
+        fn get() {
+            return this.a;
+        }
+}
+if(true) {
+    var a = person(10); // prints constructed
+    var b = make(person(10.100)); // prints constructed     
+    print((*b).get()); // prints derferenced and 10.1
+    print(a.get()); // prints 10;
+    a.set(100);
+    print(a.get()); // prints 100;
+    var b = a; // prints copied
+    var c = &a; // prints referenced
+    a = null; // prints assigned
+} // prints deconstructed 2x // Note that even if a class gets reassigned it's deconstructer will activate
 ```
