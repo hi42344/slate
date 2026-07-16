@@ -49,7 +49,7 @@ function_name(params)
 - .pop(); ```// like c++ vector.pop_back, array will stay the same capacity, size will shrink, Runtime error if array is empty```
 - .resize(new_size); ```// like c++ vector.resize(), Deletes anything at a bigger index than the new size```
 - .insert(index, value) ```// like c++ vector.insert()```
-- .remove(index) ```// like c++ vector.remove(), returns the deleted value at the index```
+- .remove(index) ```// like c++ vector.erase(), returns the deleted value at the index```
 
   *Behavior*
 - Makes a copy by default for variables
