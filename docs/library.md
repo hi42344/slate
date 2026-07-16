@@ -37,4 +37,19 @@
 - ```math.map(value, in_min, in_max, out_min, out_max);``` // Linearly maps a value from an input range to an output range
 - ```math.noise(x, y, z);``` // Generates 3D Perlin noise based on the input coordinates x, y, and z
 
-#  #
+# os #
+- ```os.sleep(time)``` // sleeps the program for the time in seconds
+- ```os.throw(message)``` // throws/crashes the program and prints the message
+- ```os.platform()``` // Returns the current platform, eg: ```"windows", "linux", "macos", "ios", "android"``` else ```"unknown"```
+- ```os.time()``` // Returns the time **(in seconds)** since the **computer has turned on** or **epoch time**
+- ```os.clock()``` // Returns the CPU time (in seconds) since the program has started
+- ```os.date()``` // Returns a locally formatted string of the current date and time
+- ```os.date_time_year()``` // Returns the current time and year formatted as "Hours:Minutes:Seconds Year"
+- ```os.date_time()``` // Returns the current time formatted as "Hours:Minutes:Seconds"
+- ```os.getenv(var)``` // Returns the value of an environment variable, or an empty string if not found
+- ```os.file_save(path, content)``` // Saves content to a file (overwriting if it exists), returns true if successful
+- ```os.file_load(path)``` // Returns the entire contents of a file as a string
+- ```os.file_exists(path)``` // Returns true if a file or directory exists at the path, otherwise false
+- ```os.file_delete(path)``` // Deletes a file or empty directory, returns true if successful
+- ```os.file_size(path)``` // Returns the size of a file in bytes, or -1 if the file is not found
+- ```os.file_append(path, content)``` // Appends content to the end of a file, returns true if successful
