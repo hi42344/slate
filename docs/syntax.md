@@ -43,8 +43,13 @@ function_name(params)
 - Writing ```array[index] = value; // Runtime error if out of range```
 
   *Properties/methods*
-- .length
-- .at // Returns null if out of range
+- .length ```// Returns the size/length of the array```
+- .at(index) ```// Returns null if out of range```
+- .push(value); ```// like c++ vector.push_back, grows array```
+- .pop(); ```// like c++ vector.pop_back, array will stay the same capacity, size will shrink, Runtime error if array is empty```
+- .resize(new_size); ```// like c++ vector.resize(), Deletes anything at a bigger index than the new size```
+- .insert(index, value) ```// like c++ vector.insert()```
+- .remove(index) ```// like c++ vector.remove(), returns the deleted value at the index```
 
   *Behavior*
 - Makes a copy by default for variables
