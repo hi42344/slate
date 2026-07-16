@@ -61,10 +61,10 @@ function_name(params)
 - +, -, *, /, %
 - +=, -=, /=, *=
 
-  *Logical*
+*Logical*
 - &&, ||, !
 
-  *Comparison*
+*Comparison*
 - '>, <, ==, !=, <=, >=
 
 # Comments #
