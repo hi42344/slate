@@ -290,7 +290,7 @@ class person {
         b;
     public:
         // Native methods
-        person(value) {
+        person(value /*A class constructer can have as many params as wanted*/) {
             this.a = value;
             print("constructed");
         }
