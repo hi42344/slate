@@ -5,7 +5,7 @@ A dynamically typed interpreted language with lua/rust/cpp syntax
 
 # HOW TO USE #
 - Download the binary and open it
-- Make a script inside the scripts folder (or anywhere but you'd have to manually use the file path in the script name)
+- Make a script inside the scripts folder with the ```.slate``` file extension (or anywhere but you'd have to use the file path)
 ```lua
 print("hello world");
 ```
