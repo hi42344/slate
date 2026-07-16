@@ -125,9 +125,23 @@ print(math.factorial(5));
 ```
 
 # Pointers and References #
-- Deletion ```var b = &a; delete b; /*deletes a*/, var a = make(5); delete a; var b = 5; delete b; (deletion can be done on anything, even normal variables that get auto deleted after scope)```
+- Deletion
+```slate
+var b = &a; delete b; /*deletes a*/
+var a = make(5); delete a;
+var b = 5; delete b; // deletion can be done on anything, even normal variables that get auto deleted after scope
+```
+Usage after deletion will give a error ["Runtime Error: Undefined variable 'variable name'"]
+
+*Example*
+```slate
+var a = 5;
+delete a;
+print(a); // Gives a "Runtime Error: Undefined variable 'a'" error
+```
+
 - Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
-- dereferencing ```*ptr``` Note that if you are getting a field you must wrap this in (*ptr) or you will get errors
+- dereferencing ```*ptr``` Note that if you are using a field you must wrap (*ptr) or you will get errors
 - referencing ```var a = 10; var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
 *functions*
 - Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
@@ -148,7 +162,6 @@ fn set_ptr(ptr_a, new_value) {
 var ptr = make(100);
 set_ptr(&ptr, 5); // must still pass in the refrence 
 print(*ptr); // prints 5
-// Like other languages I dont recommend using pointers a lot of the time, a refrence does most of what you need anyway
 ```
 
 # Strings #
