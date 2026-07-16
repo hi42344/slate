@@ -2,6 +2,7 @@
 | Keyword | Section |
 |---|---|
 | `//` / `/**/` | [Comments](#comments) |
+| `[]` | [Arrays](#arrays) |
 | `var` | [Variable Creation](#variable-creation) |
 | `fn` | [Functions](#functions) |
 | `if` / `elif` / `else` | [Control flow](#control-flow) |
