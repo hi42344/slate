@@ -197,6 +197,7 @@ print(b); // prints 100 since b is actually in the array
 - Note that you should always use ```this.something``` instead of ```something``` inside a class
 - Note that there is no Polymorphism or Inheritance
 - There is only public and private access modifiers
+
 *Example code*
 ```slate
 class person {
