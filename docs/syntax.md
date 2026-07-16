@@ -11,6 +11,34 @@
 - *boolean* ```var name = true;```
 - *null* ```var name = null;```
 
+**Control flow**
+
+- **if statements**
+```slate
+if(condition/conditions) {
+    code
+}
+
+elif(condition/conditions) {
+    code
+}
+
+else {
+    code
+}
+```
+- **For loops (C/C++ style)**
+```slate
+for(initialization; condition; update) {
+    code
+}
+```
+- **While loops (C/C++ style)**
+```slate
+while(condition/conditions) {
+    code
+}
+```
 **Functions**
 ```slate
 fn function_name(params) {
