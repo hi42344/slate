@@ -4,11 +4,12 @@
 - Keyword ```var```
 - Declaration ```var name = value;```
 - Usage ```name = value;```, ```print(name);```
-- **Four basic types**
+- **Five basic types**
 - *long long* ```var name = 10;```
 - *double* ```var name = 10.5;```
 - *string* ```var name = "hello world";```
 - *boolean* ```var name = true;```
+- *null* ```var name = null;```
 
 **Functions**
 ```slate
@@ -37,7 +38,16 @@ function_name(params)
 - '>, <, ==, !=, <=, >=
 
 **Arrays**
-- Makes a copy by default for variables, eg: 
+- Assignment: ```var array = [1, 2, 3, 4, 5];```
+- Reading ```array[index] // Runtime error if out of range```
+- Writing ```array[index] = value; // Runtime error if out of range```
+
+  *Properties/methods*
+- .length
+- .at // Returns null if out of range
+
+  *Behavior*
+- Makes a copy by default for variables
 ```slate
 var a = [1, 2, 3, 4];
 var b = 5;
@@ -45,7 +55,7 @@ a[0] = b;
 a[0] = 100;
 print(b); // prints 5 since b in the array is a copy
 ```
-You can pass a variables reference to not make a copy, eg:
+You can pass a variables reference to not make a copy
 ```slate
 var a = [1, 2, 3, 4];
 var b = 5;
