@@ -1,3 +1,19 @@
+# Keywords #
+| Keyword | Section |
+|---|---|
+| `var` | [Variable Creation](#variable-creation) |
+| `fn` | [Functions](#functions-) |
+| `if` / `elif` / `else` | [Control flow](#control-flow-) |
+| `while` | [Control flow](#control-flow-) |
+| `for` | [Control flow](#control-flow-) |
+| `break` / `continue` | [Control flow](#control-flow-) |
+| `struct` | [Basic Structures](#basic-structures-) |
+| `enum` | [Basic Structures](#basic-structures-) |
+| `namespace` | [Basic Structures](#basic-structures-) |
+| `class` | [Classes](#classes-) |
+| `make` / `delete` / `&` / `*` | [Pointers and References](#pointers-and-references-) |
+| `import` | [Imports](#imports#) |
+
 # Variable Creation #
 >Dynamically typed
 - Keyword ```var```
