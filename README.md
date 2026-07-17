@@ -51,3 +51,4 @@ Path Added To:             ~/.zshrc
 # Documentation
 - [Syntax](./docs/syntax.md)
 - [Native libraries](./docs/library.md)
+- [Conventions](./docs/conventions.md)
