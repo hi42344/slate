@@ -65,6 +65,17 @@
 - ```data.delete_all(SaveManager)``` // Deletes all save files managed by the SaveManager, **```Returns true if successful and false if else```**
 - ```data.free_map(map)``` // Frees the memory of a data map, **```Returns true if successful and false if else```**
 - ```data.free_save_manager(SaveManager)``` // Frees the memory of a SaveManager, **```Returns true if successful and false if else```**
+- Example using some of these:
+```slate
+var SaveManager = data.save_manager("App", 3, false);
+var map = data.Map(); 
+data.write(map, "hp", 1000);
+var random_save_num = type.double_to_int(math.round(math.random(1, 3)));
+data.save(map, SaveManager, random_save_num);
+
+var map2 = data.load(SaveManager, 1);
+print(data.read(map2, "hp", random_save_num));
+```
 
 # String #
 - ```string.charCode(string, index)``` // Returns the ASCII value of the character at the index, Runtime error if out of bounds
