@@ -1,5 +1,5 @@
 # Language Conventions #
-**These are just guidelines, so while i recommend you follow them, you dont have to follow them exactly**
+**These are just guidelines, so while i recommend you follow them, you dont have to follow them exactly.**
 
 ## General code
 - Code should have fallbacks by default unless you know something can't be *null*, eg: ```if(something) { print(something); }```.
