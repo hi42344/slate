@@ -54,6 +54,18 @@
 - ```os.file_size(path)``` // Returns the **size of a file in bytes**, or -1 if the file is not found
 - ```os.file_append(path, content)``` // Appends content to the **end of a file**, returns true if successful
 
+# Data - A high level way to save data easily
+- ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
+- ```data.map()``` // Makes a data map
+- ```data.write(map, "key", value)``` // Writes a value to a map
+- ```data.read(map, "key", default_value)``` // Reads a value from a map, The type of the *```default_value```* determines what type is returned. Returns *```default_value```* if the key or map is not found
+- ```data.save(map, SaveManager, save_file_number)``` // Saves a map to **disk in appdata** **(or the linux/macos equivalent)** with the **SaveManager's appname** with a **save file number**, **```Returns true if successful and false if else```**, will load backups if the main file fails to save
+- ```data.load(SaveManager, save_file_number)``` // Returns a map from the *```save file number```*
+- ```data.delete(SaveManager, save_file_number)``` // Deletes a specific save file by its *```save file number```*, **```Returns true if successful and false if else```**
+- ```data.delete_all(SaveManager)``` // Deletes all save files managed by the SaveManager, **```Returns true if successful and false if else```**
+- ```data.free_map(map)``` // Frees the memory of a data map, **```Returns true if successful and false if else```**
+- ```data.free_save_manager(SaveManager)``` // Frees the memory of a SaveManager, **```Returns true if successful and false if else```**
+
 # String #
 - ```string.charCode(string, index)``` // Returns the ASCII value of the character at the index, Runtime error if out of bounds
 - ```string.sub(string, start, end)``` // Returns a substring from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last character, -2 is the second to last, etc```
