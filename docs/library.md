@@ -37,7 +37,7 @@
 - ```math.map(value, in_min, in_max, out_min, out_max)``` // Linearly maps a value from an input range to an output range
 - ```math.noise(x, y, z)``` // Generates 3D Perlin noise based on the input coordinates x, y, and z
 
-# os #
+# Os #
 - ```os.sleep(time)``` // sleeps the program for the time in seconds
 - ```os.throw(message)``` // throws/crashes the program and prints the message
 - ```os.platform()``` // Returns the current platform, eg: **```"windows", "linux", "macos", "ios", "android"```** else **```"unknown"```**
@@ -54,7 +54,7 @@
 - ```os.file_size(path)``` // Returns the **size of a file in bytes**, or -1 if the file is not found
 - ```os.file_append(path, content)``` // Appends content to the **end of a file**, returns true if successful
 
-# string #
+# String #
 - ```string.charCode(string, index)``` // Returns the ASCII value of the character at the index, Runtime error if out of bounds
 - ```string.sub(string, start, end)``` // Returns a substring from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last character, -2 is the second to last, etc```
 - ```string.lower(string)``` // Returns a new string with all characters converted to lowercase
@@ -64,7 +64,7 @@
 - ```string.hash(string)``` // Returns a **positive 64-bit hash integer** of a string using SipHash
 - ```string.fasthash(string)``` // Returns a **positive 64-bit hash integer** of a string using Wyhash
   
-# type #
+# Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
 - ```type.is_double(val)``` // Returns true if the value is a double, otherwise false
 - ```type.is_number(val)``` // Returns true if the value is either an integer or a double, otherwise false
