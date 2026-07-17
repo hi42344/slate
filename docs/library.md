@@ -66,7 +66,7 @@
 - ```os.file_size(path)``` // Returns the **size of a file in bytes**, or -1 if the file is not found
 - ```os.file_append(path, content)``` // Appends content to the **end of a file**, returns true if successful
 
-# Data - A high level way to save data easily
+# Data #
 - ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
 - ```data.map()``` // Makes a data map
 - ```data.write(map, "key", value)``` // Writes a value to a map
