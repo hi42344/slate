@@ -1,5 +1,17 @@
 # The Core libraries #
 
+### Table of Contents
+
+| Library | Description | Quick Link |
+| :--- | :--- | :--- |
+| **Print** | Basic console output functionality | [Print](#the-core-libraries) |
+| **Math** | Mathematical constants, trigonometry, and utilities | [Math](#math) |
+| **OS** | System clock, timing, file system, and process controls | [OS](#os) |
+| **Data** | High-level data saving, serialization, and save managers | [Data](#data---a-high-level-way-to-save-data-easily) |
+| **String** | Substrings, casing, reversals, and hashing utilities | [String](#string) |
+| **Type** | Type checking, dynamic inspection, and casting | [Type](#type) |
+| **Slate** | Language metadata and virtual machine environment info | [Slate](#slate) |
+
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
 # Math #
