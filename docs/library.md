@@ -1,4 +1,4 @@
-# The c++ library's #
+# The Core libraries #
 
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
