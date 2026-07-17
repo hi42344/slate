@@ -1,4 +1,4 @@
-# The Core libraries #
+# Core libraries #
 
 ### Table of Contents
 
