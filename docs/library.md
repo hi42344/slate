@@ -7,8 +7,8 @@
 | **Print** | Console output | [Print](#the-core-libraries) |
 | **Math** | Math | [Math](#math) |
 | **OS** | File, clock, times | [OS](#os) |
-| **Data** | High level data saving | [Data](#data---a-high-level-way-to-save-data-easily) |
-| **String** | String reversing and hashing utilities, etc | [String](#string) |
+| **Data** | Easy data saving | [Data](#data---a-high-level-way-to-save-data-easily) |
+| **String** | String and hashing utilities | [String](#string) |
 | **Type** | Type checking and casting | [Type](#type) |
 | **Slate** | Language data | [Slate](#slate) |
 
