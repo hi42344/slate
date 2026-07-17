@@ -9,12 +9,12 @@ A dynamically typed interpreted language with lua/rust/cpp syntax
 ```lua
 print("hello world");
 ```
-- Open a terminal and type ```"slate script_name"```, this will compile it and run it immediately
+- Open a terminal and type ```"slate script_name"```, this will run it immediately
 
 **Additional features**
 - You can compile something by doing ```"slate script_name --compile"``` or ```"--c"```
-- Compiled files dont need any librarys they used to exist, a compiled file will always run as long as it's valid slate
-- You can run that compiled file by doing ```"slate script_name"``` (if you dont add a file extension it will always run compiled files that have the same name first like ```"script.slatebin"``` instead of ```"script.slate"```)
+- Compiled files don't depend on any libraries they used to need, a compiled file will always run as long as it's valid Slate
+- Running a compiled file is the same ```"slate script_name"``` (if you don't put a file extension, Slate always looks for a compiled file with the same name first, e.g. ```"script.slatebin"``` before ```"script.slate"```)
 
 **Flags**
 ```bash
@@ -50,4 +50,4 @@ Path Added To:             ~/.zshrc
 ```
 # Documentation
 - [Syntax](./docs/syntax.md)
-- [Native library's](./docs/library.md)
+- [Native libraries](./docs/library.md)
