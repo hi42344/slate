@@ -4,13 +4,13 @@
 
 | Library | Description | Quick Link |
 | :--- | :--- | :--- |
-| **Print** | Basic console output functionality | [Print](#the-core-libraries) |
-| **Math** | Mathematical constants, trigonometry, and utilities | [Math](#math) |
-| **OS** | System clock, timing, file system, and process controls | [OS](#os) |
-| **Data** | High-level data saving, serialization, and save managers | [Data](#data---a-high-level-way-to-save-data-easily) |
-| **String** | Substrings, casing, reversals, and hashing utilities | [String](#string) |
-| **Type** | Type checking, dynamic inspection, and casting | [Type](#type) |
-| **Slate** | Language metadata and virtual machine environment info | [Slate](#slate) |
+| **Print** | Console output | [Print](#the-core-libraries) |
+| **Math** | Math | [Math](#math) |
+| **OS** | File, clock, times | [OS](#os) |
+| **Data** | High level data saving | [Data](#data---a-high-level-way-to-save-data-easily) |
+| **String** | String reversing and hashing utilities, etc | [String](#string) |
+| **Type** | Type checking and casting | [Type](#type) |
+| **Slate** | Language data | [Slate](#slate) |
 
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
