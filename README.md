@@ -50,3 +50,4 @@ Path Added To:             ~/.zshrc
 ```
 # Documentation
 - [Syntax](./docs/syntax.md)
+- [Native library's](./docs/library.md)
