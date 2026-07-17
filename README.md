@@ -4,7 +4,7 @@ A dynamically typed interpreted language with lua/rust/cpp syntax
 >**Note:** Slate is currently in development. All features are subject to change
 
 # HOW TO USE #
-- Download the binary and open it
+- [Download the binary](https://github.com/hi42344/slate/releases/latest) and open it
 - Make a script inside the scripts folder with the ```.slate``` file extension (or anywhere but you'd have to use the file path)
 ```lua
 print("hello world");
