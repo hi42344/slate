@@ -81,3 +81,6 @@
 - ```type.int_to_double(num)``` // Converts a 64-bit integer to a double
 - ```type.to_string(val)``` // Converts a value (int, double, string, bool) to their string representation
 - ```type.string_to_number(str)``` // Returns a number coming from a string, returning null if it fails
+
+# Slate #
+- ```slate.version()``` // Returns the slate version
