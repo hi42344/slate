@@ -121,9 +121,9 @@ print(add100(10)); // 110
  
 **Added in v0.2.0**
  
-- ```yield value;``` pauses the currently running coroutine, returning ```value``` back out to whoever called ```coroutine.resume```. Execution picks back up on the very next line the moment the coroutine is resumed again.
-- ```yield``` works from any depth of ordinary function calls inside a coroutine, and from inside a class's regular methods.
-- A coroutine is managed with the ```coroutine.*``` library (```coroutine.create```, ```coroutine.resume```, ```coroutine.status```, ```coroutine.is_done```, ```coroutine.free```), see [Coroutine](library.md#coroutine) in `library.md`.
+- ```yield value;``` pauses the currently running coroutine, returning ```value``` back out to ```coroutine.resume```'s caller. Execution starts back at the next line from the yield that sent it out when the coroutine is resumed again.
+- ```yield``` works from any depth of normal function calls and methods (not including native methods like ```assignment(new_value)```, etc).
+- A coroutine is managed with the **[coroutine](library.md#coroutine)** library.
 ```slate
 fn counter() {
     var i = 0;
