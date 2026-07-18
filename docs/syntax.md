@@ -302,6 +302,8 @@ class person {
             print("copied");
         }
         assignment(new_value) {
+        /*Added in version 0.2.0 you can use the new value and return inside the assignment function to change what gets assigned
+        eg: "return new_value * 2;" or "print(new_value);" */
             print("assigned");
         }
         referenced() {
