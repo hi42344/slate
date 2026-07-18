@@ -1,14 +1,15 @@
 # Core libraries #
-
+ 
 ### Table of Contents
-
+ 
 | Library | Description | Quick Link |
 | :--- | :--- | :--- |
-| **Print** | Console output | [Print](#the-core-libraries) |
+| **Print** | Console output | [Print](#core-libraries) |
 | **Math** | Math | [Math](#math) |
 | **OS** | File, clock, times | [OS](#os) |
-| **Data** | Easy data saving | [Data](#data---a-high-level-way-to-save-data-easily) |
+| **Data** | Easy data saving | [Data](#data) |
 | **String** | String and hashing utilities | [String](#string) |
+| **Array** | Array utilities | [Array](#array) |
 | **Type** | Type checking and casting | [Type](#type) |
 | **Slate** | Language data | [Slate](#slate) |
 
@@ -66,6 +67,9 @@
 - ```os.file_size(path)``` // Returns the **size of a file in bytes**, or -1 if the file is not found
 - ```os.file_append(path, content)``` // Appends content to the **end of a file**, returns true if successful
 
+**Added in v0.2.0**
+- ```os.input(prompt)``` // gets user input using ```std::getline()```
+
 # Data #
 - ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
 - ```data.map()``` // Makes a data map
@@ -98,7 +102,23 @@ print(data.read(map2, "hp", random_save_num));
 - ```string.rep(string, repeat_count)``` // Returns a string that repeats the input string a number of times
 - ```string.hash(string)``` // Returns a **positive 64-bit hash integer** of a string using SipHash
 - ```string.fasthash(string)``` // Returns a **positive 64-bit hash integer** of a string using Wyhash
-  
+
+**Added in v0.2.0**
+- ```string.split(string, delimiter)``` // Splits ```string``` on every occurrence of ```delimiter``` and returns an **array of strings**. An empty ```delimiter``` splits into individual characters
+- ```string.trim(string)``` // Returns a new string with leading and trailing whitespace removed
+- ```string.contains(string, substring)``` // Returns true if ```substring``` occurs anywhere in ```string```, otherwise false
+- ```string.find(string, substring)``` // Returns the **index of the first occurrence** of ```substring``` in ```string```, or -1 if not found
+- ```string.replace(string, old, new)``` // Returns a new string with **every occurrence** of ```old``` replaced with ```new```
+- ```string.join(array, delimiter)``` // Joins every element of ```array``` into a single string, separated by ```delimiter```
+
+# Array #
+ 
+**Added in v0.2.0**
+- ```array.contains(array, value)``` // Returns true if ```value``` is found anywhere in ```array```, otherwise false
+- ```array.index_of(array, value)``` // Returns the **index of the first occurrence** of ```value``` in ```array```, or -1 if not found
+- ```array.sort(array)``` // Sorts ```array``` **in place** in ascending order **(numbers and strings only)**, **```Returns true if successful and false if else```**
+- ```array.reverse(array)``` // Reverses ```array``` **in place**, **```Returns true if successful and false if else```**
+
 # Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
 - ```type.is_double(val)``` // Returns true if the value is a double, otherwise false
