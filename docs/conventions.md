@@ -11,4 +11,4 @@
 
 ## Naming conventions
 - Use snake_case.
-- Use upper snake_case for constants, eg: ```var PI = 3.1415926535897932;```.
+- Use upper snake_case for constants, eg: ```var PI = 3.1415926535897932;```. // Note that this is a *maybe* type convention
