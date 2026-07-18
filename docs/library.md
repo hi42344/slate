@@ -7,6 +7,7 @@
 | **Print** | Console output | [Print](#core-libraries) |
 | **Math** | Math | [Math](#math) |
 | **OS** | File, clock, times | [OS](#os) |
+| **Input** | Keyboard and Mouse utilities | [Input](#input) |
 | **Data** | Easy data saving | [Data](#data) |
 | **String** | String and hashing utilities | [String](#string) |
 | **Array** | Array utilities | [Array](#array) |
@@ -73,6 +74,32 @@
 **Added in v0.2.0**
 - ```os.input(prompt)``` // gets user input using ```std::getline()```
 - ```os.uuid()``` // Returns a randomly generated **RFC 4122 version-4 UUID** as a string, eg: ```"f47ac10b-58cc-4372-a567-0e02b2c3d479"```
+
+# Input #
+
+**Added in v0.2.0**
+
+**The string keys**
+```slate
+"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+"f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12",
+"space", "enter", "escape", "tab", "backspace", "delete", "capslock", "insert", "home", "end", "pageup", "pagedown", "printscreen", "pause",
+"shift", "control", "alt", "super", "leftshift", "rightshift", "leftcontrol", "rightcontrol", "leftalt", "rightalt", "left", "right", "up", "down",
+"numpad0", "numpad1", "numpad2", "numpad3", "numpad4", "numpad5", "numpad6", "numpad7", "numpad8", "numpad9",
+"numpadadd", "numpadsubtract", "numpadmultiply", "numpaddivide", "numpaddecimal", "numpadenter",
+"minus", "equals", "leftbracket", "rightbracket", "semicolon", "quote", "comma", "period", "slash", "backslash", "grave"
+```
+- The three mouse buttons are: "left", "right", "middle"
+### Functions
+- ```input.is_key_down(key)``` // Returns true if the specified keyboard key is currently held down
+- ```input.is_mouse_button_down(button)``` // Returns true if the specified mouse button is currently held down
+- ```input.mouse_position_x()``` // Returns the current X coordinate of the mouse cursor
+- ```input.mouse_position_y()``` // Returns the current Y coordinate of the mouse cursor
+- ```input.set_mouse_position(x, y)``` // Sets the mouse cursor to the specified coordinates on the screen
+- ```input.drag_mouse(from_x, from_y, to_x, to_y, time, button)``` // Simulates dragging the mouse from one point to another over a specified duration in seconds using the given button
+- ```input.press_mouse(button)``` // Simulates a single click of the specified mouse button
+- ```input.press_key(key)``` // Simulates a single press of the specified keyboard key
 
 # Data #
 - ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
