@@ -16,6 +16,7 @@
 | `class` | [Classes](#classes) |
 | `make` / `delete` / `&` / `*` | [Pointers and References](#pointers-and-references) |
 | `import` | [Imports](#imports) |
+| `yield` | [Coroutines](#coroutines) |
 
 # imports #
 - import "path.slate" // Goes to the librarys folder first (my_library) or (folder(or folders)/my_library) otherwise just uses the path
@@ -115,6 +116,30 @@ var add100 = make_adder(100);
 print(add5(10));   // 15
 print(add100(10)); // 110
 ```
+
+# Coroutines #
+ 
+**Added in v0.2.0**
+ 
+- ```yield value;``` pauses the currently running coroutine, returning ```value``` back out to whoever called ```coroutine.resume```. Execution picks back up on the very next line the moment the coroutine is resumed again.
+- ```yield``` works from any depth of ordinary function calls inside a coroutine, and from inside a class's regular methods.
+- A coroutine is managed with the ```coroutine.*``` library (```coroutine.create```, ```coroutine.resume```, ```coroutine.status```, ```coroutine.is_done```, ```coroutine.free```), see [Coroutine](library.md#coroutine) in `library.md`.
+```slate
+fn counter() {
+    var i = 0;
+    while (i < 3) {
+        yield i;
+        i = i + 1;
+    }
+}
+ 
+var co = coroutine.create(counter);
+while (coroutine.status(co) != "dead") {
+    print(coroutine.resume(co)); // prints 0, 1, 2 across three separate resumes
+}
+```
+- You will get a compile error with yield inside any native class methods or a struct/class field initializer, eg: (constructer, deconstructor, the assignment(new_value) method, etc), normal methods like eg: ```fn important() { print("hello world"); }``` can have ***yield's***.
+
 # Operators #
 - +, -, *, /, %
 - +=, -=, /=, *=
