@@ -50,6 +50,9 @@
 - ```math.map(value, in_min, in_max, out_min, out_max)``` // Linearly maps a value from an input range to an output range
 - ```math.noise(x, y, z)``` // Generates 3D Perlin noise based on the input coordinates x, y, and z
 
+**Added in v0.2.0**
+- ```math.random_int(min, max)``` // Same as math.random(min, max) but returns a integer
+
 # Os #
 - ```os.sleep(time)``` // sleeps the program for the time in seconds
 - ```os.throw(message)``` // throws/crashes the program and prints the message
