@@ -97,9 +97,10 @@
 - ```input.mouse_position_x()``` // Returns the current X coordinate of the mouse cursor
 - ```input.mouse_position_y()``` // Returns the current Y coordinate of the mouse cursor
 - ```input.set_mouse_position(x, y)``` // Sets the mouse cursor to the specified coordinates on the screen
-- ```input.drag_mouse(from_x, from_y, to_x, to_y, time, button)``` // Simulates dragging the mouse from one point to another over a specified duration in seconds using the given button
-- ```input.press_mouse(button)``` // Simulates a single click of the specified mouse button
-- ```input.press_key(key)``` // Simulates a single press of the specified keyboard key
+- ```input.drag_mouse(from_x, from_y, to_x, to_y, time, button)``` // Simulates dragging the mouse from one point to another over a specified duration in seconds using the given button to press and release
+- ```input.press_mouse(button)``` // Simulates a single click of the mouse button
+- ```input.press_key(key)``` // Simulates a single press of the key
+- ```input.type_text(text)``` // Simulates typing text from a string
 
 # Data #
 - ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
