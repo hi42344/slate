@@ -126,6 +126,7 @@ print(data.read(map2, "hp", random_save_num));
 - ```array.contains(array, value)``` // Returns true if ```value``` is found anywhere in ```array```, otherwise false
 - ```array.index_of(array, value)``` // Returns the **index of the first occurrence** of ```value``` in ```array```, or -1 if not found
 - ```array.sort(array)``` // Sorts ```array``` **in place** in ascending order **(numbers and strings only)**, **```Returns true if successful and false if else```**
+- ```array.sort_by(array, comparator)``` // Sorts ```array``` **in place** using ```comparator(a, b)```, a function returning true if ```a``` should come before ```b```, **```Returns true if successful and false if else```**
 - ```array.reverse(array)``` // Reverses ```array``` **in place**, **```Returns true if successful and false if else```**
 - ```array.slice(array, start, end)``` // Returns a **new array** containing the elements from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last element, -2 is the second to last, etc```
 - ```array.concat(array1, array2)``` // Returns a **new array** containing every element of ```array1``` followed by every element of ```array2```
