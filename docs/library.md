@@ -9,6 +9,7 @@
 | **OS** | File, clock, times | [OS](#os) |
 | **Input** | Keyboard and Mouse utilities | [Input](#input) |
 | **Data** | Easy data saving | [Data](#data) |
+| **Coroutine** | Concurrency | [Coroutine](#coroutine) |
 | **String** | String and hashing utilities | [String](#string) |
 | **Array** | Array utilities | [Array](#array) |
 | **Type** | Type checking and casting | [Type](#type) |
@@ -158,6 +159,39 @@ print(data.read(map2, "hp", random_save_num));
 - ```array.reverse(array)``` // Reverses ```array``` **in place**, **```Returns true if successful and false if else```**
 - ```array.slice(array, start, end)``` // Returns a **new array** containing the elements from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last element, -2 is the second to last, etc```
 - ```array.concat(array1, array2)``` // Returns a **new array** containing every element of ```array1``` followed by every element of ```array2```
+
+# Coroutine #
+A coroutine wraps a function so it can pause mid execution with ```yield``` and pick back up later exactly where it left off. The yield documentation is in ***```syntax.md```*** in the [Coroutines](syntax.md#coroutines) section
+ 
+**Added in v0.2.0**
+- ```coroutine.create(fn)``` // Wraps ```fn``` (a zero-arg function) in a coroutine and returns a handle to it. The coroutine doesn't run until the first ```coroutine.resume```
+- ```coroutine.resume(handle)``` // Runs the coroutine until it either hits a ```yield``` or finishes. Returns the yielded value while it's still running, or the function's return value once it's done — check ```coroutine.status``` to tell which one you got. Throws a runtime error if called on a coroutine that's already **dead**
+- ```coroutine.status(handle)``` // Returns **```"suspended"```** (paused at a yield), **```"running"```**, or **```"dead"```** (finished, cannot be resumed again)
+- ```coroutine.is_done(handle)``` // Returns true if the coroutine has finished (same as ```coroutine.status(handle) == "dead"```), otherwise false
+- ```coroutine.free(handle)``` // Frees the memory of a coroutine, **```Returns true if successful and false if else```**
+- Example, a coroutine that yields three times, plus a basic **```sleep```** function:
+```slate
+fn counter() {
+    var i = 0;
+    while (i < 3) {
+        yield i;
+        i = i + 1;
+    }
+}
+ 
+var co = coroutine.create(counter);
+while (coroutine.status(co) != "dead") /*can be written as "while(!(coroutine.is_done(co))) { code }"*/ {
+    print(coroutine.resume(co));
+}
+coroutine.free(co);
+ 
+fn sleep(seconds) {
+    var wake_at = os.time() + seconds;
+    while (os.time() < wake_at) {
+        yield 0;
+    }
+}
+```
 
 # Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
