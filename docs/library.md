@@ -69,6 +69,7 @@
 
 **Added in v0.2.0**
 - ```os.input(prompt)``` // gets user input using ```std::getline()```
+- ```os.uuid()``` // Returns a randomly generated **RFC 4122 version-4 UUID** as a string, eg: ```"f47ac10b-58cc-4372-a567-0e02b2c3d479"```
 
 # Data #
 - ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
@@ -110,6 +111,11 @@ print(data.read(map2, "hp", random_save_num));
 - ```string.find(string, substring)``` // Returns the **index of the first occurrence** of ```substring``` in ```string```, or -1 if not found
 - ```string.replace(string, old, new)``` // Returns a new string with **every occurrence** of ```old``` replaced with ```new```
 - ```string.join(array, delimiter)``` // Joins every element of ```array``` into a single string, separated by ```delimiter```
+- ```string.starts_with(string, prefix)``` // Returns true if ```string``` begins with ```prefix```, otherwise false
+- ```string.ends_with(string, suffix)``` // Returns true if ```string``` ends with ```suffix```, otherwise false
+- ```string.count(string, substring)``` // Returns the **number of non-overlapping occurrences** of ```substring``` in ```string```
+- ```string.pad_left(string, length, pad_char)``` // Pads ```string``` on the left with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
+- ```string.pad_right(string, length, pad_char)``` // Pads ```string``` on the right with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
 
 # Array #
  
@@ -118,6 +124,8 @@ print(data.read(map2, "hp", random_save_num));
 - ```array.index_of(array, value)``` // Returns the **index of the first occurrence** of ```value``` in ```array```, or -1 if not found
 - ```array.sort(array)``` // Sorts ```array``` **in place** in ascending order **(numbers and strings only)**, **```Returns true if successful and false if else```**
 - ```array.reverse(array)``` // Reverses ```array``` **in place**, **```Returns true if successful and false if else```**
+- ```array.slice(array, start, end)``` // Returns a **new array** containing the elements from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last element, -2 is the second to last, etc```
+- ```array.concat(array1, array2)``` // Returns a **new array** containing every element of ```array1``` followed by every element of ```array2```
 
 # Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
