@@ -303,7 +303,7 @@ print(b); // prints 100 since b is actually in the array
 - Constructer // class name
 - Deconstructor // class name with a ! before it, eg: "!person()"
 - Copied // in code it's the "copy()" method
-- Assigned // in code it's the "assignment(new_value)" method // note that you cant use "new_value" thats just one of the language's quirks
+- Assigned // in code it's the "assignment(new_value)" method
 - Referenced (lowercase in code)
 - Dereferenced (lowercase in code)
 
