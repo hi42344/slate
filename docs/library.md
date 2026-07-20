@@ -102,6 +102,12 @@
 - ```input.press_mouse(button)``` // Simulates a single click of the mouse button
 - ```input.press_key(key)``` // Simulates a single press of the key
 - ```input.type_text(text)``` // Simulates typing text from a string
+- ```input.key_toggle(key)``` // Creates a watcher for ```key``` and returns a handle to it
+- ```input.key_toggle_pressed(handle)``` // Returns true only on the frame ```key``` goes from up to down, otherwise false
+- ```input.free_key_toggle(handle)``` // Frees the memory of a key toggle, **```Returns true if successful and false if else```**
+- ```input.mouse_toggle(button)``` // Creates an edge-triggered watcher for a mouse ```button``` and returns a handle to it
+- ```input.mouse_toggle_pressed(handle)``` // Returns true only on the frame ```button``` goes from up to down, otherwise false — call once per loop/coroutine resume
+- ```input.free_mouse_toggle(handle)``` // Frees the memory of a mouse toggle, **```Returns true if successful and false if else```**
 
 # Data #
 - ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
