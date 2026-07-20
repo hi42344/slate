@@ -21,6 +21,7 @@ print("hello world");
 - "--compile" / "--c" to compile a .slate file
 - "--bytecode" / "--b" to see the compiled bytecode
 - "slate --version" / "--v" to see what version you are on
+- "slate --license" / "--l" added in v0.2, gives the link to the "license's" folder
 ```
 
 # WHERE IT IS #
