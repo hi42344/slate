@@ -1,1 +1,0 @@
-Raylib, Boost, and openssl are used inside by personal library which this includes so that is why they are here, the binary's dont use them at all.
