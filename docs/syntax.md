@@ -220,12 +220,15 @@ Usage after deletion will give a error ["Runtime Error: Undefined variable 'vari
 ```slate
 var a = 5;
 delete a;
-print(a); // "Runtime Error: Undefined variable 'a'" error
+print(a); // "Runtime Error: Undefined variable 'a'"
 ```
 
 - Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
 - dereferencing ```*ptr``` Note that if you are using a field you must wrap (*ptr) or you will get errors
 - referencing ```var a = 10; var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
+
+**Added in v0.2**
+- The -> operator, same thing as (*ptr).field but easier to type
 
 **functions**
 - Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
