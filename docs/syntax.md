@@ -138,7 +138,7 @@ while (coroutine.status(co) != "dead") {
     print(coroutine.resume(co)); // prints 0, 1, 2 across three separate resumes
 }
 ```
-- You will get a compile error with yield inside any native class methods or a struct/class field initializer, eg: (constructer, deconstructor, the assignment(new_value) method, etc), normal methods like eg: ```fn important() { print("hello world"); }``` can have ***yield's***.
+- You will get a compile error with yield inside any [native class methods](#classes) or a struct/class field initializer, normal methods like eg: ```fn important() { print("hello world"); }``` can have ***yield's***.
 
 # Operators #
 - +, -, *, /, %
