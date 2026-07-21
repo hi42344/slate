@@ -14,7 +14,7 @@
 | `enum` | [Basic Structures](#basic-structures) |
 | `namespace` | [Basic Structures](#basic-structures) |
 | `class` | [Classes](#classes) |
-| `make` / `delete` / `&` / `*` | [Pointers and References](#pointers-and-references) |
+| `make` / `delete` / `&` / `*` / `->` | [Pointers and References](#pointers-and-references) |
 | `import` | [Imports](#imports) |
 | `yield` | [Coroutines](#coroutines) |
 
