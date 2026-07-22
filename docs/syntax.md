@@ -369,8 +369,6 @@ if(true) {
 
 ### Supported Operators ###
 
-**Arithmetic Operators**
-
 | Operator | Method | Parameters | Description |
 |----------|--------|------------|-------------|
 | `+` | `operator +` | `(other)` | Addition |
@@ -378,54 +376,23 @@ if(true) {
 | `*` | `operator *` | `(other)` | Multiplication |
 | `/` | `operator /` | `(other)` | Division |
 | `%` | `operator %` | `(other)` | Modulo |
-
-**Comparison Operators**
-
-| Operator | Method | Parameters | Description |
-|----------|--------|------------|-------------|
 | `==` | `operator ==` | `(other)` | Equality |
 | `!=` | `operator !=` | `(other)` | Inequality |
 | `<` | `operator <` | `(other)` | Less than |
 | `>` | `operator >` | `(other)` | Greater than |
 | `<=` | `operator <=` | `(other)` | Less than or equal |
 | `>=` | `operator >=` | `(other)` | Greater than or equal |
-
-**Unary Operators**
-
-| Operator | Method | Parameters | Description |
-|----------|--------|------------|-------------|
-| `-` | `operator -` | `()` | Unary minus (negation) |
 | `!` | `operator !` | `()` | Logical NOT |
-
-**Assignment and Compound Operators**
-
-| Operator | Method | Parameters | Description |
-|----------|--------|------------|-------------|
 | `=` | `operator =` | `(new_value)` | Assignment (can return a value) |
-| `+=` | Uses `operator +` + `operator =` | - | Add and assign |
-| `-=` | Uses `operator -` + `operator =` | - | Subtract and assign |
-| `*=` | Uses `operator *` + `operator =` | - | Multiply and assign |
-| `/=` | Uses `operator /` + `operator =` | - | Divide and assign |
-| `%=` | Uses `operator %` + `operator =` | - | Modulo and assign |
-
-> **Note:** Compound operators (`+=`, `-=`, etc.) are automatically turned into to `a = a + b`. They will call the base operator followed by `operator =`
-
-**Subscript Operators**
-
-| Operator | Method | Parameters | Description |
-|----------|--------|------------|-------------|
 | `[]` | `operator []` | `(index)` | Read value at index |
 | `[]=` | `operator [] =` | `(index, value)` | Write value at index |
-
-**Function Call Operator**
-
-| Operator | Method | Parameters | Description |
-|----------|--------|------------|-------------|
 | `()` | `operator ()` | `(args...)` | Make instance callable like a function |
+
+> **Note:** Compound operators (`+=`, `-=`, `*=`, `/=`, `%=`) are automatically turned into `a = a + b`, `a = a - b`, etc. They will call the base operator followed by `operator =`.
 
 ### Vector class example ###
 
-**This demonstrates **every** supported operator in action:**
+**This demonstrates **every** supported operator:**
 
 ```slate
 class Vector2 {
