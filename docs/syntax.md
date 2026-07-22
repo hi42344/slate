@@ -302,7 +302,7 @@ print(b); // prints 100 since b is actually in the array
 - Note that there is no Polymorphism or Inheritance
 - There is only public and private access modifiers
 
-**Classes have 6 default methods**
+**Classes have 5 default methods**
 - Constructer // class name
 - Deconstructor // class name with a ! before it, eg: "!person()"
 - Copied // in code it's the "copy()" method
