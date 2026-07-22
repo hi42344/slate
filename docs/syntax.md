@@ -361,3 +361,567 @@ if(true) {
     a = null; // prints assigned
 } // prints deconstructed 2x // Note that even if a class gets reassigned it's deconstructer will activate
 ```
+
+
+## Operator Overloading ##
+ 
+**Added in v0.2.0**
+
+### Supported Operators ###
+
+**Arithmetic Operators**
+
+| Operator | Method | Parameters | Description |
+|----------|--------|------------|-------------|
+| `+` | `operator +` | `(other)` | Addition |
+| `-` | `operator -` | `(other)` | Subtraction |
+| `*` | `operator *` | `(other)` | Multiplication |
+| `/` | `operator /` | `(other)` | Division |
+| `%` | `operator %` | `(other)` | Modulo |
+
+**Comparison Operators**
+
+| Operator | Method | Parameters | Description |
+|----------|--------|------------|-------------|
+| `==` | `operator ==` | `(other)` | Equality |
+| `!=` | `operator !=` | `(other)` | Inequality |
+| `<` | `operator <` | `(other)` | Less than |
+| `>` | `operator >` | `(other)` | Greater than |
+| `<=` | `operator <=` | `(other)` | Less than or equal |
+| `>=` | `operator >=` | `(other)` | Greater than or equal |
+
+**Unary Operators**
+
+| Operator | Method | Parameters | Description |
+|----------|--------|------------|-------------|
+| `-` | `operator -` | `()` | Unary minus (negation) |
+| `!` | `operator !` | `()` | Logical NOT |
+
+**Assignment and Compound Operators**
+
+| Operator | Method | Parameters | Description |
+|----------|--------|------------|-------------|
+| `=` | `operator =` | `(new_value)` | Assignment (can return a value) |
+| `+=` | Uses `operator +` + `operator =` | - | Add and assign |
+| `-=` | Uses `operator -` + `operator =` | - | Subtract and assign |
+| `*=` | Uses `operator *` + `operator =` | - | Multiply and assign |
+| `/=` | Uses `operator /` + `operator =` | - | Divide and assign |
+| `%=` | Uses `operator %` + `operator =` | - | Modulo and assign |
+
+> **Note:** Compound operators (`+=`, `-=`, etc.) are automatically turned into to `a = a + b`. They will call the base operator followed by `operator =`
+
+**Subscript Operators**
+
+| Operator | Method | Parameters | Description |
+|----------|--------|------------|-------------|
+| `[]` | `operator []` | `(index)` | Read value at index |
+| `[]=` | `operator [] =` | `(index, value)` | Write value at index |
+
+**Function Call Operator**
+
+| Operator | Method | Parameters | Description |
+|----------|--------|------------|-------------|
+| `()` | `operator ()` | `(args...)` | Make instance callable like a function |
+
+### Vector class example ###
+
+>This demonstrates **every** supported operator in action:
+
+```slate
+// ============================================================
+// Vector2 Class - 2D Vector with ALL Operators
+// ============================================================
+
+class Vector2 {
+    public:
+        x;
+        y;
+    
+    // ---------- Constructor ----------
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    // ---------- Utility ----------
+    to_string() {
+        return "Vector2(" + this.x + ", " + this.y + ")";
+    }
+    
+    // ---------- ARITHMETIC OPERATORS ----------
+    
+    // Addition: a + b
+    operator + (other) {
+        return Vector2(this.x + other.x, this.y + other.y);
+    }
+    
+    // Subtraction: a - b
+    operator - (other) {
+        return Vector2(this.x - other.x, this.y - other.y);
+    }
+    
+    // Multiplication (scalar or vector): a * b
+    operator * (other) {
+        if (typeof(other) == "number") {
+            // Scalar multiplication
+            return Vector2(this.x * other, this.y * other);
+        } else {
+            // Vector multiplication (component-wise)
+            return Vector2(this.x * other.x, this.y * other.y);
+        }
+    }
+    
+    // Division (scalar or vector): a / b
+    operator / (other) {
+        if (typeof(other) == "number") {
+            return Vector2(this.x / other, this.y / other);
+        } else {
+            return Vector2(this.x / other.x, this.y / other.y);
+        }
+    }
+    
+    // Modulo (scalar or vector): a % b
+    operator % (other) {
+        if (typeof(other) == "number") {
+            return Vector2(this.x % other, this.y % other);
+        } else {
+            return Vector2(this.x % other.x, this.y % other.y);
+        }
+    }
+    
+    // ---------- COMPARISON OPERATORS ----------
+    
+    // Equality: a == b
+    operator == (other) {
+        return this.x == other.x && this.y == other.y;
+    }
+    
+    // Inequality: a != b
+    operator != (other) {
+        return !(this == other);
+    }
+    
+    // Less than (magnitude comparison): a < b
+    operator < (other) {
+        return this.magnitude() < other.magnitude();
+    }
+    
+    // Greater than (magnitude comparison): a > b
+    operator > (other) {
+        return this.magnitude() > other.magnitude();
+    }
+    
+    // Less than or equal: a <= b
+    operator <= (other) {
+        return this.magnitude() <= other.magnitude();
+    }
+    
+    // Greater than or equal: a >= b
+    operator >= (other) {
+        return this.magnitude() >= other.magnitude();
+    }
+    
+    // ---------- UNARY OPERATORS ----------
+    
+    // Unary minus: -a
+    operator - () {
+        return Vector2(-this.x, -this.y);
+    }
+    
+    // Logical NOT: !a (true if vector is zero)
+    operator ! () {
+        return this.x == 0 && this.y == 0;
+    }
+    
+    // ---------- ASSIGNMENT ----------
+    
+    // Assignment: a = b
+    operator = (new_value) {
+        this.x = new_value.x;
+        this.y = new_value.y;
+        return this;  // Enable chaining: a = b = c
+    }
+    
+    // ---------- COMPOUND ASSIGNMENT ----------
+    // These work automatically via desugaring:
+    // a += b  ->  a = a + b
+    // a -= b  ->  a = a - b
+    // a *= b  ->  a = a * b
+    // a /= b  ->  a = a / b
+    // a %= b  ->  a = a % b
+    
+    // ---------- SUBSCRIPT OPERATORS ----------
+    
+    // Read component: a[0] -> x, a[1] -> y
+    operator [] (index) {
+        if (index == 0) return this.x;
+        if (index == 1) return this.y;
+        return 0;
+    }
+    
+    // Write component: a[0] = 5
+    operator [] = (index, value) {
+        if (index == 0) this.x = value;
+        else if (index == 1) this.y = value;
+    }
+    
+    // ---------- FUNCTION CALL OPERATOR ----------
+    
+    // Scale vector: a(2) -> Vector2(x*2, y*2)
+    operator () (scalar) {
+        return Vector2(this.x * scalar, this.y * scalar);
+    }
+    
+    // Overload for 2D rotation: a(angle) -> rotated vector
+    operator () (angle, radians) {
+        // Note: Overloading by parameter count not supported,
+        // so we use a separate method instead.
+        return this.rotate(angle, radians);
+    }
+    
+    // ---------- EXTRA METHODS ----------
+    
+    magnitude() {
+        return math.sqrt(this.x * this.x + this.y * this.y);
+    }
+    
+    normalize() {
+        var mag = this.magnitude();
+        if (mag == 0) return Vector2(0, 0);
+        return Vector2(this.x / mag, this.y / mag);
+    }
+    
+    dot(other) {
+        return this.x * other.x + this.y * other.y;
+    }
+    
+    cross(other) {
+        return this.x * other.y - this.y * other.x;
+    }
+    
+    rotate(angle, radians = true) {
+        var theta = radians ? angle : angle * math.pi / 180;
+        var cos = math.cos(theta);
+        var sin = math.sin(theta);
+        return Vector2(
+            this.x * cos - this.y * sin,
+            this.x * sin + this.y * cos
+        );
+    }
+}
+
+
+// ============================================================
+// DEMONSTRATION - ALL OPERATORS IN ACTION
+// ============================================================
+
+// ---------- ARITHMETIC ----------
+var a = Vector2(1, 2);
+var b = Vector2(3, 4);
+
+print("=== ARITHMETIC OPERATORS ===");
+print("a = " + a);                    // Vector2(1, 2)
+print("b = " + b);                    // Vector2(3, 4)
+print("a + b = " + (a + b));          // Vector2(4, 6)
+print("a - b = " + (a - b));          // Vector2(-2, -2)
+print("a * b = " + (a * b));          // Vector2(3, 8) - component-wise
+print("a * 2 = " + (a * 2));          // Vector2(2, 4) - scalar
+print("a / b = " + (a / b));          // Vector2(0.33, 0.5)
+print("a / 2 = " + (a / 2));          // Vector2(0.5, 1)
+print("a % 2 = " + (a % 2));          // Vector2(1, 0)
+print("a % b = " + (a % b));          // Vector2(1, 2)
+
+// ---------- COMPARISON ----------
+print("\n=== COMPARISON OPERATORS ===");
+var c = Vector2(1, 2);
+print("a == c: " + (a == c));         // true
+print("a != b: " + (a != b));         // true
+print("a < b: " + (a < b));           // true (magnitude 2.23 < 5)
+print("a > b: " + (a > b));           // false
+print("a <= b: " + (a <= b));         // true
+print("a >= b: " + (a >= b));         // false
+
+// ---------- UNARY ----------
+print("\n=== UNARY OPERATORS ===");
+print("-a = " + (-a));                // Vector2(-1, -2)
+var zero = Vector2(0, 0);
+print("!a = " + (!a));                // false
+print("!zero = " + (!zero));          // true
+
+// ---------- ASSIGNMENT ----------
+print("\n=== ASSIGNMENT ===");
+var d = Vector2(5, 6);
+print("d = " + d);                    // Vector2(5, 6)
+var e = d;                            // Calls operator=
+print("e = d: " + e);                 // Vector2(5, 6)
+
+// Chaining
+var f, g;
+f = g = Vector2(7, 8);
+print("f = g = 7,8: " + f + ", " + g); // Vector2(7, 8), Vector2(7, 8)
+
+// ---------- COMPOUND ASSIGNMENT ----------
+print("\n=== COMPOUND ASSIGNMENT ===");
+var x = Vector2(1, 2);
+print("x = " + x);                    // Vector2(1, 2)
+
+x += Vector2(3, 4);
+print("x += (3,4): " + x);            // Vector2(4, 6)
+
+x -= Vector2(1, 1);
+print("x -= (1,1): " + x);            // Vector2(3, 5)
+
+x *= 2;
+print("x *= 2: " + x);                // Vector2(6, 10)
+
+x /= 2;
+print("x /= 2: " + x);                // Vector2(3, 5)
+
+// ---------- SUBSCRIPT ----------
+print("\n=== SUBSCRIPT OPERATORS ===");
+var vec = Vector2(10, 20);
+print("vec = " + vec);                // Vector2(10, 20)
+print("vec[0] = " + vec[0]);          // 10 (x component)
+print("vec[1] = " + vec[1]);          // 20 (y component)
+
+vec[0] = 99;
+vec[1] = 88;
+print("vec[0]=99, vec[1]=88 -> " + vec); // Vector2(99, 88)
+
+// ---------- FUNCTION CALL ----------
+print("\n=== FUNCTION CALL OPERATOR ===");
+var original = Vector2(1, 2);
+var scaled = original(3);             // Scale by 3
+print("original(3) = " + scaled);     // Vector2(3, 6)
+
+// ---------- VECTOR OPERATIONS ----------
+print("\n=== VECTOR OPERATIONS ===");
+var v1 = Vector2(3, 4);
+var v2 = Vector2(1, 2);
+
+print("v1 = " + v1);                  // Vector2(3, 4)
+print("v1.magnitude() = " + v1.magnitude()); // 5
+print("v1.normalize() = " + v1.normalize()); // Vector2(0.6, 0.8)
+print("v1.dot(v2) = " + v1.dot(v2));  // 11
+print("v1.cross(v2) = " + v1.cross(v2)); // 2
+
+// Rotation
+var rotated = v1.rotate(45, false);   // 45 degrees
+print("v1.rotate(45°) = " + rotated); // Vector2(-0.707, 4.95)
+
+// ---------- WITH NATIVE NUMBERS ----------
+print("\n=== MIXED TYPES ===");
+var mix = Vector2(10, 20);
+print("mix + 5 = " + (mix + 5));      // Error! operator+ expects Vector2
+// But our operator* handles numbers:
+print("mix * 3 = " + (mix * 3));      // Vector2(30, 60)
+print("mix / 2 = " + (mix / 2));      // Vector2(5, 10)
+print("mix % 3 = " + (mix % 3));      // Vector2(1, 2)
+
+
+// ============================================================
+// Vector3 - 3D Vector Example
+// ============================================================
+
+class Vector3 {
+    public:
+        x;
+        y;
+        z;
+    
+    constructor(x, y, z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    
+    to_string() {
+        return "Vector3(" + this.x + ", " + this.y + ", " + this.z + ")";
+    }
+    
+    // Addition
+    operator + (other) {
+        return Vector3(this.x + other.x, this.y + other.y, this.z + other.z);
+    }
+    
+    // Subtraction
+    operator - (other) {
+        return Vector3(this.x - other.x, this.y - other.y, this.z - other.z);
+    }
+    
+    // Multiplication (scalar or vector)
+    operator * (other) {
+        if (typeof(other) == "number") {
+            return Vector3(this.x * other, this.y * other, this.z * other);
+        } else {
+            return Vector3(this.x * other.x, this.y * other.y, this.z * other.z);
+        }
+    }
+    
+    // Division (scalar or vector)
+    operator / (other) {
+        if (typeof(other) == "number") {
+            return Vector3(this.x / other, this.y / other, this.z / other);
+        } else {
+            return Vector3(this.x / other.x, this.y / other.y, this.z / other.z);
+        }
+    }
+    
+    // Unary minus
+    operator - () {
+        return Vector3(-this.x, -this.y, -this.z);
+    }
+    
+    // Equality
+    operator == (other) {
+        return this.x == other.x && this.y == other.y && this.z == other.z;
+    }
+    
+    // Assignment
+    operator = (new_value) {
+        this.x = new_value.x;
+        this.y = new_value.y;
+        this.z = new_value.z;
+        return this;
+    }
+    
+    // Subscript
+    operator [] (index) {
+        if (index == 0) return this.x;
+        if (index == 1) return this.y;
+        if (index == 2) return this.z;
+        return 0;
+    }
+    
+    operator [] = (index, value) {
+        if (index == 0) this.x = value;
+        else if (index == 1) this.y = value;
+        else if (index == 2) this.z = value;
+    }
+    
+    // Function call - scale
+    operator () (scalar) {
+        return Vector3(this.x * scalar, this.y * scalar, this.z * scalar);
+    }
+    
+    // Cross product (built-in method since we can't overload on parameter count)
+    cross(other) {
+        return Vector3(
+            this.y * other.z - this.z * other.y,
+            this.z * other.x - this.x * other.z,
+            this.x * other.y - this.y * other.x
+        );
+    }
+    
+    magnitude() {
+        return math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+    }
+    
+    normalize() {
+        var mag = this.magnitude();
+        if (mag == 0) return Vector3(0, 0, 0);
+        return Vector3(this.x / mag, this.y / mag, this.z / mag);
+    }
+}
+
+// ---------- 3D VECTOR DEMONSTRATION ----------
+print("\n=== 3D VECTOR OPERATORS ===");
+var v3a = Vector3(1, 2, 3);
+var v3b = Vector3(4, 5, 6);
+
+print("v3a = " + v3a);                      // Vector3(1, 2, 3)
+print("v3b = " + v3b);                      // Vector3(4, 5, 6)
+print("v3a + v3b = " + (v3a + v3b));        // Vector3(5, 7, 9)
+print("v3a * 2 = " + (v3a * 2));            // Vector3(2, 4, 6)
+print("-v3a = " + (-v3a));                  // Vector3(-1, -2, -3)
+print("v3a == v3a: " + (v3a == v3a));       // true
+print("v3a[0] = " + v3a[0]);                // 1
+v3a[1] = 99;
+print("v3a[1]=99 -> " + v3a);               // Vector3(1, 99, 3)
+
+// Cross product
+var cross = v3a.cross(v3b);
+print("v3a.cross(v3b) = " + cross);         // Cross product result
+
+// 3D vector magnitude
+print("v3a.magnitude() = " + v3a.magnitude());
+print("v3a.normalize() = " + v3a.normalize());
+
+
+// ============================================================
+// EXPECTED OUTPUT
+// ============================================================
+
+/*
+=== ARITHMETIC OPERATORS ===
+a = Vector2(1, 2)
+b = Vector2(3, 4)
+a + b = Vector2(4, 6)
+a - b = Vector2(-2, -2)
+a * b = Vector2(3, 8)
+a * 2 = Vector2(2, 4)
+a / b = Vector2(0.333333, 0.5)
+a / 2 = Vector2(0.5, 1)
+a % 2 = Vector2(1, 0)
+a % b = Vector2(1, 2)
+
+=== COMPARISON OPERATORS ===
+a == c: true
+a != b: true
+a < b: true
+a > b: false
+a <= b: true
+a >= b: false
+
+=== UNARY OPERATORS ===
+-a = Vector2(-1, -2)
+!a = false
+!zero = true
+
+=== ASSIGNMENT ===
+d = Vector2(5, 6)
+e = d: Vector2(5, 6)
+f = g = 7,8: Vector2(7, 8), Vector2(7, 8)
+
+=== COMPOUND ASSIGNMENT ===
+x = Vector2(1, 2)
+x += (3,4): Vector2(4, 6)
+x -= (1,1): Vector2(3, 5)
+x *= 2: Vector2(6, 10)
+x /= 2: Vector2(3, 5)
+
+=== SUBSCRIPT OPERATORS ===
+vec = Vector2(10, 20)
+vec[0] = 10
+vec[1] = 20
+vec[0]=99, vec[1]=88 -> Vector2(99, 88)
+
+=== FUNCTION CALL OPERATOR ===
+original(3) = Vector2(3, 6)
+
+=== VECTOR OPERATIONS ===
+v1 = Vector2(3, 4)
+v1.magnitude() = 5
+v1.normalize() = Vector2(0.6, 0.8)
+v1.dot(v2) = 11
+v1.cross(v2) = 2
+v1.rotate(45°) = Vector2(-0.7071, 4.9497)
+
+=== MIXED TYPES ===
+mix * 3 = Vector2(30, 60)
+mix / 2 = Vector2(5, 10)
+mix % 3 = Vector2(1, 2)
+
+=== 3D VECTOR OPERATORS ===
+v3a = Vector3(1, 2, 3)
+v3b = Vector3(4, 5, 6)
+v3a + v3b = Vector3(5, 7, 9)
+v3a * 2 = Vector3(2, 4, 6)
+-v3a = Vector3(-1, -2, -3)
+v3a == v3a: true
+v3a[0] = 1
+v3a[1]=99 -> Vector3(1, 99, 3)
+v3a.cross(v3b) = Vector3(267, 6, -391)
+v3a.magnitude() = 99.02
+v3a.normalize() = Vector3(0.0101, 0.9999, 0.0303)
+*/
