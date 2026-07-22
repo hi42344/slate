@@ -306,7 +306,6 @@ print(b); // prints 100 since b is actually in the array
 - Constructer // class name
 - Deconstructor // class name with a ! before it, eg: "!person()"
 - Copied // in code it's the "copy()" method
-- Assigned // in code it's the "assignment(new_value)" method
 - Referenced (lowercase in code)
 - Dereferenced (lowercase in code)
 
@@ -329,8 +328,9 @@ class person {
         copy() {
             print("copied");
         }
-        assignment(new_value) {
-        /*Added in version 0.2.0 you can use the new value and return inside the assignment function to change what gets assigned
+        // In v0.1.0 you'd use the assignment(new_value) { code } function (note that new_value couldn't be used)
+        operator = (new_value) {
+        /*Added in version 0.2.0 you can use the new value and return inside the assignment operator to change what gets assigned
         eg: "return new_value * 2;" or "print(new_value);" */
             print("assigned");
         }
