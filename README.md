@@ -24,6 +24,10 @@ print("hello world");
 - "slate --license" / "--l" added in v0.2, gives the link to the "license's" folder
 ```
 
+**Notes**
+- The only ```falsely``` things are null and false
+- Classes must always use this.field for anything inside a class
+
 # WHERE IT IS #
 
 **WINDOWS**
