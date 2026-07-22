@@ -2,18 +2,18 @@
  
 ### Table of Contents
  
-| Library | Description | Quick Link |
-| :--- | :--- | :--- |
-| **Print** | Console output | [Print](#core-libraries) |
-| **Math** | Math | [Math](#math) |
-| **OS** | File, clock, times | [OS](#os) |
-| **Input** | Keyboard and Mouse utilities | [Input](#input) |
-| **Data** | Easy data saving | [Data](#data) |
-| **Coroutine** | Concurrency | [Coroutine](#coroutine) |
-| **String** | String and hashing utilities | [String](#string) |
-| **Array** | Array utilities | [Array](#array) |
-| **Type** | Type checking and casting | [Type](#type) |
-| **Slate** | Language data | [Slate](#slate) |
+| Library | Description |
+| :--- | :--- |
+| [**Print**](#core-libraries) | Console output |
+| [**Math**](#math) | Math |
+| [**OS**](#os) | File, clock, times |
+| [**Input**](#input) | Keyboard and Mouse utilities |
+| [**Data**](#data) | Easy data saving |
+| [**Coroutine**](#coroutine) | Concurrency |
+| [**String**](#string) | String and hashing utilities |
+| [**Array**](#array) | Array utilities |
+| [**Type**](#type) | Type checking and casting |
+| [**Slate**](#slate) | Language data |
 
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
