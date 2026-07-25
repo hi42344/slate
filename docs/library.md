@@ -54,6 +54,21 @@
 
 **Added in v0.2.0**
 - ```math.random_int(min, max)``` // Same as math.random(min, max) but returns a integer
+- ```math.e()``` // Returns Euler's number `e` (2.71828182845904523536)
+- ```math.log2(number)``` // Returns the base-2 logarithm of a number
+- ```math.cbrt(number)``` // Returns the cube root of a number
+- ```math.hypot(x, y)``` // Returns the hypotenuse sqrt(x*x + y*y) avoiding intermediate overflow
+- ```math.distance(x1, y1, x2, y2)``` // Returns the Euclidean distance between two 2D points
+- ```math.fract(number)``` // Returns the fractional part of a number (number - floor(number))
+- ```math.mod(x, y)``` // Returns the floor remainder of x/y, properly wrapping negative numbers
+- ```math.sind(degrees)``` // Returns the sine of an angle in degrees
+- ```math.cosd(degrees)``` // Returns the cosine of an angle in degrees
+- ```math.tand(degrees)``` // Returns the tangent of an angle in degrees
+- ```math.atan2d(y, x)``` // Returns the arc tangent of y/x in degrees
+- ```math.angle_difference(a, b)``` // Returns the shortest signed angular difference between two angles in degrees (-180 to 180)
+- ```math.lerp_angle(a, b, t)``` // Linearly interpolates between two angles in degrees along the shortest path
+- ```math.inverse_lerp(a, b, value)``` // Calculates the linear parameter t that produces the interpolant value between a and b
+- ```math.smoothstep(min, max, x)``` // Performs smooth Hermite interpolation between 0 and 1 when x is between min and max
 
 # Os #
 - ```os.sleep(time)``` // sleeps the program for the time in seconds
