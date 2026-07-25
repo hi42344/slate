@@ -174,7 +174,7 @@ A coroutine wraps a function so it can pause mid execution with ```yield``` and 
 - ```coroutine.resume(handle)``` // Runs the coroutine until it either hits a ```yield``` or finishes. Returns the yielded value or the function's return value once it's done while it's still running, ```coroutine.status``` has this information. Throws a runtime error if called on a coroutine that's already ***dead***.
 - ```coroutine.status(handle)``` // Returns **```"suspended"```** (paused at a yield), **```"running"```**, or **```"dead"```** (finished, cannot be resumed again)
 - ```coroutine.is_done(handle)``` // Returns true if the coroutine has finished (same as ```coroutine.status(handle) == "dead"```), otherwise false
-- ```coroutine.free(handle)``` // Frees the memory of a coroutine, **```Returns true if successful and false if else```**
+- ```coroutine.free(handle)``` // Frees the memory of a coroutine, **```Returns true if successful and throws a runtime error if else```**
 - Example, a coroutine that yields three times, plus a basic **```sleep```** function:
 ```slate
 fn counter() {
