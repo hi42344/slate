@@ -90,6 +90,7 @@
 **Added in v0.2.0**
 - ```os.input(prompt)``` // gets user input using ```std::getline()```
 - ```os.uuid()``` // Returns a randomly generated **RFC 4122 version-4 UUID** as a string, eg: ```"f47ac10b-58cc-4372-a567-0e02b2c3d479"```
+- ```os.exit(exit_code)``` // Uses ```std::exit(exit_code)```
 
 # Input #
 
