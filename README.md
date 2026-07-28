@@ -1,7 +1,7 @@
 ## Slate ##
 A dynamically typed interpreted language with lua/rust/cpp syntax
 
->**Note:** Slate is currently in development. All features are subject to change
+>**Note:** Only windows is supported currently, the code itself is multiplatform but idk how to cross compile
 
 # HOW TO USE #
 - [Download the binary](https://github.com/hi42344/slate/releases/latest) and open it
