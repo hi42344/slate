@@ -10,6 +10,7 @@
 | [**Input**](#input) | Keyboard and Mouse utilities |
 | [**Data**](#data) | Easy data saving |
 | [**Coroutine**](#coroutine) | Concurrency |
+| [**Class**](#class) | Class information |
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
 | [**Type**](#type) | Type checking and casting |
