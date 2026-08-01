@@ -102,6 +102,8 @@
 
 **Added in v0.3.0**
 - ```os.load_plugin(path)``` // Loads a plugin/dynamic library, allowing you to use its functions
+- ```os.dir_list(path)``` // Returns an array of file/folder names inside a specified directory
+- ```os.path_join(a, b)``` // Joins two path segments using the correct platform-specific separator
 
 # Input #
 
