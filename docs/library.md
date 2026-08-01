@@ -72,8 +72,8 @@
 - ```math.smoothstep(min, max, x)``` // Performs smooth Hermite interpolation between 0 and 1 when x is between min and max
 
 **Added in v0.3.0**
-- ```math.factorial(n)``` // Returns a string of the factorial of n
-- ```math.fibonacci(n)``` // Returns a string of the fibonacci of n
+- ```math.factorial(n)``` // Returns a string of the factorial of n (Uses Boost-GMP)
+- ```math.fibonacci(n)``` // Returns a string of the fibonacci of n (Uses Boost-GMP)
 - ```math.is_prime(n)``` // Returns either true or false if `n` is prime (Uses Miller-Rabin)
 - ```math.gcd(a, b)``` // Returns the greatest common divisor of `a` and `b` (Throws an error if either is `-9223372036854775808`)
 - ```math.lcm(a, b)``` // Returns the least common multiple of `a` and `b` (Throws an error on overflow or if either is `-9223372036854775808`)
