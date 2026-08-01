@@ -230,8 +230,14 @@ print(a); // "Runtime Error: Undefined variable 'a'"
 - referencing
 ```
 var a = 10;
-var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
-
+var b = &a; /*b is now a, you dont need to use "make(&a)" as that also doesnt work,
+note that
+"
+var a = make(10);
+var b = &a;
+"
+doesnt work since if you print those, it will print "&__heap_0" and "&__heap_1" (the two DIFFERENT heap slots)
+*/
 **Added in v0.2**
 - The -> operator, same thing as (*ptr).field but easier to type
 
