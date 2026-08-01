@@ -154,7 +154,7 @@
 var SaveManager = data.save_manager("App", 3, false);
 var map = data.Map(); 
 data.write(map, "hp", 1000);
-var random_save_num = type.double_to_int(math.round(math.random(1, 3)));
+var random_save_num = math.random_int(1, 3);
 data.save(map, SaveManager, random_save_num);
 
 var map2 = data.load(SaveManager, 1);
