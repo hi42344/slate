@@ -215,6 +215,17 @@ fn sleep(seconds) {
 }
 ```
 
+# Class #
+
+**Added in v0.3.0**
+- ```class.has(class_instance, field)``` // Returns true if `class_instance` has a field named `field` (public or private), otherwise false
+- ```class.has_method(class_instance, method_name)``` // Returns true if `class_instance`'s class defines a method named `method_name`, otherwise false
+- ```class.is_private(class_instance, field)``` // Returns true if `field` is a private field of `class_instance`'s class, otherwise false
+- ```class.is(class_instance, type_name)``` // Returns true if `class_instance` is an instance of the class named `type_name`, otherwise false
+- ```class.name(class_instance)``` // Returns the class name of `class_instance` as a string, or `""` if it isn't a class instance
+- ```class.fields(class_instance)``` // Returns an **array of field name strings** for `class_instance` **(order not guaranteed)**
+- ```class.methods(class_instance)``` // Returns an **array of method name strings** defined on `class_instance`'s class **(order not guaranteed)**
+
 # Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
 - ```type.is_double(val)``` // Returns true if the value is a double, otherwise false
