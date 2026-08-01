@@ -297,7 +297,7 @@ print(b); // prints 100 since b is actually in the array
 ```
 
 # Classes #
-- Makes deep copies by default
+- Makes deep copies by default **(This will automatically make a new heap slot for any pointers, this makes a shared_ptr class impossible but makes memory safety with classes much easier)**
 - Note that you should always use ```this.something``` instead of ```something``` inside a class
 - Note that there is no Polymorphism or Inheritance
 - There is only public and private access modifiers
@@ -331,7 +331,7 @@ class person {
         // In v0.1.0 you'd use the assignment(new_value) { code } function (note that new_value couldn't be used)
         operator = (new_value) {
         /*Added in version 0.2.0 you can use the new value and return inside the assignment operator to change what gets assigned
-        eg: "return new_value * 2;" or "print(new_value);" */
+        eg: "return new_value * 2;" or "return null;" */
             print("assigned");
         }
         referenced() {
