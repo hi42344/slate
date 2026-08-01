@@ -185,6 +185,7 @@ Every value that crosses the plugin boundary is an opaque `SlateValue` (`void*`)
 - ```coroutine_status(co)``` // Returns a string status: `"suspended"`, `"running"`, or `"dead"`
 - ```coroutine_is_done(co)``` // Returns `1` if the coroutine has finished or is invalid, otherwise `0`
 - ```coroutine_free(co)``` // Frees a dead coroutine's memory. Returns `1` on success, or `0` if attempted on a non-dead coroutine
+- ```coroutine_kill(co)``` // Frees a coroutine's memory, Returns `1` on success, or `0` if else
 
 **Callbacks**
 - ```is_callable(v)``` // Returns `1` if `v` is a function or closure, otherwise `0`
