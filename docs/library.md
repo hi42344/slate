@@ -71,6 +71,10 @@
 - ```math.inverse_lerp(a, b, value)``` // Calculates the linear parameter t that produces the interpolant value between a and b
 - ```math.smoothstep(min, max, x)``` // Performs smooth Hermite interpolation between 0 and 1 when x is between min and max
 
+**Added in v0.3.0**
+- ```math.factorial(n)``` // Returns a string of the factorial of n
+- ```math.fibonacci(n)``` // Returns a string of the fibonacci of n
+
 # Os #
 - ```os.sleep(time)``` // sleeps the program for the time in seconds
 - ```os.throw(message)``` // throws/crashes the program and prints the message
