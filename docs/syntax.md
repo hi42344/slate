@@ -208,11 +208,13 @@ print(math.factorial(5));
 ```
 
 # Pointers and References #
+
 **Deletion**
 ```slate
-var b = &a; delete b; /*deletes a*/
-var a = make(5); delete a;
-var b = 5; delete b; // deletion can be done on anything, even normal variables that get auto deleted after scope
+var b = 5;
+delete b // deletes b early
+var b = make(10);
+delete b; // deletes b
 ```
 Usage after deletion will give a error ["Runtime Error: Undefined variable 'variable name'"]
 
@@ -224,8 +226,11 @@ print(a); // "Runtime Error: Undefined variable 'a'"
 ```
 
 - Assigment ```var ptr = make(5); // this will make a new pointer with the value of 5```
-- dereferencing ```*ptr``` Note that if you are using a field you must wrap (*ptr) or you will get errors
-- referencing ```var a = 10; var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
+- dereferencing ```*ptr``` Note that if you are using a field you must wrap (*ptr) or use the -> operator or you will get errors
+- referencing
+```
+var a = 10;
+var b = &a; // b is now a, you dont need to use "make(&a)" as that also doesnt work```
 
 **Added in v0.2**
 - The -> operator, same thing as (*ptr).field but easier to type
@@ -244,7 +249,7 @@ set(&test, 0);
 print(test); // prints 0
 // pointer example
 fn set_ptr(ptr_a, new_value) {
-    *ptr_a = new_value; // if no * dereference operator printing "ptr" will print 0
+    *ptr_a = new_value; // if no * dereference operator printing "ptr" will print null
 }
 var ptr = make(100);
 set_ptr(&ptr, 5); // must still pass in the refrence, everything makes a reference
