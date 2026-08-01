@@ -45,8 +45,11 @@ g++ -shared -o myplugin.dll myplugin.cpp -I "slate_api_path.h"
 
 # Helper Macros #
 
+- Note that there are some other tiny helper things
+
 **Macros:**
 ```cpp
+#ifndef SLATE_EXPORT
 #ifdef __cplusplus
 #define SLATE_EXTERN_C extern "C"
 #else
@@ -60,25 +63,36 @@ g++ -shared -o myplugin.dll myplugin.cpp -I "slate_api_path.h"
 #define SLATE_EXPORT SLATE_EXTERN_C __declspec(dllexport)
 #endif
 #else
-#if defined(__GNUC__) && __GNUC__ >= 4 || defined(__clang__)
+#if (defined(__GNUC__) && __GNUC__ >= 4) || defined(__clang__)
 #define SLATE_EXPORT SLATE_EXTERN_C __attribute__((visibility("default")))
 #else
 #define SLATE_EXPORT SLATE_EXTERN_C
 #endif
 #endif
+#endif
 
+static const SlateAPI* g_api = nullptr;
+
+#ifndef SLATE_FN
 #define SLATE_FN(name, min_args) \
-    SLATE_EXPORT SlateValue name(SlateValue* args, int argc, void* userdata) { \
-        if (argc < (min_args)) { \
-            return g_api->make_null(); \
-        }
+        SLATE_EXPORT SlateValue name(SlateValue* args, int argc, void* userdata) { \
+            if (argc < (min_args)) { \
+                return g_api->make_null(); \
+            }
 
 #define SLATE_END }
+#endif
 
+#ifndef SLATE_PLUGIN_INIT
 #define SLATE_PLUGIN_INIT() \
-    static const SlateAPI* g_api = nullptr; \
-    SLATE_EXPORT int slate_api_version(void) { return SLATE_API_VERSION; } \
-    SLATE_EXPORT void slate_plugin_init(SlateEnv env, const SlateAPI* api)
+        SLATE_EXPORT int slate_api_version(void) { return SLATE_API_VERSION; } \
+        SLATE_EXPORT void slate_plugin_init_internal(SlateEnv env, const SlateAPI* api); \
+        SLATE_EXPORT void slate_plugin_init(SlateEnv env, const SlateAPI* api) { \
+            g_api = api; \
+            slate_plugin_init_internal(env, api); \
+        } \
+        void slate_plugin_init_internal(SlateEnv env, const SlateAPI* api)
+#endif
 ```
 
 - ```SLATE_EXPORT``` // Expands to the correct `extern "C"` + export-visibility attribute for whichever platform you're compiling on
@@ -86,7 +100,7 @@ g++ -shared -o myplugin.dll myplugin.cpp -I "slate_api_path.h"
 - ```SLATE_END``` // Closes a function opened with `SLATE_FN` (Not really needed tbh, a regular `}` is the same exact thing, may make organization easier though)
 - ```SLATE_PLUGIN_INIT()``` // Declares `g_api`, and defines both required exports (`slate_api_version` and `slate_plugin_init`) in one line, write your registration code in the block that follows it, exactly like a normal function body
 
-Using all three, a plugin function shrinks to:
+Using some, a plugin function shrinks to:
 
 ```cpp
 #include "slate_api.h"
@@ -195,40 +209,43 @@ Every value that crosses the plugin boundary is an opaque `SlateValue` (`void*`)
 ```cpp
 #include "slate_api.h"
 
-static const SlateAPI* g_api;
+/*Macros*/
 
-extern "C" __declspec(dllexport) SlateValue demo_add(SlateValue* args, int argc, void* userdata) {
-    if (argc < 2) return g_api->make_null();
+SLATE_FN(demo_add, 2)
     double result = (double)g_api->to_int(args[0]) + (double)g_api->to_int(args[1]);
-    return g_api->make_double(result); // Could just return a integer if you want since these are already integers being passed in: "return g_api->make_int(g_api->to_int(args[0]) + g_api->to_int(args[1]));"
-}
+    return g_api->make_double(result);
+SLATE_END
 
-extern "C" __declspec(dllexport) SlateValue demo_make_array(SlateValue* args, int argc, void* userdata) {
+SLATE_FN(demo_make_array, 0)
     SlateValue arr = g_api->array_new();
+
     SlateValue a = g_api->make_int(1);
     g_api->array_push(arr, a);
     g_api->release(a);
+
     SlateValue b = g_api->make_int(2);
     g_api->array_push(arr, b);
     g_api->release(b);
+
     SlateValue c = g_api->make_int(3);
     g_api->array_push(arr, c);
     g_api->release(c);
 
     if (argc >= 1 && g_api->is_string(args[0])) {
-        SlateValue name = g_api->make_string("plugin says hi", 15);
+        SlateValue name = g_api->make_string("plugin says hi", 14);
         g_api->array_push(arr, name);
         g_api->release(name);
     }
     return arr;
-}
+SLATE_END
 
-extern "C" __declspec(dllexport) SlateValue demo_make_point(SlateValue* args, int argc, void* userdata) {
+SLATE_FN(demo_make_point, 0)
     SlateValue s = g_api->struct_new("Point");
 
     SlateValue x = g_api->make_int(10);
     g_api->struct_set(s, "x", x);
     g_api->release(x);
+
     SlateValue y = g_api->make_int(20);
     g_api->struct_set(s, "y", y);
     g_api->release(y);
@@ -237,9 +254,9 @@ extern "C" __declspec(dllexport) SlateValue demo_make_point(SlateValue* args, in
         g_api->struct_set(s, "label", args[0]);
     }
     return s;
-}
+SLATE_END
 
-extern "C" __declspec(dllexport) SlateValue demo_pointer_roundtrip(SlateValue* args, int argc, void* userdata) {
+SLATE_FN(demo_pointer_roundtrip, 1)
     SlateEnv env = (SlateEnv)userdata;
 
     SlateValue initial = g_api->make_int(42);
@@ -255,25 +272,70 @@ extern "C" __declspec(dllexport) SlateValue demo_pointer_roundtrip(SlateValue* a
     SlateValue result = g_api->deref(ptr);
     g_api->release(ptr);
     return result;
-}
+SLATE_END
 
-extern "C" __declspec(dllexport) int slate_api_version(void) {
-    return SLATE_API_VERSION;
-}
+SLATE_FN(demo_apply_callback, 2)
+    SlateEnv env = (SlateEnv)userdata;
+    SlateValue fn_val = args[0];
 
-extern "C" __declspec(dllexport) void slate_plugin_init(SlateEnv env, const SlateAPI* api) {
-    g_api = api;
+    if (!g_api->is_callable(fn_val)) {
+        g_api->throw_error("First argument must be callable!");
+        return g_api->make_null();
+    }
+
+    SlateValue cb_args[1] = { args[1] };
+    SlateValue result = g_api->call(env, fn_val, cb_args, 1);
+
+    return result;
+SLATE_END
+
+SLATE_FN(demo_run_coroutine, 1)
+    SlateValue fn_val = args[0];
+    if (!g_api->is_callable(fn_val)) {
+        g_api->throw_error("Expected a generator function!");
+        return g_api->make_null();
+    }
+
+    SlateCoroutine co = g_api->coroutine_create(fn_val);
+    SlateValue last_result = g_api->make_null();
+
+    while (!g_api->coroutine_is_done(co)) {
+        g_api->release(last_result);
+        last_result = g_api->coroutine_resume(co);
+    }
+
+    g_api->coroutine_free(co);
+    return last_result;
+SLATE_END
+
+SLATE_PLUGIN_INIT() {
     g_api->bind(env, "demo.add", demo_add, nullptr);
     g_api->bind(env, "demo.make_array", demo_make_array, nullptr);
     g_api->bind(env, "demo.make_point", demo_make_point, nullptr);
     g_api->bind(env, "demo.pointer_roundtrip", demo_pointer_roundtrip, (void*)env);
+    g_api->bind(env, "demo.apply_callback", demo_apply_callback, (void*)env);
+    g_api->bind(env, "demo.run_coroutine", demo_run_coroutine, nullptr);
 }
 ```
 
 ```slate
-os.load_plugin("demo.dll");
-print(demo.add(2, 3));                  // 5
-print(demo.make_array("hi"));           // [1, 2, 3, plugin says hi]
-print(demo.make_point("origin"));       // Point{x: 10, y: 20, label: origin} (printing things with fields are never guaranteed to be ordered correctly so the order could be different)
-print(demo.pointer_roundtrip(21));      // 42
+os.load_plugin("myplugin.dll");
+
+print(demo.add(2, 3));                               // 5
+print(demo.make_array("hi"));                        // [1, 2, 3, plugin says hi]
+
+print(demo.make_point("origin"));                    // Point{x: 10, y: 20, label: origin}
+print(demo.pointer_roundtrip(21));                   // 42
+
+var double_fn = fn(x) { 
+    return x * 2; 
+};
+print(demo.apply_callback(double_fn, 21));          // 42
+
+var task = fn() {
+    yield 100;
+    yield 200;
+    return 300;
+};
+print(demo.run_coroutine(task));                     // 300
 ```
