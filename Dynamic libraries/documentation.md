@@ -1,3 +1,5 @@
+>Note: Still polishing currently, will be released in v0.3.0
+
 # Dynamic Libraries #
 
 ### Table of Contents
