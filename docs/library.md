@@ -198,6 +198,17 @@ print(data.read(map2, "hp", random_save_num));
 **Added in v0.3.0**
 - ```array.find(array, predicate)``` // Returns the index of the first element in array that matches `predicate(value)` (`predicate(value)` needs to return a boolean), **```returns -1 if none found```**
 
+# Memory #
+
+**Added in v0.3.0**
+- ```memory.move(&var)``` // Steals the value from ```var``` and returns it, setting ```var``` to null (std::move)
+- ```memory.swap(&a, &b)``` // Swaps the values of variables ```a``` and ```b``` in-place
+- ```memory.pool_create(factory_fn, initial_capacity, max_capacity)``` // Creates a new ```object pool handle``` using a ```factory function```, ```initial capacity```, and ```maximum capacity``` **(```-1``` for unlimited)**
+- ```memory.pool_take(pool_id)``` // Retrieves an available object from the ```pool``` **(or constructs a new one if empty)**
+- ```memory.pool_release(pool_id, item)``` // Recycles ```item``` back into the ```pool```
+- ```memory.pool_size(pool_id)``` // Returns an array ```[available_count, in_use_count]``` for the specified pool
+- ```memory.pool_destroy(pool_id)``` // Deletes a object pool
+
 # Coroutine #
 A coroutine wraps a function so it can pause mid execution with ```yield``` and pick back up later exactly where it left off. The yield documentation is in [Syntax.md](syntax.md) in the [Coroutines](syntax.md#coroutines) section
  
