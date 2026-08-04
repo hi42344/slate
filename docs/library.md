@@ -196,7 +196,7 @@ print(data.read(map2, "hp", random_save_num));
 - ```array.concat(array1, array2)``` // Returns a **new array** containing every element of ```array1``` followed by every element of ```array2```
 
 **Added in v0.3.0**
-- ```array.find(array, predicate)``` // Returns the index of the first element in array that matches `predicate`
+- ```array.find(array, predicate)``` // Returns the index of the first element in array that matches `predicate(value)` (`predicate(value)` needs to return a boolean)
 
 # Coroutine #
 A coroutine wraps a function so it can pause mid execution with ```yield``` and pick back up later exactly where it left off. The yield documentation is in [Syntax.md](syntax.md) in the [Coroutines](syntax.md#coroutines) section
