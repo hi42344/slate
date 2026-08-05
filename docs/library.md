@@ -11,7 +11,7 @@
 | [**Data**](#data) | Easy data saving |
 | [**Coroutine**](#coroutine) | Concurrency |
 | [**Class**](#class) | Class information |
-| [**memory**](#memory) | memory utilities |
+| [**Memory**](#memory) | memory utilities |
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
 | [**Type**](#type) | Type checking and casting |
