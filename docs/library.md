@@ -272,5 +272,8 @@ fn sleep(seconds) {
 - ```type.to_string(val)``` // Converts a value (int, double, string, bool) to their string representation
 - ```type.string_to_number(str)``` // Returns a number coming from a string, returning null if it fails
 
+**Added in v0.3.0**
+- ```type.to_display_string(val)``` // Returns a formatted string of any type of value
+
 # Slate #
 - ```slate.version()``` // Returns the slate version
