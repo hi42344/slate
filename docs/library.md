@@ -16,7 +16,7 @@
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
 | [**Type**](#type) | Type checking and casting |
-| [**Slate**](#slate) | Language data |
+| [**Slate**](#slate) | Language utilities/info |
 
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
