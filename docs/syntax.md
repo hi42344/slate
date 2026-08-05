@@ -273,7 +273,9 @@ print(*ptr); // prints 5
 - .append(content) ```// Returns a new string with the contents appended```
 - .insert(content, index) ```// Returns a new string with the inserted content```
 - .at(index) ```// Returns null if out of range```
-- .replace(index, new_value) ```Added in v0.3.0: // Returns a new string with the value at index replaced with new_value, throws a error if out of range```
+
+**Added in v0.3.0**
+- .replace(index, new_value) ```// Returns a new string with the value at index replaced with new_value, throws a error if out of range```
 
 # Arrays #
 - Assignment: ```var array = [1, 2, 3, 4, 5];```
