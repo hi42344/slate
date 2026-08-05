@@ -217,6 +217,8 @@ print(data.read(map2, "hp", random_save_num));
 **Added in v0.3.0**
 - ```console.out(message)``` // Prints a message to standard output using the active color state
 - ```console.fout(message)``` // Prints a message to standard error (stderr) using the active error color state
+- ```console.width()``` // Returns the consoles width
+- ```console.height()``` // Returns the consoles height
 - ```console.color(r, g, b)``` // Sets the persistent RGB text color for standard output
 - ```console.fcolor(r, g, b)``` // Sets the persistent RGB text color for standard error (stderr)
 - ```console.reset()``` // Resets all terminal colors and text formatting back to default
@@ -315,3 +317,6 @@ fn sleep(seconds) {
 
 # Slate #
 - ```slate.version()``` // Returns the slate version
+
+**Added in v0.3.0**
+- ```slate.evaluate(code)``` // Executes and returns the return value from code (or 0 if no return value)
