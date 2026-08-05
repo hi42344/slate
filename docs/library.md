@@ -226,8 +226,6 @@ print(data.read(map2, "hp", random_save_num));
 - ```console.clear_line()``` // Clears the current terminal line from the cursor onwards and returns the cursor to the start
 - ```console.clear_up()``` // Clears the screen from the current cursor position up to the top
 - ```console.clear_down()``` // Clears the screen from the current cursor position down to the bottom
-- ```console.width()``` // Returns the current terminal window width in columns
-- ```console.height()``` // Returns the current terminal window height in rows
 - ```console.command(cmd)``` // Sends a raw string or ANSI command directly to standard output and flushes
 - ```console.raw_mode(enable)``` // Enables or disables terminal raw mode for instant key interception
 - ```console.cursor.set_pos(x, y)``` // Moves the cursor to the specified absolute X and Y coordinates (1-based indexing)
