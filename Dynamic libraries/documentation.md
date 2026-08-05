@@ -79,7 +79,7 @@ static const SlateAPI* g_api = nullptr;
 #define SLATE_FN(name, min_args) \
         SLATE_EXPORT SlateValue name(SlateValue* args, int argc, void* userdata) { \
             if (argc < (min_args)) { \
-                return g_api->make_null(); \
+                g_api->throw_error((std::string("Native function \"") + #name + "\" not given enough arguments, provided " + std::to_string(argc) + " arguments while the minimum is " + #min_args).c_str()); \
             }
 
 #define SLATE_END }
@@ -98,7 +98,7 @@ static const SlateAPI* g_api = nullptr;
 ```
 
 - ```SLATE_EXPORT``` // Expands to the correct `extern "C"` + export-visibility attribute for whichever platform you're compiling on
-- ```SLATE_FN(name, min_args)``` // Opens a plugin function named `name`, with the standard `(SlateValue* args, int argc, void* userdata)` signature already declared, and an automatic `argc < min_args` guard that returns `null` if there aren't enough arguments. Must be closed
+- ```SLATE_FN(name, min_args)``` // Opens a plugin function named `name`, with the standard `(SlateValue* args, int argc, void* userdata)` signature already declared, and an automatic `argc < min_args` guard that throws a error. Must be closed
 - ```SLATE_END``` // Closes a function opened with `SLATE_FN` (Not really needed tbh, a regular `}` is the same exact thing, may make organization easier though)
 - ```SLATE_PLUGIN_INIT()``` // Declares `g_api`, and defines both required exports (`slate_api_version` and `slate_plugin_init`) in one line, write your registration code in the block that follows it, exactly like a normal function body
 
