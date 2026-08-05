@@ -240,6 +240,14 @@ print(data.read(map2, "hp", random_save_num));
 - ```console.cursor.right(n)``` // Moves the cursor right by n columns relative to its current position
 - ```console.cursor.save()``` // Saves the current cursor position in terminal memory
 - ```console.cursor.restore()``` // Restores the cursor position back to the last saved location
+- ```console.style.bold(enable)``` // Enables or disables bold text formatting
+- ```console.style.dim(enable)``` // Enables or disables faint/dim text formatting
+- ```console.style.italic(enable)``` // Enables or disables italic text formatting
+- ```console.style.underline(enable)``` // Enables or disables underlined text formatting
+- ```console.style.blink(enable)``` // Enables or disables blinking text
+- ```console.style.reverse(enable)``` // Reverses foreground and background colors
+- ```console.bg(r, g, b)``` // Sets the persistent RGB background color for standard output
+- ```console.fbg(r, g, b)``` // Sets the persistent RGB background color for standard error (stderr)
 
 # Coroutine #
 A coroutine wraps a function so it can pause mid execution with ```yield``` and pick back up later exactly where it left off. The yield documentation is in [Syntax.md](syntax.md) in the [Coroutines](syntax.md#coroutines) section
