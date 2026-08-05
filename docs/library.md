@@ -12,6 +12,7 @@
 | [**Coroutine**](#coroutine) | Concurrency |
 | [**Class**](#class) | Class information |
 | [**Memory**](#memory) | memory utilities |
+| [**Console**](#console) | console utilities |
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
 | [**Type**](#type) | Type checking and casting |
@@ -210,6 +211,35 @@ print(data.read(map2, "hp", random_save_num));
 - ```memory.pool_release(pool_id, item)``` // Recycles ```item``` back into the ```pool```
 - ```memory.pool_size(pool_id)``` // Returns an array ```[available_count, in_use_count]``` for the specified pool
 - ```memory.pool_destroy(pool_id)``` // Deletes a object pool
+
+# Console #
+
+**Added in v0.3.0**
+- ```console.out(message)``` // Prints a message to standard output using the active color state
+- ```console.fout(message)``` // Prints a message to standard error (stderr) using the active error color state
+- ```console.color(r, g, b)``` // Sets the persistent RGB text color for standard output
+- ```console.fcolor(r, g, b)``` // Sets the persistent RGB text color for standard error (stderr)
+- ```console.reset()``` // Resets all terminal colors and text formatting back to default
+- ```console.flush()``` // Flushes the standard output stream buffer immediately
+- ```console.fflush()``` // Flushes the standard error stream buffer immediately
+- ```console.clear()``` // Clears the entire terminal screen and resets the cursor to position (1, 1)
+- ```console.clear_line()``` // Clears the current terminal line from the cursor onwards and returns the cursor to the start
+- ```console.clear_up()``` // Clears the screen from the current cursor position up to the top
+- ```console.clear_down()``` // Clears the screen from the current cursor position down to the bottom
+- ```console.width()``` // Returns the current terminal window width in columns
+- ```console.height()``` // Returns the current terminal window height in rows
+- ```console.command(cmd)``` // Sends a raw string or ANSI command directly to standard output and flushes
+- ```console.raw_mode(enable)``` // Enables or disables terminal raw mode for instant key interception
+- ```console.cursor.set_pos(x, y)``` // Moves the cursor to the specified absolute X and Y coordinates (1-based indexing)
+- ```console.cursor.get_pos()``` // Queries the terminal and returns the current cursor position as an array [x, y]
+- ```console.cursor.show()``` // Makes the blinking terminal cursor visible
+- ```console.cursor.hide()``` // Hides the blinking terminal cursor
+- ```console.cursor.up(n)``` // Moves the cursor up by n rows relative to its current position
+- ```console.cursor.down(n)``` // Moves the cursor down by n rows relative to its current position
+- ```console.cursor.left(n)``` // Moves the cursor left by n columns relative to its current position
+- ```console.cursor.right(n)``` // Moves the cursor right by n columns relative to its current position
+- ```console.cursor.save()``` // Saves the current cursor position in terminal memory
+- ```console.cursor.restore()``` // Restores the cursor position back to the last saved location
 
 # Coroutine #
 A coroutine wraps a function so it can pause mid execution with ```yield``` and pick back up later exactly where it left off. The yield documentation is in [Syntax.md](syntax.md) in the [Coroutines](syntax.md#coroutines) section
