@@ -78,7 +78,8 @@ static const SlateAPI* g_api = nullptr;
 
 #ifndef SLATE_FN
 #define SLATE_FN(name, min_args) \
-        SLATE_EXPORT SlateValue name(SlateValue* args, int argc, void* userdata) { \
+        SLATE_EXPORT SlateValue SLATE_CALL name(SlateValue* args, int argc, void* userdata) { \
+            if (!g_api) return nullptr; \
             if (argc < (min_args)) { \
                 g_api->throw_error((std::string("Native function \"") + #name + "\" not given enough arguments, provided " + std::to_string(argc) + " arguments while the minimum is " + #min_args).c_str()); \
                 return g_api->make_null(); \
@@ -89,13 +90,13 @@ static const SlateAPI* g_api = nullptr;
 
 #ifndef SLATE_PLUGIN_INIT
 #define SLATE_PLUGIN_INIT() \
-        SLATE_EXPORT int slate_api_version(void) { return SLATE_API_VERSION; } \
-        SLATE_EXPORT void slate_plugin_init_internal(SlateEnv env, const SlateAPI* api); \
-        SLATE_EXPORT void slate_plugin_init(SlateEnv env, const SlateAPI* api) { \
+        SLATE_EXPORT int SLATE_CALL slate_api_version(void) { return SLATE_API_VERSION; } \
+        SLATE_EXPORT void SLATE_CALL slate_plugin_init_internal(SlateEnv env, const SlateAPI* api); \
+        SLATE_EXPORT void SLATE_CALL slate_plugin_init(SlateEnv env, const SlateAPI* api) { \
             g_api = api; \
             slate_plugin_init_internal(env, api); \
         } \
-        void slate_plugin_init_internal(SlateEnv env, const SlateAPI* api)
+        void SLATE_CALL slate_plugin_init_internal(SlateEnv env, const SlateAPI* api)
 #endif
 ```
 
