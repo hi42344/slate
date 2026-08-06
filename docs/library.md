@@ -214,6 +214,8 @@ print(data.read(map2, "hp", random_save_num));
 
 # Console #
 
+>std::cout and std::cerr
+
 **Added in v0.3.0**
 - ```console.out(message)``` // Prints a message to standard output using the active color state
 - ```console.fout(message)``` // Prints a message to standard error (stderr) using the active error color state
