@@ -81,6 +81,7 @@ static const SlateAPI* g_api = nullptr;
         SLATE_EXPORT SlateValue name(SlateValue* args, int argc, void* userdata) { \
             if (argc < (min_args)) { \
                 g_api->throw_error((std::string("Native function \"") + #name + "\" not given enough arguments, provided " + std::to_string(argc) + " arguments while the minimum is " + #min_args).c_str()); \
+                return g_api->make_null(); \
             }
 
 #define SLATE_END }
