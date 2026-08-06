@@ -14,6 +14,7 @@
 | [Full example](#full-example) | A complete plugin demonstrating every type |
 
 - **All slate_api.h's are inside releases**
+- **The slate.exe has ```std::ios_base::sync_with_stdio(false);``` so just note that printf and other C streams might have race conditions**
 
 # Writing a plugin #
 
