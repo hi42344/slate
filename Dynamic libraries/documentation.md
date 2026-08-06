@@ -184,6 +184,7 @@ Every value that crosses the plugin boundary is an opaque `SlateValue` (`void*`)
 **Coroutines**
 - ```coroutine_create(fn_val)``` // Wraps a `SlateValue` function closure into a new `SlateCoroutine` handle (returns `nullptr` if the value is not a valid closure)
 - ```coroutine_resume(co)``` // Resumes the coroutine, running it until its next yield or completion, and returns the yielded or returned `SlateValue`
+- ```coroutine_yield(co)``` // Forcefully yields a coroutine, ```returns 1 if successful and 0 if else```
 - ```coroutine_status(co)``` // Returns a string status: `"suspended"`, `"running"`, or `"dead"`
 - ```coroutine_is_done(co)``` // Returns `1` if the coroutine has finished or is invalid, otherwise `0`
 - ```coroutine_free(co)``` // Frees a dead coroutine's memory. Returns `1` on success, or `0` if attempted on a non-dead coroutine
