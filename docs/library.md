@@ -13,6 +13,7 @@
 | [**Class**](#class) | Class information |
 | [**Memory**](#memory) | memory utilities |
 | [**Console**](#console) | console utilities |
+| [**Image**](#image) | Image utilities | 
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
 | [**Type**](#type) | Type checking and casting |
@@ -251,6 +252,42 @@ print(data.read(map2, "hp", random_save_num));
 - ```console.style.reverse(enable)``` // Reverses foreground and background colors
 - ```console.bg(r, g, b)``` // Sets the persistent RGB background color for standard output
 - ```console.fbg(r, g, b)``` // Sets the persistent RGB background color for standard error (stderr)
+
+# Image #
+
+>stb_image and stb_image_write
+
+**Added in v0.3.0**
+- ```image.load(path)``` // Loads an image file from disk and returns a handle to it. **```Returns -1 on failure```**
+- ```image.new(w, h)``` // Creates a blank RGBA image buffer with dimensions `w`x`h` and returns a handle. **```Returns -1 if dimensions are invalid```**
+- ```image.dimensions(handle)``` // Returns an **array of integers** `[width, height]`. **```Returns [0, 0] if handle is invalid```**
+- ```image.get_pixel(handle, x, y)``` // Returns an **array of RGBA values** `[r, g, b, a]` at `(x, y)`. **```Returns [0, 0, 0, 0] if out of bounds or invalid handle```**
+- ```image.set_pixel(handle, x, y, r, g, b, a)``` // Sets the RGBA color at `(x, y)`. Color values are clamped automatically between 0 and 255
+- ```image.resize(handle, new_w, new_h)``` // Rescales an image buffer to `new_w`x`new_h` and returns a **new handle**. **```Returns -1 on failure```**
+- ```image.save(handle, path)``` // Writes the image buffer to disk at `path`. **```Returns true on success, false if else```**
+- ```image.free(handle)``` // Frees the memory of the image buffer associated with `handle`
+- Example, creating a gradient, scaling it, and saving to disk:
+```slate
+// Create a 100x100 canvas
+var img = image.new(100, 100);
+
+// Draw a gradient
+for (var y = 0; y < 100; y += 1) {
+    for (var x = 0; x < 100; x += 1) {
+        var r = (x * 255) / 100;
+        var g = (y * 255) / 100;
+        image.set_pixel(img, x, y, r, g, 150, 255);
+    }
+}
+
+// Scale up to 200x200 and save
+var scaled = image.resize(img, 200, 200);
+image.save(scaled, "output.png");
+
+// Free both buffers
+image.free(img);
+image.free(scaled);
+```
 
 # Coroutine #
 A coroutine wraps a function so it can pause mid execution with ```yield``` and pick back up later exactly where it left off. The yield documentation is in [Syntax.md](syntax.md) in the [Coroutines](syntax.md#coroutines) section
