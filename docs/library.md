@@ -189,6 +189,9 @@ print(data.read(map2, "hp", random_save_num));
 - ```string.pad_left(string, length, pad_char)``` // Pads ```string``` on the left with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
 - ```string.pad_right(string, length, pad_char)``` // Pads ```string``` on the right with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
 
+**Added in v0.3.0**
+- ```string.char(character_code)``` // Returns the character from a character code, the inverse of string.charCode
+
 # Array #
  
 **Added in v0.2.0**
