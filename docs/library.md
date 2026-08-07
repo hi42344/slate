@@ -13,7 +13,8 @@
 | [**Class**](#class) | Class information |
 | [**Memory**](#memory) | memory utilities |
 | [**Console**](#console) | console utilities |
-| [**Image**](#image) | Image utilities | 
+| [**Image**](#image) | Image utilities |
+| [**Audio**](#audio) | Audio utilities |
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
 | [**Type**](#type) | Type checking and casting |
