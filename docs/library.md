@@ -275,7 +275,8 @@ print(data.read(map2, "hp", random_save_num));
 - ```image.dimensions(handle)``` // Returns an **array of integers** `[width, height]`. **```Returns [0, 0] if handle is invalid```**
 - ```image.get_pixel(handle, x, y)``` // Returns an **array of RGBA values** `[r, g, b, a]` at `(x, y)`. **```Returns [0, 0, 0, 0] if out of bounds or invalid handle```**
 - ```image.set_pixel(handle, x, y, r, g, b, a)``` // Sets the RGBA color at `(x, y)`. Color values are clamped automatically between 0 and 255
-- ```image.resize(handle, new_w, new_h)``` // Rescales an image buffer to `new_w`x`new_h` and returns a **new handle**. **```Returns -1 on failure```**
+- ```image.resize(handle, new_w, new_h)``` // Rescales an image buffer to `new_w`x`new_h` using **bilinear interpolation** for smooth results and returns a **new handle**. **```Returns -1 on failure```**
+- ```image.fast_resize(handle, new_w, new_h)``` // Rescales an image buffer using **nearest-neighbor sampling** (ideal for pixel art/terminal rendering) and returns a **new handle**. **```Returns -1 on failure```**
 - ```image.save(handle, path)``` // Writes the image buffer to disk at `path`. **```Returns true on success, false if else```**
 - ```image.free(handle)``` // Frees the memory of the image buffer associated with `handle`
 - Example, creating a gradient, scaling it, and saving to disk:
