@@ -108,7 +108,7 @@ var coroutines = coroutine_scheduler();
 coroutines.new(fn() {
     while(!input.is_key_down("escape")) {
         print("hello coroutine 1");
-        //if a coroutine ever has a infinite while loop make sure to yield inside of it
+        //if a coroutine ever has a infinite while loop with no sleep or yield then it will just run forever (coroutines are single threaded)
         yield 0;
     }
 });
