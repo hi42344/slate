@@ -108,6 +108,7 @@
 - ```os.dir_list(path)``` // Returns an array of file/folder names inside a specified directory
 - ```os.file_extension(path)``` // Returns somethings file extension, eg: `file.png` -> ".png", `file.txt` -> ".txt", note that *multi-extension* things will only give the last extension, eg: `file.tar.gz` -> ".gz"
 - ```os.path_join(a, b)``` // Joins two path segments using the correct platform-specific separator
+- ```os.args()``` // Returns a array of the amount of arguments and the actual arguments, eg: `[2, ["slate", "program.slate", others...]]`
 - ```os.execute(command)``` // Executes a shell using ```command``` and returns the exit code
 
 # Input #
