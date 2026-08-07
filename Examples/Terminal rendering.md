@@ -7,7 +7,7 @@ fn render_terminal_image(path) {
     }
 
     var target_w = console.width();
-    //Getting the correct aspect ratio with * 2
+    //Getting the correct aspect ratio with * 2 (1 terminal character is about 1:2 aspect ratio)
     var target_h = (console.height() - 1) * 2;
 
     if (target_w <= 0) { target_w = 1; }
