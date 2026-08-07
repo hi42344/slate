@@ -4,7 +4,6 @@
  
 | Library | Description |
 | :--- | :--- |
-| [**Print**](#core-libraries) | Console output |
 | [**Math**](#math) | Math |
 | [**OS**](#os) | File, clock, times |
 | [**Input**](#input) | Keyboard and Mouse utilities |
