@@ -306,6 +306,71 @@ image.free(img);
 image.free(scaled);
 ```
 
+# Audio #
+
+>miniaudio
+
+**Added in v0.3.0**
+
+- ```audio.load(path)``` // Loads an audio file from disk and returns a handle to it. **```Returns -1 on failure```**
+- ```audio.play(handle)``` // Starts or resumes playback of the audio associated with ```handle```
+- ```audio.pause(handle)``` // Pauses playback of the audio associated with ```handle```
+- ```audio.stop(handle)``` // Stops playback and seeks the audio back to the beginning
+- ```audio.is_playing(handle)``` // Returns true if the audio source is currently playing, otherwise false
+- ```audio.length(handle)``` // Returns the total length of the audio file in seconds as a float
+- ```audio.get_position(handle)``` // Returns the current playback position in seconds as a float
+- ```audio.set_position(handle, seconds)``` // Seeks playback to the specified time in seconds
+- ```audio.set_volume(handle, volume)``` // Sets the volume level for the audio source (e.g. `1.0` for 100%, `0.5` for 50%)
+- ```audio.set_pitch(handle, pitch)``` // Sets playback pitch/speed multiplier (`1.0` is default, `0.5` is half-speed/octave down, `2.0` is double-speed/octave up)
+- ```audio.set_pan(handle, pan)``` // Sets the stereo panning (`-1.0` for full left, `0.0` for center, `1.0` for full right)
+- ```audio.set_looping(handle, loop)``` // Enables or disables automatic looping for the audio source (`true` or `false`)
+- ```audio.set_master_volume(volume)``` // Sets the global master volume across all audio sources (`1.0` for 100%, `0.0` for mute)
+- ```audio.free(handle)``` // Uninitializes the audio source and frees memory associated with ```handle```
+- ```audio.shutdown()``` // Frees all active audio instances and cleans up the global audio engine
+
+**Example:**
+
+```slate
+// Set global master volume to 90%
+audio.set_master_volume(0.9);
+
+// Load an audio file
+var bgm = audio.load("music.mp3");
+
+if (bgm != -1) {
+    // Set looping, 80% volume, normal pitch, and centered stereo panning
+    audio.set_looping(bgm, true);
+    audio.set_volume(bgm, 0.8);
+    audio.set_pitch(bgm, 1.0);
+    audio.set_pan(bgm, 0.0);
+
+    // Get total duration of the track
+    var total_time = audio.length(bgm);
+    print("Track length: " + total_time + " seconds");
+
+    // Seek directly to 15 seconds in
+    audio.set_position(bgm, 15.0);
+
+    // Play the audio
+    audio.play(bgm);
+
+    // Check playback status and query current position, activates after the stop since audio is on a different thread
+    if (audio.is_playing(bgm)) {
+        var current_pos = audio.get_position(bgm);
+        print("Playing background music at: " + current_pos + "s");
+    }
+    //Waiting until the sound finishes and letting it loop once
+    os.sleep(total_time * 2);
+
+    // Stop and free resource when done
+    audio.stop(bgm);
+    audio.free(bgm);
+}
+
+// Clean up the global audio on exit
+audio.shutdown();
+```
+
 # Coroutine #
 A coroutine wraps a function so it can pause mid execution with ```yield``` and pick back up later exactly where it left off. The yield documentation is in [Syntax.md](syntax.md) in the [Coroutines](syntax.md#coroutines) section
  
