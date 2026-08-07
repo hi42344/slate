@@ -236,6 +236,7 @@ print(data.read(map2, "hp", random_save_num));
 - ```console.clear_up()``` // Clears the screen from the current cursor position up to the top
 - ```console.clear_down()``` // Clears the screen from the current cursor position down to the bottom
 - ```console.command(cmd)``` // Sends a raw string or ANSI command directly to standard output and flushes
+- ```console.read_key()``` // Returns a string of whatever key was pressed, all things are: "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~", "enter", "backspace", "space", "escape", "up", "down", "left", "right", "home", "end", "delete"
 - ```console.raw_mode(enable)``` // Enables or disables terminal raw mode for instant key interception
 - ```console.cursor.set_pos(x, y)``` // Moves the cursor to the specified absolute X and Y coordinates (1-based indexing)
 - ```console.cursor.get_pos()``` // Queries the terminal and returns the current cursor position as an array [x, y]
