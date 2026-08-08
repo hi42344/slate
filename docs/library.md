@@ -11,6 +11,7 @@
 | [**Coroutine**](#coroutine) | Concurrency |
 | [**Class**](#class) | Class information |
 | [**Memory**](#memory) | memory utilities |
+| [**Networking**](#net) | Networking utilities |
 | [**Console**](#console) | console utilities |
 | [**Image**](#image) | Image utilities |
 | [**Color**](#color) | color utilities |
