@@ -193,6 +193,8 @@ print(data.read(map2, "hp", random_save_num));
 
 **Added in v0.3.0**
 - ```string.char(character_code)``` // Returns the character from a character code, the inverse of string.charCode
+- ```string.bytes(string)``` // Returns a bytes array from a string
+- ```string.from_bytes(bytes)``` // Returns a string from bytes
 
 # Array #
  
