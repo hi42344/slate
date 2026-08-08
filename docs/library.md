@@ -277,6 +277,7 @@ print(data.read(map2, "hp", random_save_num));
 - **PIC** (`.pic`)
 - **GIF** (`.gif` -> first frame)
 
+*Functions:*
 - ```image.load(path)``` // Loads an image file from disk and returns a handle to it. **```Returns -1 on failure```**
 - ```image.new(w, h)``` // Creates a blank RGBA image buffer with dimensions `w`x`h` and returns a handle. **```Returns -1 if dimensions are invalid```**
 - ```image.dimensions(handle)``` // Returns an **array of integers** `[width, height]`. **```Returns [0, 0] if handle is invalid```**
