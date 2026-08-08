@@ -220,6 +220,74 @@ print(data.read(map2, "hp", random_save_num));
 - ```memory.pool_size(pool_id)``` // Returns an array ```[available_count, in_use_count]``` for the specified pool
 - ```memory.pool_destroy(pool_id)``` // Deletes a object pool
 
+# Net #
+
+**Added in v0.4.0**
+- `net.poll()` // Drives the network event loop. Returns the number of executed event handlers.
+- `net.has_pending()` // Returns true if there are active or pending asynchronous operations queued in the event loop.
+- `net.resolve(host)` // Synchronously resolves a hostname to an IP address string.
+- `net.async_resolve(host, callback)` // Asynchronously resolves a host. `callback(ip_string)` is executed upon completion.
+- `net.get_local_ip()` // Returns the primary local IPv4 address of the current device.
+- `net.parse_url(url)` // Parses a URL string into a struct containing `.scheme`, `.host`, `.port`, and `.path`.
+- `net.is_ip_valid(ip_str)` // Validates whether a string is a valid IPv4 or IPv6 address.
+- `net.ping(host, timeout_ms)` // Performs a connection test against a host on port 80. Returns true if reachable within `timeout_ms`.
+
+### tcp:
+- `net.tcp.connect(host, port)` // Synchronously connects to a TCP endpoint in blocking mode. Returns a socket handle (long) or 0 on failure.
+- `net.tcp.connect_nonblocking(host, port)` // Connects to a TCP endpoint and sets the socket to non-blocking mode. Returns socket handle or 0.
+- `net.tcp.async_connect(host, port, callback)` // Asynchronously connects to a TCP endpoint. `callback(sock_handle)` is executed with the socket handle or 0 on error.
+- `net.tcp.send(sock_handle, data)` // Synchronously sends a string over a TCP socket. Returns true on success.
+- `net.tcp.recv(sock_handle, max_bytes)` // Synchronously receives up to `max_bytes` from a TCP socket. Returns the received string.
+- `net.tcp.recv_exact(sock_handle, num_bytes)` // Synchronously blocks until exactly `num_bytes` are read from the socket.
+- `net.tcp.async_send(sock_handle, data, callback)` // Asynchronously writes data to a TCP socket. `callback(success_bool)` is executed upon completion.
+- `net.tcp.async_recv(sock_handle, max_bytes, callback)` // Asynchronously reads up to `max_bytes`. `callback(data_string)` is executed when data arrives.
+- `net.tcp.listen(port)` // Binds and listens for incoming TCP connections on `port`. Returns an acceptor handle (long) or 0.
+- `net.tcp.accept(acceptor_handle)` // Synchronously accepts a pending client connection. Returns client socket handle or 0.
+- `net.tcp.async_accept(acceptor_handle, callback)` // Asynchronously waits for a client connection. `callback(client_sock_handle)` is invoked on accept.
+- `net.tcp.stop_listen(acceptor_handle)` // Closes the TCP listener/acceptor handle. Returns true on success.
+- `net.tcp.close(sock_handle)` // Gracefully shuts down and frees the TCP socket handle.
+- `net.tcp.shutdown(sock_handle, mode)` // Shuts down socket communication channels. `mode` can be `"send"`, `"receive"`, or `"both"`.
+- `net.tcp.set_blocking(sock_handle, blocking)` // Toggles blocking mode on a socket (`true` for blocking, `false` for non-blocking).
+- `net.tcp.set_timeout(sock_handle, timeout_ms)` // Configures read/write timeout in milliseconds for socket operations.
+- `net.tcp.set_nodelay(sock_handle, enable)` // Enables or disables TCP_NODELAY (Nagle's algorithm) on the socket.
+- `net.tcp.set_reuse_address(acceptor_handle, enable)` // Enables or disables address reuse (`SO_REUSEADDR`) on an acceptor handle.
+- `net.tcp.bytes_available(sock_handle)` // Returns the number of bytes currently available to read without blocking.
+- `net.tcp.is_open(sock_handle)` // Returns true if the socket handle is valid and active.
+- `net.tcp.get_local_info(sock_or_acceptor_handle)` // Returns a struct with `.address` and `.port` for local endpoint.
+- `net.tcp.get_peer_info(sock_handle)` // Returns a struct with `.address` and `.port` for remote peer endpoint.
+
+### ssl:
+- `net.ssl.connect(host, port)` // Synchronously establishes a raw SSL/TLS TCP stream to a remote host. Returns an SSL socket handle (long) or 0 on failure.
+- `net.ssl.send(ssl_handle, data)` // Synchronously writes data over an encrypted SSL stream. Returns true on success.
+- `net.ssl.recv(ssl_handle, max_bytes)` // Synchronously receives up to `max_bytes` over an SSL stream. Returns the decrypted string.
+- `net.ssl.close(ssl_handle)` // Gracefully shuts down and frees an SSL socket handle. Returns true on success.
+
+### http:
+- `net.http.get(host, port, target)` // Synchronously performs an HTTPS GET request and returns the raw response body string.
+- `net.http.request(method, host, port, target, body)` // Synchronously executes an HTTPS request with a method and body string. Returns response body string.
+- `net.http.request_full(method, host, port, target, body, headers)` // Synchronously performs an HTTPS request with custom header struct. Returns struct with `.status` and `.body`.
+- `net.http.async_get(host, port, target, callback)` // Asynchronously executes an HTTPS GET request. `callback(body_string)` receives response body.
+- `net.http.async_request(method, host, port, target, body, headers, callback)` // Asynchronously executes an HTTPS request. `callback(res_struct)` receives response struct containing `.status`, `.body`, and `.success`.
+- `net.http.url_encode(value)` // Returns a percent-encoded string formatted for URLs.
+- `net.http.url_decode(value)` // Decodes a percent-encoded URL string back to plain text.
+
+### ws:
+- `net.ws.connect(host, port, target)` // Connects to a WebSocket endpoint over TLS/SSL (e.g., target `"/ws"`). Returns a WebSocket handle (long) or 0 on failure.
+- `net.ws.send(ws_handle, message)` // Sends a text frame over an open WebSocket connection. Returns true on success.
+- `net.ws.recv(ws_handle)` // Synchronously receives the next message frame from a WebSocket connection. Returns frame string.
+- `net.ws.close(ws_handle)` // Closes the WebSocket session and frees the handle. Returns true on success.
+
+### udp:
+- `net.udp.bind(port)` // Binds a UDP socket to a local port. Returns UDP socket handle (long) or 0.
+- `net.udp.send(host, port, data)` // Sends a raw UDP packet to a host and port. Returns true on success.
+- `net.udp.recv(socket_handle, max_bytes)` // Synchronously receives up to `max_bytes` from a UDP socket. Returns packet string.
+- `net.udp.recv_from(socket_handle, max_bytes)` // Synchronously receives a UDP packet. Returns struct with `.data`, `.address`, and `.port`.
+- `net.udp.async_send(socket_handle, host, port, data, callback)` // Asynchronously sends a UDP packet. `callback(success_bool)` is executed on completion.
+- `net.udp.async_recv_from(socket_handle, max_bytes, callback)` // Asynchronously waits for a packet. `callback(res_struct)` receives struct with `.data`, `.address`, and `.port`.
+- `net.udp.set_broadcast(socket_handle, enable)` // Enables or disables packet broadcasting (`SO_BROADCAST`) on a UDP socket.
+- `net.udp.join_multicast_group(socket_handle, multicast_addr)` // Joins a UDP multicast group for receiving multicast traffic.
+- `net.udp.close(socket_handle)` // Closes and frees a UDP socket handle.
+
 # Console #
 
 >std::cout and std::cerr
