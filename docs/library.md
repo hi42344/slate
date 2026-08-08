@@ -263,7 +263,7 @@ print(data.read(map2, "hp", random_save_num));
 
 # Image #
 
->stb_image and stb_image_write, everything is mutlithreaded expect for scriptable things **(image.transform, etc is single threaded)**
+>stb_image and stb_image_write, everything is mutlithreaded except for scriptable things **(image.transform, etc is single threaded)**
 
 **Added in v0.3.0**
 
