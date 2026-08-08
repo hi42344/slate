@@ -75,3 +75,72 @@ while(!input.is_key_down("escape")) {
     }
 }
 ```
+
+**More optimized render function:**
+```cpp
+fn render_terminal_image(path) {
+    var img = image.load(path);
+    if (img == -1) {
+        console.out("Failed to load image: " + path + "\n");
+        return -1;
+    }
+
+    var target_w = console.width();
+    // Getting the correct aspect ratio with * 2 (1 terminal character is about 1:2 aspect ratio)
+    var target_h = (console.height() - 1) * 2;
+
+    if (target_w <= 0) { target_w = 1; }
+    if (target_h <= 0) { target_h = 2; }
+
+    // Rescale image
+    var scaled = image.resize(img, target_w, target_h);
+    if (scaled == -1) {
+        console.out("Failed to resize image\n");
+        image.free(img);
+        return -1;
+    }
+
+    // Fetch the 1D flat array and get all pixels in the region
+    var pixels = image.get_pixels(scaled, 0, 0, target_w, target_h);
+
+    // Buffer for the frame output
+    var frame = "";
+
+    for (var y = 0; y < target_h; y = y + 2) {
+        var line = "";
+        for (var x = 0; x < target_w; x = x + 1) {
+            // Accessing pixels (note that image.get_pixels returns something like this: "[[50, 200, 55, 4], [254, 50, 9, 7], ...]"): (y * width + x)
+            var idx1 = y * target_w + x;
+            var p1 = pixels[idx1];
+            
+            var r1 = p1[0];
+            var g1 = p1[1];
+            var b1 = p1[2];
+
+            var r2 = 0; var g2 = 0; var b2 = 0;
+            if (y + 1 < target_h) {
+                var idx2 = (y + 1) * target_w + x;
+                var p2 = pixels[idx2];
+                r2 = p2[0];
+                g2 = p2[1];
+                b2 = p2[2];
+            }
+
+            // Setting the color and putting the correct half-block
+            line += "\x1b[38;2;" + r1 + ";" + g1 + ";" + b1 + "m" +
+                    "\x1b[48;2;" + r2 + ";" + g2 + ";" + b2 + "m▀";
+        }
+        // Adding the line to the frame
+        frame += line + "\x1b[0m\n";
+    }
+
+    // The actual rendering
+    console.command(frame);
+
+    // Cleanup
+    image.free(img);
+    image.free(scaled);
+    
+    return 0;
+}
+```
