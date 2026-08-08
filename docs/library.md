@@ -290,7 +290,14 @@ print(data.read(map2, "hp", random_save_num));
 - ```image.get_pixels(handle, x, y, width, height)``` // Retrieves a 2D array of RGBA color arrays inside `(x, y, width, height)`. **`Returns array of RGBA color arrays (out-of-bounds pixels return null)`**
 - ```image.set_pixels(handle, x, y, width, height, r, g, b, a)``` // Fills all pixels within `(x, y, width, height)` with the provided RGBA values. Clamped between 0 and 255.
 - ```image.draw(src_handle, dst_handle, dst_x, dst_y)``` // Blits (draws) the source buffer onto the destination buffer at `(dst_x, dst_y)` using alpha compositing.
-- ```image.transform(handle, callback)``` // Iterates over every pixel using a script callback `(x, y, r, g, b, a) -> [r, g, b, a]`. **`Returns new image handle, or -1 on failure`**
+- ```image.transform(handle, callback)``` // Iterates over every pixel using a script callback `(x, y, r, g, b, a) -> [r, g, b, a]`. **`Returns new image handle, or -1 on failure`**.
+
+*Eg:*
+```rust
+var new_img = image.transform(img, fn(x, y, r, g, b, a) {
+    return [b, g, r, a]; // Swaps R and B
+});
+```
 - ```image.crop(handle, x, y, w, h)``` // Crops a region starting at `(x, y)` with size `w`x`h`. **`Returns new image handle, or -1 on failure`**
 - ```image.resize(handle, new_w, new_h)``` // Rescales an image buffer using multithreaded **bilinear interpolation**. **```Returns new image handle, or -1 on failure```**
 - ```image.fast_resize(handle, new_w, new_h)``` // Rescales an image buffer using **nearest-neighbor sampling** (ideal for pixel art). **```Returns new image handle, or -1 on failure```**
