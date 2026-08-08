@@ -319,21 +319,20 @@ var new_img = image.transform(img, fn(x, y, r, g, b, a) {
 // Create a 100x100 canvas
 var img = image.new(100, 100);
 
-// Draw a gradient
-for (var y = 0; y < 100; y += 1) {
-    for (var x = 0; x < 100; x += 1) {
-        var r = (x * 255) / 100;
-        var g = (y * 255) / 100;
-        image.set_pixel(img, x, y, r, g, 150, 255);
-    }
-}
+// Generate the gradient
+var gradient_img = image.transform(img, fn(x, y, r, g, b, a) {
+    var new_r = (x * 255) / 100;
+    var new_g = (y * 255) / 100;
+    return [new_r, new_g, 150, 255];
+});
 
 // Scale up to 200x200 and save
-var scaled = image.resize(img, 200, 200);
+var scaled = image.resize(gradient_img, 200, 200);
 image.save(scaled, "output.png");
 
-// Free both buffers
+// Free all buffers
 image.free(img);
+image.free(gradient_img);
 image.free(scaled);
 ```
 
