@@ -193,8 +193,6 @@ print(data.read(map2, "hp", random_save_num));
 
 **Added in v0.3.0**
 - ```string.char(character_code)``` // Returns the character from a character code, the inverse of string.charCode
-- ```string.bytes(string)``` // Returns a bytes array from a string
-- ```string.from_bytes(bytes)``` // Returns a string from bytes
 
 # Array #
  
@@ -288,7 +286,8 @@ print(data.read(map2, "hp", random_save_num));
 - ```image.fast_resize(handle, new_w, new_h)``` // Rescales an image buffer using **nearest-neighbor sampling** (ideal for pixel art/terminal rendering) and returns a **new handle**. **```Returns -1 on failure```**
 - ```image.save(handle, path)``` // Writes the image buffer to disk at `path`. **```Returns true on success, false if else```**
 - ```image.free(handle)``` // Frees the memory of the image buffer associated with `handle`
-- Example, creating a gradient, scaling it, and saving to disk:
+
+**Example:**
 ```slate
 // Create a 100x100 canvas
 var img = image.new(100, 100);
