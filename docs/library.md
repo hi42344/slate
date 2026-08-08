@@ -281,6 +281,11 @@ print(data.read(map2, "hp", random_save_num));
 - ```image.load(path)``` // Loads an image file from disk and returns a handle to it. **```Returns -1 on failure```**
 - ```image.new(w, h)``` // Creates a blank RGBA image buffer with dimensions `w`x`h` and returns a handle. **```Returns -1 if dimensions are invalid```**
 - ```image.dimensions(handle)``` // Returns an **array of integers** `[width, height]`. **```Returns [0, 0] if handle is invalid```**
+- ```image.crop(handle, x, y, w, h)``` // Crops a rectangular region from an image starting at `(x, y)` with width `w` and height `h`. **`Returns new image handle, or -1 on failure`**
+- ```image.get_pixels(handle, x, y, width, height)``` // Retrieves a 2D array of RGBA color arrays for all pixels inside the specified bounding box `(x, y, width, height)`. **`Returns array of RGBA color arrays (out-of-bounds pixels return null)`**
+- ```image.set_pixels(handle, x, y, width, height, r, g, b, a)``` // Fills all pixels within the defined rectangle `(x, y, width, height)` with the provided RGBA color values. Color values are clamped automatically between 0 and 255.
+- ```image.rotate(handle, degrees)```// Rotates an image by an angle specified in degrees, automatically recalculating dimensions to prevent clipping. **`Returns new image handle, or -1 on failure`**
+- ```image.draw(src_handle, dst_handle, dst_x, dst_y)``` // Blits (draws) the source image buffer onto the destination image buffer at `(dst_x, dst_y)` using alpha compositing.
 - ```image.get_pixel(handle, x, y)``` // Returns an **array of RGBA values** `[r, g, b, a]` at `(x, y)`. **```Returns [0, 0, 0, 0] if out of bounds or invalid handle```**
 - ```image.set_pixel(handle, x, y, r, g, b, a)``` // Sets the RGBA color at `(x, y)`. Color values are clamped automatically between 0 and 255
 - ```image.resize(handle, new_w, new_h)``` // Rescales an image buffer to `new_w`x`new_h` using **bilinear interpolation** for smooth results and returns a **new handle**. **```Returns -1 on failure```**
@@ -321,6 +326,9 @@ image.free(scaled);
 - ```audio.play(handle)``` // Starts or resumes playback of the audio associated with ```handle```
 - ```audio.pause(handle)``` // Pauses playback of the audio associated with ```handle```
 - ```audio.stop(handle)``` // Stops playback and seeks the audio back to the beginning
+- ```audio.clone(handle)``` // Duplicates an existing audio source handle into a independent playback instance (ideal for sound effect pooling). Shares underlying sound decoder memory. **`Returns new audio handle, or -1 on failure`**
+- ```audio.pause_all()``` // Pauses playback for all currently active audio handles across the engine.
+- ```audio.resume_all()``` // Resumes playback for all paused audio handles across the engine.
 - ```audio.is_playing(handle)``` // Returns true if the audio source is currently playing, otherwise false
 - ```audio.length(handle)``` // Returns the total length of the audio file in seconds as a float
 - ```audio.get_position(handle)``` // Returns the current playback position in seconds as a float
