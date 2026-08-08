@@ -109,21 +109,24 @@ fn render_terminal_image(path) {
     for (var y = 0; y < target_h; y = y + 2) {
         var line = "";
         for (var x = 0; x < target_w; x = x + 1) {
-            // Accessing pixels (note that image.get_pixels returns something like this: "[[50, 200, 55, 4], [254, 50, 9, 7], ...]"): (y * width + x)
             var idx1 = y * target_w + x;
             var p1 = pixels[idx1];
             
-            var r1 = p1[0];
-            var g1 = p1[1];
-            var b1 = p1[2];
+            // Extract alpha and blend against a black background (0, 0, 0)
+            var a1 = p1[3];
+            var r1 = (p1[0] * a1) / 255;
+            var g1 = (p1[1] * a1) / 255;
+            var b1 = (p1[2] * a1) / 255;
 
             var r2 = 0; var g2 = 0; var b2 = 0;
             if (y + 1 < target_h) {
                 var idx2 = (y + 1) * target_w + x;
                 var p2 = pixels[idx2];
-                r2 = p2[0];
-                g2 = p2[1];
-                b2 = p2[2];
+                
+                var a2 = p2[3];
+                r2 = (p2[0] * a2) / 255;
+                g2 = (p2[1] * a2) / 255;
+                b2 = (p2[2] * a2) / 255;
             }
 
             // Setting the color and putting the correct half-block
