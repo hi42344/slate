@@ -76,7 +76,7 @@ while(!input.is_key_down("escape")) {
 }
 ```
 
-**More optimized render function:**
+**More optimized and supports alpha render function:**
 ```cpp
 fn render_terminal_image(path) {
     var img = image.load(path);
