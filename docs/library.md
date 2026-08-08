@@ -13,6 +13,7 @@
 | [**Memory**](#memory) | memory utilities |
 | [**Console**](#console) | console utilities |
 | [**Image**](#image) | Image utilities |
+| [**Color**](#color) | color utilities |
 | [**Audio**](#audio) | Audio utilities |
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
@@ -373,6 +374,89 @@ if (bgm != -1) {
 
 // Clean up the global audio on exit
 audio.shutdown();
+```
+
+# Color #
+
+> Color processing
+
+**Added in v0.3.0**
+
+*Color Representation:* `[r, g, b, a]`
+
+*Functions:*
+- ```color.WHITE()``` // Returns RGBA array `[255, 255, 255, 255]`
+- ```color.BLACK()``` // Returns RGBA array `[0, 0, 0, 255]`
+- ```color.RED()``` // Returns RGBA array `[255, 0, 0, 255]`
+- ```color.GREEN()``` // Returns RGBA array `[0, 255, 0, 255]`
+- ```color.BLUE()``` // Returns RGBA array `[0, 0, 255, 255]`
+- ```color.YELLOW()``` // Returns RGBA array `[255, 255, 0, 255]`
+- ```color.MAGENTA()``` // Returns RGBA array `[255, 0, 255, 255]`
+- ```color.CYAN()``` // Returns RGBA array `[0, 255, 255, 255]`
+- ```color.CLEAR()``` // Returns RGBA array `[0, 0, 0, 0]`
+- ```color.rgb(r, g, b)``` // Creates a color array with an alpha value of 255. **```Returns [r, g, b, 255]```**
+- ```color.rgba(r, g, b, a)``` // Creates a full RGBA color array. **```Returns [r, g, b, a]```**
+- ```color.rgbf(r, g, b)``` // Accepts normalized floating-point channels (0.0 - 1.0) and converts them to RGBA. **```Returns [r, g, b, 255]```**
+- ```color.hex(hex_str)``` // Parses a hex string (`"#RRGGBB"` or `"RRGGBB"`). **```Returns [r, g, b, 255]```**
+- ```color.hsva(h, s, v, a)``` // Converts Hue (0-360), Saturation (0.0-1.0), Value (0.0-1.0), and Alpha (0.0-1.0) into an RGBA array. **```Returns [r, g, b, a]```**
+- ```color.to_hex(color_arr)``` // Converts an RGBA color array into a hex string. **```Returns "#RRGGBB"```**
+- ```color.to_hexa(color_arr)``` // Converts an RGBA color array into a hex string with alpha. **```Returns "#RRGGBBAA"```**
+- ```color.to_hsv(color_arr)``` // Converts an RGBA color array into HSV representation. **```Returns [h, s, v]```**
+- ```color.lerp(c1, c2, t)``` // Linearly interpolates between two color arrays by factor `t` (0.0 to 1.0). **```Returns new RGBA array```**
+- ```color.blend(src, dst)``` // Alpha-blends the `src` color over the `dst` background color. **```Returns new RGBA array```**
+- ```color.luminance(color_arr)``` // Calculates perceived relative luminance. **```Returns float between 0.0 and 1.0```**
+- ```color.invert(color_arr)``` // Inverts RGB values while preserving alpha. **```Returns new RGBA array```**
+- ```color.grayscale(color_arr)``` // Converts the color to its perceived grayscale equivalent. **```Returns new RGBA array```**
+- ```color.lighten(color_arr, amount)``` // Increases HSV Value brightness by `amount` (0.0 to 1.0). **```Returns new RGBA array```**
+- ```color.darken(color_arr, amount)``` // Decreases HSV Value brightness by `amount` (0.0 to 1.0). **```Returns new RGBA array```**
+- ```color.saturate(color_arr, amount)``` // Increases HSV Saturation by `amount` (0.0 to 1.0). **```Returns new RGBA array```**
+- ```color.desaturate(color_arr, amount)``` // Decreases HSV Saturation by `amount` (0.0 to 1.0). **```Returns new RGBA array```**
+- ```color.distance(c1, c2)``` // Calculates Euclidean distance between two colors in 3D RGB space. **```Returns float```**
+
+**Example:**
+```slate
+// 1. Preset Getters
+var w = color.WHITE();
+var k = color.BLACK();
+var r = color.RED();
+var g = color.GREEN();
+var b = color.BLUE();
+var y = color.YELLOW();
+var m = color.MAGENTA();
+var c = color.CYAN();
+var clr = color.CLEAR();
+
+// 2. Constructors
+var c_rgb  = color.rgb(255, 128, 0);
+var c_rgba = color.rgba(255, 0, 128, 200);
+var c_rgbf = color.rgbf(0.2, 0.4, 0.8);
+var c_hex  = color.hex("#3B82F6");
+var c_hsva = color.hsva(180.0, 1.0, 0.8, 1.0);
+
+// 3. Formatters and versions
+print("Hex: " + color.to_hex(c_hex));
+print("HexA: " + color.to_hexa(c_rgba));
+var hsv = color.to_hsv(c_hsva);
+print("HSV Hue: " + hsv.at(0));
+
+// 4. Blending and Interpolation
+var blended = color.blend(c_rgba, k);
+var interpolated = color.lerp(r, b, 0.5);
+
+// 5. Perceptual Transforms
+print("Yellow Luminance: " + color.luminance(y));
+var inverted_blue = color.invert(b);
+var gray_yellow = color.grayscale(y);
+
+// 6. Tonal and Saturation Adjustments
+var lighter = color.lighten(c_hex, 0.15);
+var darker = color.darken(c_hex, 0.15);
+var saturated = color.saturate(c_hex, 0.2);
+var desaturated = color.desaturate(c_hex, 0.2);
+
+// 7. Distance
+var dist = color.distance(w, k);
+print("Distance White to Black: " + dist);
 ```
 
 # Coroutine #
