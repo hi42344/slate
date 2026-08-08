@@ -263,7 +263,7 @@ print(data.read(map2, "hp", random_save_num));
 
 # Image #
 
->stb_image and stb_image_write
+>stb_image and stb_image_write, everything is mutlithreaded expect for scriptable things **(image.transform, etc is single threaded)**
 
 **Added in v0.3.0**
 
@@ -277,21 +277,34 @@ print(data.read(map2, "hp", random_save_num));
 - **PIC** (`.pic`)
 - **GIF** (`.gif` -> first frame)
 
-*Functions:*
 - ```image.load(path)``` // Loads an image file from disk and returns a handle to it. **```Returns -1 on failure```**
 - ```image.new(w, h)``` // Creates a blank RGBA image buffer with dimensions `w`x`h` and returns a handle. **```Returns -1 if dimensions are invalid```**
 - ```image.dimensions(handle)``` // Returns an **array of integers** `[width, height]`. **```Returns [0, 0] if handle is invalid```**
-- ```image.crop(handle, x, y, w, h)``` // Crops a rectangular region from an image starting at `(x, y)` with width `w` and height `h`. **`Returns new image handle, or -1 on failure`**
-- ```image.get_pixels(handle, x, y, width, height)``` // Retrieves a 2D array of RGBA color arrays for all pixels inside the specified bounding box `(x, y, width, height)`. **`Returns array of RGBA color arrays (out-of-bounds pixels return null)`**
-- ```image.set_pixels(handle, x, y, width, height, r, g, b, a)``` // Fills all pixels within the defined rectangle `(x, y, width, height)` with the provided RGBA color values. Color values are clamped automatically between 0 and 255.
-- ```image.rotate(handle, degrees)```// Rotates an image by an angle specified in degrees, automatically recalculating dimensions to prevent clipping. **`Returns new image handle, or -1 on failure`**
-- ```image.draw(src_handle, dst_handle, dst_x, dst_y)``` // Blits (draws) the source image buffer onto the destination image buffer at `(dst_x, dst_y)` using alpha compositing.
-- ```image.get_pixel(handle, x, y)``` // Returns an **array of RGBA values** `[r, g, b, a]` at `(x, y)`. **```Returns [0, 0, 0, 0] if out of bounds or invalid handle```**
-- ```image.set_pixel(handle, x, y, r, g, b, a)``` // Sets the RGBA color at `(x, y)`. Color values are clamped automatically between 0 and 255
-- ```image.resize(handle, new_w, new_h)``` // Rescales an image buffer to `new_w`x`new_h` using **bilinear interpolation** for smooth results and returns a **new handle**. **```Returns -1 on failure```**
-- ```image.fast_resize(handle, new_w, new_h)``` // Rescales an image buffer using **nearest-neighbor sampling** (ideal for pixel art/terminal rendering) and returns a **new handle**. **```Returns -1 on failure```**
 - ```image.save(handle, path)``` // Writes the image buffer to disk at `path`. **```Returns true on success, false if else```**
 - ```image.free(handle)``` // Frees the memory of the image buffer associated with `handle`
+- ```image.clone(handle)``` // Duplicates the image buffer and returns a handle to the new copy. **```Returns -1 on failure```**
+- ```image.valid(handle)``` // Returns `true` if the image handle exists, `false` otherwise.
+- ```image.get_pixel(handle, x, y)``` // Returns an **array of RGBA values** `[r, g, b, a]` at `(x, y)`. **```Returns [0, 0, 0, 0] if out of bounds or invalid handle```**
+- ```image.set_pixel(handle, x, y, r, g, b, a)``` // Sets the RGBA color at `(x, y)`. Color values are clamped automatically between 0 and 255
+- ```image.get_pixels(handle, x, y, width, height)``` // Retrieves a 2D array of RGBA color arrays inside `(x, y, width, height)`. **`Returns array of RGBA color arrays (out-of-bounds pixels return null)`**
+- ```image.set_pixels(handle, x, y, width, height, r, g, b, a)``` // Fills all pixels within `(x, y, width, height)` with the provided RGBA values. Clamped between 0 and 255.
+- ```image.draw(src_handle, dst_handle, dst_x, dst_y)``` // Blits (draws) the source buffer onto the destination buffer at `(dst_x, dst_y)` using alpha compositing.
+- ```image.transform(handle, callback)``` // Iterates over every pixel using a script callback `(x, y, r, g, b, a) -> [r, g, b, a]`. **`Returns new image handle, or -1 on failure`**
+- ```image.crop(handle, x, y, w, h)``` // Crops a region starting at `(x, y)` with size `w`x`h`. **`Returns new image handle, or -1 on failure`**
+- ```image.resize(handle, new_w, new_h)``` // Rescales an image buffer using multithreaded **bilinear interpolation**. **```Returns new image handle, or -1 on failure```**
+- ```image.fast_resize(handle, new_w, new_h)``` // Rescales an image buffer using **nearest-neighbor sampling** (ideal for pixel art). **```Returns new image handle, or -1 on failure```**
+- ```image.rotate(handle, degrees)``` // Rotates an image by degrees, recalculating dimensions to prevent clipping. **`Returns new image handle, or -1 on failure`**
+- ```image.grayscale(handle)``` // Converts image to grayscale. **`Returns new image handle, or -1 on failure`**
+- ```image.invert(handle)``` // Inverts RGB color channels. **`Returns new image handle, or -1 on failure`**
+- ```image.adjust_brightness(handle, factor)``` // Scales RGB channels by multiplier `factor`. **`Returns new image handle, or -1 on failure`**
+- ```image.blur(handle, radius)``` // Applies a box blur with window radius `radius`. **`Returns new image handle, or -1 on failure`**
+
+**In place (modifies the image directly)**
+- ```image.grayscale_self(handle)``` // Converts image to grayscale in-place. **`Returns true on success, false if else`**
+- ```image.invert_self(handle)``` // Inverts RGB color channels in-place. **`Returns true on success, false if else`**
+- ```image.adjust_brightness_self(handle, factor)``` // Scales RGB channels by multiplier `factor` in-place. **`Returns true on success, false if else`**
+- ```image.blur_self(handle, radius)``` // Applies an $\mathcal{O}(1)$ sliding-window box blur in-place. **`Returns true on success, false if else`**
+- ```image.gaussian_blur_self(handle, sigma)``` // Applies a 3-pass $\mathcal{O}(1)$ sliding-window Gaussian blur with standard deviation `sigma` in-place. *(Is about 97% accurate to real gaussian blur and is about 4x faster on average)* **`Returns true on success, false if else`**
 
 **Example:**
 ```slate
