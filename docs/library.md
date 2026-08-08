@@ -12,6 +12,7 @@
 | [**Class**](#class) | Class information |
 | [**Memory**](#memory) | memory utilities |
 | [**Networking**](#net) | Networking utilities |
+| [**Json**](#json) | json utilities |
 | [**Console**](#console) | console utilities |
 | [**Image**](#image) | Image utilities |
 | [**Color**](#color) | color utilities |
@@ -220,6 +221,13 @@ print(data.read(map2, "hp", random_save_num));
 - ```memory.pool_release(pool_id, item)``` // Recycles ```item``` back into the ```pool```
 - ```memory.pool_size(pool_id)``` // Returns an array ```[available_count, in_use_count]``` for the specified pool
 - ```memory.pool_destroy(pool_id)``` // Deletes a object pool
+
+# json #
+
+**Added in v0.4.0**
+- `json.stringify(value)` // Serializes a value to a JSON string.
+- `json.parse(string)` // Parses a JSON string into a struct, array, or primitive. Returns `null` if malformed.
+- `json.is_valid(string)` // Returns `true` if the string is valid JSON without instantiating objects.
 
 # Net #
 
