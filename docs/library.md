@@ -9,7 +9,6 @@
 | [**Input**](#input) | Keyboard and Mouse utilities |
 | [**Data**](#data) | Easy data saving |
 | [**Coroutine**](#coroutine) | Concurrency |
-| [**Class**](#class) | Class information |
 | [**Memory**](#memory) | memory utilities |
 | [**Networking**](#net) | Networking utilities |
 | [**Json**](#json) | json utilities |
@@ -19,6 +18,8 @@
 | [**Audio**](#audio) | Audio utilities |
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
+| [**Class**](#class) | Class information |
+| [**Struct**](#struct) | Struct information |
 | [**Type**](#type) | Type checking and casting |
 | [**Slate**](#slate) | Language utilities/info |
 
@@ -606,6 +607,14 @@ fn sleep(seconds) {
 - ```class.name(class_instance)``` // Returns the class name of `class_instance` as a string, or `""` if it isn't a class instance
 - ```class.fields(class_instance)``` // Returns an **array of field name strings** for `class_instance` **(order not guaranteed)**
 - ```class.methods(class_instance)``` // Returns an **array of method name strings** defined on `class_instance`'s class **(order not guaranteed)**
+
+# Struct #
+
+**Added in v0.4.0**
+- ```struct.has(struct_instance, field)``` // Returns true if `struct_instance` has a field named `field`, otherwise false
+- ```struct.name(struct_instance)``` // Returns the struct name of `struct_instance` as a string, or `""` if it isn't a struct instance
+- ```struct.is(struct_instance, type_name)``` // Returns true if `struct_instance` is an instance of the struct named `type_name`, otherwise false
+- ```struct.fields(struct_instance)``` // Returns an **array of field name strings** for `struct_instance`, returns a empty array if `struct_instance` is not a struct or was null **(order not guaranteed)**
 
 # Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
