@@ -1,3 +1,4 @@
+### A basic client that sends data to the server (go in Server.md for the server-side)
 ```cpp
 // Metadata defining the file properties sent
 struct FileHeader {
