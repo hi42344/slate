@@ -259,6 +259,7 @@ print(data.read(map2, "hp", random_save_num));
 - `net.tcp.shutdown(sock_handle, mode)` // Shuts down socket communication channels. `mode` can be `"send"`, `"receive"`, or `"both"`.
 - `net.tcp.set_blocking(sock_handle, blocking)` // Toggles blocking mode on a socket (`true` for blocking, `false` for non-blocking).
 - `net.tcp.set_timeout(sock_handle, timeout_ms)` // Configures read/write timeout in milliseconds for socket operations.
+- `net.tcp.set_keepalive(sock_handle, enable)` // Enables or disables TCP keep-alive on the socket.
 - `net.tcp.set_nodelay(sock_handle, enable)` // Enables or disables TCP_NODELAY (Nagle's algorithm) on the socket.
 - `net.tcp.set_reuse_address(acceptor_handle, enable)` // Enables or disables address reuse (`SO_REUSEADDR`) on an acceptor handle.
 - `net.tcp.bytes_available(sock_handle)` // Returns the number of bytes currently available to read without blocking.
@@ -295,7 +296,9 @@ print(data.read(map2, "hp", random_save_num));
 - `net.udp.async_send(socket_handle, host, port, data, callback)` // Asynchronously sends a UDP packet. `callback(success_bool)` is executed on completion.
 - `net.udp.async_recv_from(socket_handle, max_bytes, callback)` // Asynchronously waits for a packet. `callback(res_struct)` receives struct with `.data`, `.address`, and `.port`.
 - `net.udp.set_broadcast(socket_handle, enable)` // Enables or disables packet broadcasting (`SO_BROADCAST`) on a UDP socket.
+- `net.udp.set_ttl(socket_handle, ttl)` // Sets the Time-To-Live (TTL) value for UDP packets.
 - `net.udp.join_multicast_group(socket_handle, multicast_addr)` // Joins a UDP multicast group for receiving multicast traffic.
+- `net.udp.leave_multicast_group(socket_handle, multicast_addr)` // Leaves a UDP multicast group.
 - `net.udp.close(socket_handle)` // Closes and frees a UDP socket handle.
 
 # Console #
