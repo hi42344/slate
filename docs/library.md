@@ -269,8 +269,12 @@ print(data.read(map2, "hp", random_save_num));
 
 ### ssl:
 - `net.ssl.connect(host, port)` // Synchronously establishes a raw SSL/TLS TCP stream to a remote host. Returns an SSL socket handle (long) or 0 on failure.
+- `net.ssl.async_connect(host, port, callback)` // Asynchronously establishes an SSL/TLS stream. `callback(ssl_handle)` is executed with the handle or 0 on error.
 - `net.ssl.send(ssl_handle, data)` // Synchronously writes data over an encrypted SSL stream. Returns true on success.
+- `net.ssl.async_send(ssl_handle, data, callback)` // Asynchronously writes data over SSL. `callback(success_bool)` is executed upon completion.
 - `net.ssl.recv(ssl_handle, max_bytes)` // Synchronously receives up to `max_bytes` over an SSL stream. Returns the decrypted string.
+- `net.ssl.async_recv(ssl_handle, max_bytes, callback)` // Asynchronously reads up to `max_bytes` over SSL. `callback(data_string)` is executed when data arrives.
+- `net.ssl.set_verify(ssl_handle, verify)` // Enables or disables SSL/TLS peer certificate verification. Returns true on success.
 - `net.ssl.close(ssl_handle)` // Gracefully shuts down and frees an SSL socket handle. Returns true on success.
 
 ### http:
@@ -284,8 +288,12 @@ print(data.read(map2, "hp", random_save_num));
 
 ### ws:
 - `net.ws.connect(host, port, target)` // Connects to a WebSocket endpoint over TLS/SSL (e.g., target `"/ws"`). Returns a WebSocket handle (long) or 0 on failure.
-- `net.ws.send(ws_handle, message)` // Sends a text frame over an open WebSocket connection. Returns true on success.
+- `net.ws.send(ws_handle, message)` // Synchronously sends a text frame over an open WebSocket connection. Returns true on success.
+- `net.ws.async_send(ws_handle, message, callback)` // Asynchronously sends a text frame. `callback(success_bool)` is executed upon completion.
 - `net.ws.recv(ws_handle)` // Synchronously receives the next message frame from a WebSocket connection. Returns frame string.
+- `net.ws.async_recv(ws_handle, callback)` // Asynchronously receives the next message frame. `callback(data_string)` is executed when data arrives.
+- `net.ws.is_open(ws_handle)` // Returns true if the WebSocket connection is still open and active.
+- `net.ws.send_binary(ws_handle, binary_data)` // Sends a binary frame over an open WebSocket connection. Returns true on success.
 - `net.ws.close(ws_handle)` // Closes the WebSocket session and frees the handle. Returns true on success.
 
 ### udp:
