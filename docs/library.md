@@ -10,6 +10,7 @@
 | [**Data**](#data) | Easy data saving |
 | [**Coroutine**](#coroutine) | Concurrency |
 | [**Memory**](#memory) | memory utilities |
+| [**Compression**](#compression) | compression utilities |
 | [**Networking**](#net) | Networking utilities |
 | [**Json**](#json) | json utilities |
 | [**Console**](#console) | console utilities |
@@ -626,6 +627,14 @@ fn sleep(seconds) {
 - ```struct.name(struct_instance)``` // Returns the struct name of `struct_instance` as a string, or `""` if it isn't a struct instance
 - ```struct.is(struct_instance, type_name)``` // Returns true if `struct_instance` is an instance of the struct named `type_name`, otherwise false
 - ```struct.fields(struct_instance)``` // Returns an **array of field name strings** for `struct_instance`, returns a empty array if `struct_instance` is not a struct or was null **(order not guaranteed)**
+
+# Compression #
+
+**Added in v0.4.0**
+- ```compression.deflate_compress(value, level)``` // Compresses a value using DEFLATE with an optional compression level (0–9). Unsupported types: (classes, closures, functions, pointers, struct types **(not a struct value)**, and class types) return null
+- ```compression.deflate_decompress(data)``` // Decompresses a DEFLATE-compressed binary string back into a runtime value
+- ```compression.lz4_compress(value, level)``` // Compresses a value using LZ4 with an optional level (1–12 for High Compression, or <= 0 for default fast speed). Unsupported types **(the above deflate compress ones)** return null
+- ```compression.lz4_decompress(data)``` // Decompresses an LZ4-compressed binary string back into a runtime value
 
 # Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
