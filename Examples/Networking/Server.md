@@ -1,4 +1,4 @@
-### A basic server that connects to clients (go in Client.md for the client side code)
+### A basic server that connects to clients (go in Client.md for the client-side)
 ```cpp
 // Structure representing the fully received and parsed file payload data
 struct FileResult {
