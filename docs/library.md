@@ -200,7 +200,13 @@ print(data.read(map2, "hp", random_save_num));
 - ```string.char(character_code)``` // Returns the character from a character code, the inverse of string.charCode
 
 **Added in v0.4.0**
-- ```string.regex(string, pattern)``` // Returns true if the regular expression pattern matches the string exactly, or throws an error if the pattern syntax is invald (uses std::regex)
+- ```string.regex(string, pattern)``` // Returns true if the regular expression pattern matches the string exactly, or throws an error if the pattern syntax is invald **(uses std::regex)**
+- ```string.rfind(string, substring)``` // Returns the **index of the last occurrence** of ```substring``` in ```string```, or -1 if not found
+- ```string.capitalize(string)``` // Returns a new string with the **first character converted to uppercase** and the remaining characters left unchanged
+- ```string.trim_left(string)``` // Returns a new string with **leading whitespace** removed
+- ```string.trim_right(string)``` // Returns a new string with **trailing whitespace** removed
+- ```string.is_digit(string)``` // Returns true if the string is non-empty and **consists entirely of numeric digits** (0-9), otherwise false
+- ```string.center(string, length, pad_char)``` // Centers the string within a given length by **padding both sides** evenly with ```pad_char```
 
 # Array #
  
