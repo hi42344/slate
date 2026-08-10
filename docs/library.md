@@ -200,7 +200,7 @@ print(data.read(map2, "hp", random_save_num));
 - ```string.char(character_code)``` // Returns the character from a character code, the inverse of string.charCode
 
 **Added in v0.4.0**
-- ```string.regex(string, pattern)``` // Returns true if the regular expression pattern matches the string, or throws an error if the pattern syntax is invald (uses std::regex)
+- ```string.regex(string, pattern)``` // Returns true if the regular expression pattern matches the string exactly, or throws an error if the pattern syntax is invald (uses std::regex)
 
 # Array #
  
