@@ -458,6 +458,15 @@ image.free(gradient_img);
 - ```audio.free(handle)``` // Uninitializes the audio source and frees memory associated with ```handle```
 - ```audio.shutdown()``` // Frees all active audio instances and cleans up the global audio engine
 
+**Added in v0.4.0**
+- ```audio.get_volume(handle)``` // Returns the current volume level of the audio source as a float (`0.0` to `1.0`). **`Returns 0.0 if invalid handle`**
+- ```audio.get_pitch(handle)``` // Returns the current pitch/speed multiplier as a float. **`Returns 1.0 if invalid handle`**
+- ```audio.get_pan(handle)``` // Returns the current stereo panning value as a float (`-1.0` to `1.0`). **`Returns 0.0 if invalid handle`**
+- ```audio.get_looping(handle)``` // Returns `true` if automatic looping is enabled for the audio source, `false` otherwise.
+- ```audio.get_master_volume()``` // Returns the global master volume level across all audio sources as a float (`0.0` to `1.0`).
+- ```audio.fade(handle, volume_start, volume_end, duration_seconds)``` // Smoothly fades the volume from `volume_start` to `volume_end` over `duration_seconds`.
+- ```audio.fade_out_at(handle, start_seconds, duration_seconds)``` // Schedules a fade-out to `0.0` volume starting at timestamp `start_seconds` over `duration_seconds`.
+
 **Example:**
 
 ```slate
