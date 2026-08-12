@@ -118,8 +118,8 @@
 - ```os.execute(command)``` // Executes a shell using ```command``` and returns the exit code
 
 **Added in v0.4.0**
-- ```os.scale_factor()``` // Returns the os's scale factor (a double)
-- ```os.res()``` // Returns a struct with width and height ```resolution{ width, height }```
+- ```os.scale_factor()``` // Returns the os's scale factor (a double) **(Returns 1.0 on failure)**
+- ```os.res()``` // Returns a struct with width and height ```resolution{ width, height }``` **(Returns a** ```resolution{ 0, 0 }``` **on failure)**
 
 # Input #
 
