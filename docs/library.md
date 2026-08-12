@@ -292,23 +292,38 @@ print(data.read(map2, "hp", random_save_num));
 - `net.ssl.close(ssl_handle)` // Gracefully shuts down and frees an SSL socket handle. Returns true on success.
 
 ### http:
-- `net.http.get(host, port, target)` // Synchronously performs an HTTPS GET request and returns the raw response body string.
-- `net.http.request(method, host, port, target, body)` // Synchronously executes an HTTPS request with a method and body string. Returns response body string.
-- `net.http.request_full(method, host, port, target, body, headers)` // Synchronously performs an HTTPS request with custom header struct. Returns struct with `.status` and `.body`.
-- `net.http.async_get(host, port, target, callback)` // Asynchronously executes an HTTPS GET request. `callback(body_string)` receives response body.
-- `net.http.async_request(method, host, port, target, body, headers, callback)` // Asynchronously executes an HTTPS request. `callback(res_struct)` receives response struct containing `.status`, `.body`, and `.success`.
+- `net.http.get(host, port, target)` // Synchronously performs an HTTP/HTTPS GET request and returns the raw response body string. (`.body = ""` on failure)
+- `net.http.request(method, host, port, target, body)` // Synchronously executes an HTTP/HTTPS request with a specified method and body string. Returns response body string. (`.body = ""` on failure)
+- `net.http.request_full(method, host, port, target, body, headers)` // Synchronously performs an HTTP/HTTPS request with a custom header struct. Returns a struct with `.status` and `.body`. (`.status = 0` and `.body = ""` on failure)
+- `net.http.async_get(host, port, target, callback)` // Asynchronously executes an HTTP/HTTPS GET request. `callback(body_string)` receives response body.
+- `net.http.async_request(method, host, port, target, body, headers, callback)` // Asynchronously executes an HTTP/HTTPS request. `callback(res_struct)` receives response struct containing `.status`, `.body`, and `.success`.
+- `net.http.listen(port)` // Binds an HTTP server to `port`. Returns an acceptor handle (long) or 0 on failure.
+- `net.http.accept(acceptor_handle)` // Synchronously accepts a pending HTTP request. Returns a struct containing `.handle`, `.method`, `.target`, `.body`, and `.headers`.
+- `net.http.async_accept(acceptor_handle, callback)` // Asynchronously waits for an HTTP request. `callback(req_handle, req_struct)` is executed upon receipt.
+- `net.http.respond(req_handle, status_code, body)` // Sends a basic HTTP response and closes the connection. Returns true on success.
+- `net.http.respond_custom(req_handle, status_code, body, content_type, headers)` // Sends an HTTP response with status code, custom content type, and headers struct.
+- `net.http.respond_file(req_handle, status_code, file_path, content_type)` // Zero-copy streams a static file directly from disk to the HTTP client.
+- `net.http.redirect(req_handle, location_url, status_code)` // Sends an HTTP redirect response (e.g., status 301 or 302).
+- `net.http.parse_query(target_url)` // Parses URL query parameters (`?key=val`) into a key-value struct.
+- `net.http.is_websocket(req_handle)` // Returns true if an incoming HTTP request contains a WebSocket upgrade header.
+- `net.http.upgrade_websocket(req_handle)` // Performs the HTTP-to-WebSocket handshake and returns a WebSocket handle (long).
+- `net.http.close(req_handle)` // Aborts and frees an HTTP request context without sending a response.
+- `net.http.stop_listen(acceptor_handle)` // Closes the HTTP server acceptor handle. Returns true on success.
 - `net.http.url_encode(value)` // Returns a percent-encoded string formatted for URLs.
 - `net.http.url_decode(value)` // Decodes a percent-encoded URL string back to plain text.
 
 ### ws:
-- `net.ws.connect(host, port, target)` // Connects to a WebSocket endpoint over TLS/SSL (e.g., target `"/ws"`). Returns a WebSocket handle (long) or 0 on failure.
+- `net.ws.connect(host, port, target)` // Connects to a WebSocket endpoint over WS or WSS. Returns a WebSocket handle (long) or 0 on failure.
+- `net.ws.async_connect(host, port, target, callback)` // Asynchronously establishes a WS or WSS connection. `callback(ws_handle, success_bool)` is executed.
 - `net.ws.send(ws_handle, message)` // Synchronously sends a text frame over an open WebSocket connection. Returns true on success.
+- `net.ws.send_binary(ws_handle, binary_data)` // Sends a binary frame over an open WebSocket connection. Returns true on success.
 - `net.ws.async_send(ws_handle, message, callback)` // Asynchronously sends a text frame. `callback(success_bool)` is executed upon completion.
+- `net.ws.async_send_binary(ws_handle, binary_data, callback)` // Asynchronously sends a binary frame. `callback(success_bool)` is executed upon completion.
 - `net.ws.recv(ws_handle)` // Synchronously receives the next message frame from a WebSocket connection. Returns frame string.
 - `net.ws.async_recv(ws_handle, callback)` // Asynchronously receives the next message frame. `callback(data_string)` is executed when data arrives.
+- `net.ws.ping(ws_handle, payload)` // Sends a custom WebSocket ping frame with an optional payload string for keep-alives.
 - `net.ws.is_open(ws_handle)` // Returns true if the WebSocket connection is still open and active.
-- `net.ws.send_binary(ws_handle, binary_data)` // Sends a binary frame over an open WebSocket connection. Returns true on success.
-- `net.ws.close(ws_handle)` // Closes the WebSocket session and frees the handle. Returns true on success.
+- `net.ws.close(ws_handle)` // Closes the WebSocket session and frees the handle. Returns true on success. **(Never close inside a async callback)**
 
 ### udp:
 - `net.udp.bind(port)` // Binds a UDP socket to a local port. Returns UDP socket handle (long) or 0.
