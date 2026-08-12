@@ -114,8 +114,12 @@
 - ```os.file_extension(path)``` // Returns somethings file extension, eg: `file.png` -> ".png", `file.txt` -> ".txt", note that *multi-extension* things will only give the last extension, eg: `file.tar.gz` -> ".gz"
 - ```os.path_join(a, b)``` // Joins two path segments using the correct platform-specific separator
 - ```os.args()``` // Returns a array of the amount of arguments and the actual arguments, eg: `[2, ["slate", "program"]]`
-- ```os.mkdir``` // Makes a directory, making any sub-directory's if needed, **(returns true if successful and false if else)** 
+- ```os.mkdir(path)``` // Makes a directory, making any sub-directory's if needed, **(returns true if successful and false if else)** 
 - ```os.execute(command)``` // Executes a shell using ```command``` and returns the exit code
+
+**Added in v0.4.0**
+- ```os.scale_factor()``` // Returns the os's scale factor (a double)
+- ```os.res()``` // Returns a struct with width and height ```resolution{ width, height }```
 
 # Input #
 
