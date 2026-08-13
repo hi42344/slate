@@ -136,7 +136,7 @@
 "numpadadd", "numpadsubtract", "numpadmultiply", "numpaddivide", "numpaddecimal", "numpadenter",
 "minus", "equals", "leftbracket", "rightbracket", "semicolon", "quote", "comma", "period", "slash", "backslash", "grave"
 ```
-- The three mouse buttons are: "left", "right", "middle"
+- The three mouse buttons are: `"left"`, `"right"`, `"middle"`
 ### Functions
 - ```input.is_key_down(key)``` // Returns true if the specified keyboard key is currently held down
 - ```input.is_mouse_button_down(button)``` // Returns true if the specified mouse button is currently held down
@@ -153,6 +153,19 @@
 - ```input.mouse_toggle(button)``` // Creates an edge-triggered watcher for a mouse ```button``` and returns a handle to it
 - ```input.mouse_toggle_pressed(handle)``` // Returns true only on the frame ```button``` goes from up to down, otherwise false, call once per loop/coroutine resume
 - ```input.free_mouse_toggle(handle)``` // Frees the memory of a mouse toggle, **```Returns true if successful and false if else```**
+
+**Added in v0.4.0**
+- ```input.mouse_scroll(amount)``` // Scrolls the mouse wheel vertically (positive for up, negative for down)
+- ```input.move_mouse_by(dx, dy)``` // Moves the cursor by a relative offset from its current position
+- ```input.key_down(key)``` // Presses a key down without releasing it
+- ```input.key_up(key)``` // Releases a previously pressed key
+- ```input.mouse_down(button)``` // Presses a mouse button down without releasing it
+- ```input.mouse_up(button)``` // Releases a previously pressed mouse button
+- ```input.wait_for_key(key)``` // Blocks execution until the specified key is pressed down
+- ```input.jittered_delay(base_micros, jitter_percent)``` // Waits for a specified duration randomized by a jitter percentage
+- ```input.get_down_keys()``` // Returns an array of strings representing all keys currently held down
+- ```input.repeat_key_press(key, count, delay_ms)``` // Presses and releases a key multiple times, optionally spaced out by a delay in milliseconds
+- ```input.key_combo_press(combo_array)``` // Presses every key in the array down in order, then releases them in reverse order
 
 # Data #
 - ```data.save_manager("app_name", backup_amount, overwrite)``` // Makes a SaveManager class, keep overwrite false most of the time
