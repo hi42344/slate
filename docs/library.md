@@ -120,6 +120,28 @@
 **Added in v0.4.0**
 - ```os.scale_factor()``` // Returns the os's scale factor (a double) **(Returns 1.0 on failure)**
 - ```os.res()``` // Returns a struct with width and height ```resolution{ width, height }``` **(Returns a** ```resolution{ 0, 0 }``` **on failure)**
+- ```os.dir_delete(path)``` // Deletes a folder and **all its contents recursively**, returns **true** if successful
+- ```os.file_move(old_path, new_path)``` // Renames or moves a file or directory to a new path, returns **true** if successful
+- ```os.file_copy(src, dest)``` // Copies a file or folder **recursively**, overwriting if destination exists, returns **true** if successful
+- ```os.is_dir(path)``` // Returns **true** if the given path exists and is a **directory**, otherwise false
+- ```os.is_file(path)``` // Returns **true** if the given path exists and is a **regular file**, otherwise false
+- ```os.cwd()``` // Returns the **current working directory** as a string
+- ```os.chdir(path)``` // Changes the **current working directory**, returns **true** if successful
+- ```os.path_abs(path)``` // Converts a relative path into a full **absolute path**
+- ```os.path_dirname(path)``` // Returns the **parent directory path**, eg: `"a/b/file.txt"` -> `"a/b"`
+- ```os.path_filename(path)``` // Returns the **file name portion** of a path, eg: `"a/b/file.txt"` -> `"file.txt"`
+- ```os.execute_output(command)``` // Executes a shell command and returns its **captured standard output** as a string
+- ```os.setenv(var, val)``` // Sets or updates an **environment variable**, returns **true** if successful
+- ```os.cpu_count()``` // Returns the number of **logical CPU cores** available
+- ```os.ram()``` // Returns the **total system RAM in KB** (kilobytes), or **-1** on failure
+- ```os.ram_free()``` // Returns the **available system RAM in KB** (kilobytes), or **-1** on failure
+- ```os.hostname()``` // Returns the computer's **network hostname** as a string
+- ```os.username()``` // Returns the **username** of the active OS user account
+- ```os.temp_dir()``` // Returns the path to the system **temporary directory**
+- ```os.home_dir()``` // Returns the path to the active user's **home directory**
+- ```os.pid()``` // Returns the **Process ID (PID)** of the running interpreter program
+- ```os.get_clipboard()``` // Returns the current text content of the system **clipboard**, or an empty string if empty or unavailable
+- ```os.set_clipboard(text)``` // Sets the system **clipboard text**, returns **true** if successful
 
 # Input #
 
