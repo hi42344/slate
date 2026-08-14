@@ -707,9 +707,9 @@ fn sleep(seconds) {
 - ```compression.deflate_decompress(data)``` // Decompresses a DEFLATE-compressed binary string back into a value
 - ```compression.lz4_compress(value, level)``` // Compresses a value using LZ4 with an optional level (1–12 for High Compression, or <= 0 for default fast speed). Unsupported types **(the above ones)** return null
 - ```compression.lz4_decompress(data)``` // Decompresses an LZ4-compressed binary string back into a value
-- ```compression.zstd_compress(value, level)``` // Compresses a value using Zstandard with an level (1–22). Unsupported types **(the above ones)** return null
+- ```compression.zstd_compress(value, level)``` // Compresses a value using Zstandard with an level (1–22). Unsupported types **(the above ones)** return null. Is multithreaded.
 - ```compression.zstd_decompress(data)``` // Decompresses a Zstandard-compressed binary string back into a value
-- ```compression.lzma_compress(value, level)``` // Compresses a value using LZMA (XZ) with an level (0–9). Unsupported types **(the above ones)** return null
+- ```compression.lzma_compress(value, level)``` // Compresses a value using LZMA (XZ) with an level (0–9). Unsupported types **(the above ones)** return null. Is multithreaded.
 - ```compression.lzma_decompress(data)``` // Decompresses an LZMA-compressed binary string back into a value
 
 # Type #
