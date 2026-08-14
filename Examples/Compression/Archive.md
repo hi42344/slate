@@ -28,7 +28,7 @@ fn select_codec(file_path, raw_size) {
         return "lz4";
     }
 
-    // Default .wav, executables, DLLs, source code, and smaller files to Zstd
+    // Default executables, DLLs, source code, and smaller files to Zstd
     return "zstd";
 }
 
@@ -78,7 +78,7 @@ fn pack_files(file_paths, output_archive_path, base_dir) {
         var compressed = raw_data;
 
         if (codec == "lzma") {
-            compressed = compression.lzma_compress(raw_data, 7); 
+            compressed = compression.lzma_compress(raw_data, 5); 
         } elif (codec == "zstd") {
             compressed = compression.zstd_compress(raw_data, 3);
         } elif (codec == "deflate") {
@@ -280,7 +280,7 @@ fn get_single_file(archive_path, target_file_name, base_dir) {
     return false; // File was not found in the archive
 }
 
-//Helper function for getting all files from a directory 
+//A all_files function for getting all files from a directory 
 fn all_files(base_dir) {
     var files = [];
     var dir_list = os.dir_list(base_dir);
