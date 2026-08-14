@@ -25,6 +25,7 @@ print("hello world");
 - "--bytecode" / "--b" to see the compiled bytecode
 - "slate --version" / "--v" to see what version you are on
 - "slate --license" / "--l" added in v0.2, gives the link to the "license's" folder
+- "slate --update" / "--u" to update to a newer slate version (or nothing if already updated)
 ```
 
 **Notes**
