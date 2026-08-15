@@ -4,7 +4,7 @@ A dynamically typed interpreted language with lua/rust/cpp syntax
 >**Note:** Only windows is supported currently, the code itself is multiplatform but idk how to cross compile
 
 > [!WARNING]
-> **You will get windows smartscreen flag** *(the windows popup)* when running the binary for the first time since I dont have a EV certificate, please just click **more-info -> run anyway** since im **broke asf**
+> **You will get windows smartscreen flag** *(the windows popup)* when running the binary for the first time since I dont have a EV certificate, please just click **more-info -> run anyway**
 
 # HOW TO USE #
 - [Download the binary](https://github.com/hi42344/slate/releases/latest) and open it
