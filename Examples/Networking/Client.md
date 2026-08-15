@@ -77,8 +77,8 @@ net.tcp.async_connect("127.0.0.1", port__, fn(sock) {
     var file_name = file_name__;
     var folder_path = "C:\\Developer\\slate\\NETWORK_SERVER_FILE";
     
-    // Compress using deflate for network optimization
-    var payload = compression.deflate_compress(data___, 6);
+    // Compress using Zstd for network optimization
+    var payload = compression.zstd_compress(data___, 3);
 
     async_send_file(sock, payload, file_name, folder_path, fn(ok) {
         if (ok) {
