@@ -124,8 +124,8 @@ if (listener == 0) {
 
                 async_load_file(client_sock, fn(file_info) {
                     if (file_info != null) {
-                        // Decompress the payload using deflate
-                        file_info.data = compression.deflate_decompress(file_info.data);
+                        // Decompress the payload using Zstd
+                        file_info.data = compression.zstd_decompress(file_info.data);
                         print("-- Loaded --");
                         print("File Name: \"" + file_info.name + "\"");
                         print("File Size: " + file_info.size + " bytes");
