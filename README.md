@@ -29,7 +29,7 @@ print("hello world");
 ```
 
 **Notes**
-- The only ```falsely``` things are null and false
+- The only ```falsy``` things are null and false
 - Classes must always use ```this.field``` for anything inside a class
 
 # WHERE IT IS #
