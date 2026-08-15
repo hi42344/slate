@@ -61,3 +61,10 @@ Path Added To:             ~/.zshrc
 - [Syntax](./docs/syntax.md)
 - [Native libraries](./docs/library.md)
 - [Conventions](./docs/conventions.md)
+
+# Reasons for closed source
+- I have bad organization
+- I've never open-sourced anything before
+- My personal library I use is massive and that would take time to open source
+
+- **If you want to get pseudo-code you can decompile runtime.a from a relink folder, I do not care if anyone decompiles anything**
