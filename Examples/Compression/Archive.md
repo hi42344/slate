@@ -17,7 +17,7 @@ fn select_codec(file_path, raw_size) {
         return "store";
     }
 
-    // Route large files (> 65MB) to LZMA, keeping executables and DLLs on Zstd
+    // Route large files (> 65MB) to LZMA, keeping smaller files and non exe/dll files on Zstd
     if (raw_size > 68157440 && ext != ".exe" && ext != ".dll") {
         return "lzma";
     }
@@ -28,7 +28,7 @@ fn select_codec(file_path, raw_size) {
         return "lz4";
     }
 
-    // Default executables, DLLs, source code, and smaller files to Zstd
+    // Default
     return "zstd";
 }
 
