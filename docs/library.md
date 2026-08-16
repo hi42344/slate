@@ -142,6 +142,10 @@
 - ```os.pid()``` // Returns the **Process ID (PID)** of the running interpreter program
 - ```os.get_clipboard()``` // Returns the current text content of the system **clipboard**, or an empty string if empty or unavailable
 - ```os.set_clipboard(text)``` // Sets the system **clipboard text**, returns **true** if successful
+- ```os.disk_free(path)``` // Returns available free drive space in bytes, returns **-1** on failure
+- ```os.uptime()``` // Returns total system uptime in seconds as a float, returns **-1.0** on failure
+- ```os.arch()``` // Returns host CPU architecture (```"x64"```, ```"x86"```, ```"arm64"```, ```"arm"```), returns **"unknown"** if unrecognized
+- ```os.env()``` // Returns a struct containing all environment variables as **key-value pairs**
 
 # Input #
 
