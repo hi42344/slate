@@ -143,9 +143,12 @@
 - ```os.get_clipboard()``` // Returns the current text content of the system **clipboard**, or an empty string if empty or unavailable
 - ```os.set_clipboard(text)``` // Sets the system **clipboard text**, returns **true** if successful
 - ```os.disk_free(path)``` // Returns available free drive space in bytes, returns **-1** on failure
-- ```os.uptime()``` // Returns total system uptime in seconds as a float, returns **-1.0** on failure
+- ```os.uptime()``` // Returns total system uptime in seconds as a double, returns **-1.0** on failure
+- ```os.cpu_usage()``` // Returns overall system **CPU usage percentage** (0.0 to 100.0) calculated between calls
+- ```os.is_focused()``` // Returns **true** if the application window currently holds system **focus** **(always returns true for non-windows)**
+- ```os.battery()``` // Returns a struct containing system **battery status** with fields `percent` and `charging`, **returns null on non-windows**
 - ```os.arch()``` // Returns host CPU architecture (```"x64"```, ```"x86"```, ```"arm64"```, ```"arm"```), returns **"unknown"** if unrecognized
-- ```os.env()``` // Returns a struct containing all environment variables as **key-value pairs**
+- ```os.env()``` // Returns a struct containing all environment variables
 
 # Input #
 
@@ -728,7 +731,7 @@ fn sleep(seconds) {
 - ```type.is_function(val)``` // Returns true if the value is a function **(any type of function)**, otherwise false
 - ```type.is_pointer(val)``` // Returns true if the value is a pointer, otherwise false
 - ```type.is_null(val)``` // Returns true if the value is null, otherwise false
-- ```type.name(val)``` // Returns the type name of the value as a string **```("int", "double", "string", "pointer", "null", "struct_type", "class_type", "function", "class", "struct", "array", and if none it returns "unknown")```**
+- ```type.name(val)``` // Returns the type name of the value as a string **```("bool", "int", "double", "string", "pointer", "null", "struct_type", "class_type", "function", "class", "struct", "array", and if none it returns "unknown")```**
 - ```type.double_to_int(num)``` // Converts a double to a 64-bit integer
 - ```type.int_to_double(num)``` // Converts a 64-bit integer to a double
 - ```type.to_string(val)``` // Converts a value (int, double, string, bool) to their string representation
