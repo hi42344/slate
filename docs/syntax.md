@@ -57,7 +57,7 @@ else {
 
 // there is also the Ternary operator like C/C++
 ```
-- There is continue and break keywords, continue skips the rest of the loop and break stops it.
+- There is continue and break keywords, continue skips the rest of the loop and break stops it. **(continue is buggy and will give stack overflow on bigger things, this will be fixed soon, I never saw it before v0.1.0 because I never used it while testing (well enough so that it would give stack overflow), I just saw it in v0.4.0)**
 - **For loops (C/C++ style)**
 ```slate
 for(initialization; condition; update) {
