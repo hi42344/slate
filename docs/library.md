@@ -145,7 +145,7 @@
 - ```os.disk_free(path)``` // Returns available free drive space in bytes, returns **-1** on failure
 - ```os.uptime()``` // Returns total system uptime in seconds as a double, returns **-1.0** on failure
 - ```os.cpu_usage()``` // Returns overall system **CPU usage percentage** (0.0 to 100.0) calculated between calls
-- ```os.is_focused()``` // Returns **true** if the application window currently holds system **focus** **(always returns true for non-windows)**
+- ```os.is_focused()``` // Returns **true** if the application window currently holds system **focus** **(always returns true for non-windows)** **(Works with the terminal too)**
 - ```os.battery()``` // Returns a struct containing system **battery status** with fields `percent` and `charging`, **returns null on non-windows**
 - ```os.arch()``` // Returns host CPU architecture (```"x64"```, ```"x86"```, ```"arm64"```, ```"arm"```), returns **"unknown"** if unrecognized
 - ```os.env()``` // Returns a struct containing all environment variables
