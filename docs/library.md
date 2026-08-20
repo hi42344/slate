@@ -10,6 +10,7 @@
 | [**Data**](#data) | Easy data saving |
 | [**Coroutine**](#coroutine) | Concurrency |
 | [**Memory**](#memory) | memory utilities |
+| [**Bitwise**](#bitwise) | Bitwise operations |
 | [**Compression**](#compression) | compression utilities |
 | [**Networking**](#net) | Networking utilities |
 | [**Json**](#json) | json utilities |
@@ -718,6 +719,14 @@ fn sleep(seconds) {
 - ```compression.zstd_decompress(data)``` // Decompresses a Zstandard-compressed binary string back into a value
 - ```compression.lzma_compress(value, level)``` // Compresses a value using LZMA (XZ) with an level (0–9). Unsupported types **(the above ones)** return null. Is multithreaded.
 - ```compression.lzma_decompress(data)``` // Decompresses an LZMA-compressed binary string back into a value
+
+# Bitwise #
+- ```bitwise.and(a, b)``` // Performs a bitwise **AND** operation on two 64-bit integers (`a & b`)
+- ```bitwise.or(a, b)``` // Performs a bitwise **OR** operation on two 64-bit integers (`a | b`)
+- ```bitwise.xor(a, b)``` // Performs a bitwise **XOR** operation on two 64-bit integers (`a ^ b`)
+- ```bitwise.not(a)``` // Performs a bitwise **NOT** (one's complement) operation on a 64-bit integer (`~a`)
+- ```bitwise.shl(a, b)``` // Performs a bitwise **left shift** on integer `a` by `b` bits (`a << b`)
+- ```bitwise.shr(a, b)``` // Performs a bitwise **right shift** on integer `a` by `b` bits (`a >> b`)
 
 # Type #
 - ```type.is_int(val)``` // Returns true if the value is an integer, otherwise false
