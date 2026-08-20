@@ -721,6 +721,8 @@ fn sleep(seconds) {
 - ```compression.lzma_decompress(data)``` // Decompresses an LZMA-compressed binary string back into a value
 
 # Bitwise #
+
+**Added in v0.4.0**
 - ```bitwise.and(a, b)``` // Performs a bitwise **AND** operation on two 64-bit integers (`a & b`)
 - ```bitwise.or(a, b)``` // Performs a bitwise **OR** operation on two 64-bit integers (`a | b`)
 - ```bitwise.xor(a, b)``` // Performs a bitwise **XOR** operation on two 64-bit integers (`a ^ b`)
