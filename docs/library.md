@@ -6,6 +6,7 @@
 | :--- | :--- |
 | [**Math**](#math) | Math |
 | [**OS**](#os) | File, clock, times |
+| [**File**](#file) | Buffered file utilities |
 | [**Input**](#input) | Keyboard and Mouse utilities |
 | [**Data**](#data) | Easy data saving |
 | [**Coroutine**](#coroutine) | Concurrency |
@@ -150,6 +151,16 @@
 - ```os.battery()``` // Returns a struct containing system **battery status** with fields `percent` and `charging`, **returns null on non-windows**
 - ```os.arch()``` // Returns host CPU architecture (```"x64"```, ```"x86"```, ```"arm64"```, ```"arm"```), returns **"unknown"** if unrecognized
 - ```os.env()``` // Returns a struct containing all environment variables
+
+# File #
+
+**Added in v0.4.0**
+- ```file.open(path, mode)``` // Opens a file stream with specified mode ("r", "w", "a", "r+") and returns a handle ID
+- ```file.read(handle_id, bytes)``` // Reads up to a specified number of bytes from an open file stream and returns a string
+- ```file.write(handle_id, data)``` // Writes string data to an open file stream and returns the number of bytes written
+- ```file.seek(handle_id, offset, origin)``` // Repositions the file stream pointer (origin: 0 = start, 1 = current, 2 = end) and returns the new position
+- ```file.close(handle_id)``` // Closes an open file stream and releases its system handle
+- ```file.eof(handle_id)``` // Returns true if the file stream has reached the end of the file
 
 # Input #
 
