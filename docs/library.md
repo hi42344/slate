@@ -159,6 +159,7 @@
 - ```file.read(handle_id, bytes)``` // Reads up to a specified number of bytes from an open file stream and returns a string
 - ```file.write(handle_id, data)``` // Writes string data to an open file stream and returns the number of bytes written
 - ```file.seek(handle_id, offset, origin)``` // Repositions the file stream pointer (origin: 0 = start, 1 = current, 2 = end) and returns the new position
+- ```file.flush(handle_id)``` // Updates the file based on the latest write instantly
 - ```file.close(handle_id)``` // Closes an open file stream and releases its system handle
 - ```file.eof(handle_id)``` // Returns true if the file stream has reached the end of the file
 
