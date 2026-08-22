@@ -6,7 +6,7 @@
 | :--- | :--- |
 | [**Math**](#math) | Math |
 | [**OS**](#os) | File, clock, times |
-| [**File**](#file) | Buffered file utilities |
+| [**File**](#file) | Streamed file utilities |
 | [**Input**](#input) | Keyboard and Mouse utilities |
 | [**Data**](#data) | Easy data saving |
 | [**Coroutine**](#coroutine) | Concurrency |
