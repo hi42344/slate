@@ -29,7 +29,7 @@
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
 **Added in v0.4.0**
-- ```try(function)``` // Returns a struct with .result **(the return value)**, and .error **(Is the error code on failure (null if no failure), is "Unknown error" if the error is not a standard exception or RuntimeError)**. **(Basically lua pcall)** **(If pointers are made inside of the try block they will leak, even things with deconstructors, so use nested try's if needed)**.
+- ```try(function)``` // Returns a struct with .result **(the return value)**, and .error **(Is the error code on failure (null if no failure), is "Unknown error" if the error is not a standard exception or RuntimeError)**. **(Basically lua pcall)** **(If pointers are made inside of the try block they will leak, even things with deconstructors, so use nested try's if needed and manual deletes even for classes with deconstructors)**. 
 **Ex:**
 ```slate
 //The function can't have any arguments
