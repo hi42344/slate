@@ -739,6 +739,9 @@ fn sleep(seconds) {
 - ```struct.name(struct_instance)``` // Returns the struct name of `struct_instance` as a string, or `""` if it isn't a struct instance
 - ```struct.is(struct_instance, type_name)``` // Returns true if `struct_instance` is an instance of the struct named `type_name`, otherwise false
 - ```struct.fields(struct_instance)``` // Returns an **array of field name strings** for `struct_instance`, returns a empty array if `struct_instance` is not a struct or was null **(order not guaranteed)**
+- ```struct.create(name)``` // Returns a new bare struct instance with the specified `name` and no fields
+- ```struct.set(struct_instance, field, value)``` // Sets `field` to `value` on `struct_instance` in-place, creating it if it doesn't exist, and returns the struct with the set field
+- ```struct.remove(struct_instance, field)``` // Removes `field` from `struct_instance`, returns true if the field was successfully removed, otherwise false
 
 # Compression #
 
