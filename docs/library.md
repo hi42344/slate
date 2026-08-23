@@ -742,6 +742,7 @@ fn sleep(seconds) {
 - ```struct.create(name)``` // Returns a new bare struct instance with the specified `name` and no fields
 - ```struct.set(struct_instance, field, value)``` // Sets `field` to `value` on `struct_instance` in-place, creating it if it doesn't exist, and returns the struct with the set field
 - ```struct.remove(struct_instance, field)``` // Removes `field` from `struct_instance`, returns true if the field was successfully removed, otherwise false
+- ```struct.get(struct_instance, field)``` // Returns the value of `field` on `struct_instance`, or null if `struct_instance` is invalid or the field does not exist
 
 # Compression #
 
