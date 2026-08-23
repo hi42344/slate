@@ -177,8 +177,9 @@ else {
 **Added in v0.4.0**
 - ```file.open(path, mode)``` // Opens a file stream with specified mode ("r", "w", "a", "r+") and returns a handle ID **(returns -1 on failure)**
 - ```file.read(handle_id, bytes)``` // Reads up to a specified number of bytes from an open file stream and returns a string
-- ```file.write(handle_id, data)``` // Writes string data to an open file stream and returns the number of bytes written **(-1 on failure, also releases its system handle on failure)**
+- ```file.write(handle_id, data)``` // Writes string data to an open file stream and returns the number of bytes written **(-1 on failure)**
 - ```file.seek(handle_id, offset, origin)``` // Repositions the file stream pointer (origin: 0 = start, 1 = current, 2 = end) and returns the new position
+- ```file.tell(handle_id)``` // Returns the current byte position of the file stream pointer **(-1 on failure)**
 - ```file.flush(handle_id)``` // Forces any unwritten changes directly to the file without closing it
 - ```file.close(handle_id)``` // Closes an open file stream and releases its system handle
 - ```file.eof(handle_id)``` // Returns true if the file stream has reached the end of the file
