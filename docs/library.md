@@ -28,6 +28,26 @@
 
 - ```print(contents)``` // prints whatever is in it, eg: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
+**Added in v0.4.0**
+- ```try(function)``` // Returns a struct with .result **(the return value)**, and .error **(Is the error code on failure (null if no failure))**. **(Basically lua pcall)**
+**Ex:**
+```slate
+//The function can't have any arguments
+var result_struct = try(fn() {
+    var error_arr = [1, 2, 3, 4, 5];
+    return error_arr[100];
+});
+
+//Error isnt null
+if(result_struct.error) {
+    //Result is null if error
+    print("Error = \"" + result_struct.error + "\"");
+}
+else {
+   print("No error, result = \"" + result_struct.result + "\"");
+}
+```
+
 # Math #
 - ```math.abs(number)``` // Returns the absolute value of a number
 - ```math.acos(number)``` // Returns the arc cosine of a number in radians
