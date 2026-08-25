@@ -171,6 +171,7 @@ else {
 - ```os.battery()``` // Returns a struct containing system **battery status** with fields `percent` and `charging`, **returns null on non-windows**
 - ```os.arch()``` // Returns host CPU architecture (```"x64"```, ```"x86"```, ```"arm64"```, ```"arm"```), returns **"unknown"** if unrecognized
 - ```os.env()``` // Returns a struct containing all environment variables
+- ```os.file_lwt(path)``` // Returns the last write time in milliseconds (Unix epoch), or -1 if the file is not found
 
 # File #
 
