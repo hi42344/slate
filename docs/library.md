@@ -112,8 +112,8 @@ else {
 - ```os.sleep(time)``` // sleeps the program for the time in seconds
 - ```os.throw(message)``` // throws/crashes the program and prints the message
 - ```os.platform()``` // Returns the current platform, eg: **```"windows", "linux", "macos", "ios", "android"```** else **```"unknown"```**
-- ```os.time()``` // Returns the time **(in seconds)** since the **computer has turned on** or **epoch time**
-- ```os.clock()``` // Returns the CPU time **(in seconds)** since the program has started
+- ```os.time()``` // Returns the current UTC Unix timestamp (in seconds) since the epoch (Jan 1, 1970). Best for calendar dates and wall-clock timestamps.
+- ```os.clock()``` // Returns high-precision elapsed time (in seconds) since the program started
 - ```os.date()``` // Returns a **locally formatted string** of the current date and time
 - ```os.date_time_year()``` // Returns the current time and year formatted as **"Hours:Minutes:Seconds Year"**
 - ```os.date_time()``` // Returns the current time formatted as **"Hours:Minutes:Seconds"**
