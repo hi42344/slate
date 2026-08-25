@@ -176,7 +176,7 @@ else {
 
 **Added in v0.4.0**
 - ```file.open(path, mode)``` // Opens a file stream with specified mode ("r", "w", "a", "r+") and returns a handle ID **(returns -1 on failure)**
-- ```file.read(handle_id, bytes)``` // Reads up to a specified number of bytes from an open file stream and returns a string
+- ```file.read(handle_id, bytes)``` // Reads up to a specified number of bytes from an open file stream and returns a string **(Advances the file stream pointer by bytes)**
 - ```file.write(handle_id, data)``` // Writes string data to an open file stream and returns the number of bytes written **(-1 on failure)**
 - ```file.seek(handle_id, offset, origin)``` // Repositions the file stream pointer (origin: 0 = start, 1 = current, 2 = end) and returns the new position
 - ```file.tell(handle_id)``` // Returns the current byte position of the file stream pointer **(-1 on failure)**
