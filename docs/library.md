@@ -30,7 +30,7 @@
 
 **Added in v0.4.0**
 - ```try(function)``` // Returns a struct with .result **(the return value)**, and .error **(Is the error code on failure (null if no failure), is "Unknown error" if the error is not a standard exception or RuntimeError)**. **(If pointers are made inside of the try block they will leak, even things with deconstructors, this is not like a try catch, it's like a lua pcall)**. 
-**Ex:**
+**E.g.,**
 ```slate
 //The function can't have any arguments
 var result_struct = try(fn() {
