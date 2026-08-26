@@ -137,7 +137,7 @@ while (coroutine.status(co) != "dead") {
     print(coroutine.resume(co)); // prints 0, 1, 2 across three separate resumes
 }
 ```
-- You will get a compile error with yield inside any [native class methods](#classes) or a struct/class field initializer, normal methods like eg: ```fn important() { print("hello world"); }``` can have ***yield's***.
+- You will get a compile error with yield inside any [native class methods](#classes) or a struct/class field initializer, normal methods like e.g., ```fn important() { print("hello world"); }``` can have ***yield's***.
 
 # Operators #
 - +, -, *, /, %
@@ -318,7 +318,7 @@ print(b); // prints 100 since b is actually in the array
 
 **Classes have 5 default methods**
 - Constructer // class name
-- Deconstructor // class name with a ! before it, eg: "!person()"
+- Deconstructor // class name with a ! before it, e.g., "!person()"
 - Copied // in code it's the "copy()" method
 - Referenced (lowercase in code)
 - Dereferenced (lowercase in code)
@@ -345,7 +345,7 @@ class person {
         // In v0.1.0 you'd use the assignment(new_value) { code } function (note that new_value couldn't be used)
         operator = (new_value) {
         /*Added in version 0.2.0 you can use the new value and return inside the assignment operator to change what gets assigned
-        eg: "return new_value * 2;" or "return null;" */
+        e.g., "return new_value * 2;" or "return null;" */
             print("assigned");
         }
         referenced() {
