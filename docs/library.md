@@ -256,7 +256,7 @@ print(data.read(map2, "hp", random_save_num));
 
 # String #
 - ```string.charCode(string, index)``` // Returns the ASCII value of the character at the index, Runtime error if out of bounds
-- ```string.sub(string, start, end)``` // Returns a substring from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last character, -2 is the second to last, etc```
+- ```string.sub(string, start, end)``` // Returns a substring from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last character, -2 is the second to last, etc```. **(Is inclusive (string.length - 1 for getting the last index is correct, not string.length))**
 - ```string.lower(string)``` // Returns a new string with all characters converted to lowercase
 - ```string.upper(string)``` // Returns a new string with all characters converted to uppercase
 - ```string.reverse(string)``` // Returns a reversed copy of the string
