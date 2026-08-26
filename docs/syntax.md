@@ -21,7 +21,7 @@
 # imports #
 - import "path.slate" // Goes to the librarys folder first (my_library) or (folder(or folders)/my_library) otherwise just uses the path
 - import "path.slate" as namespace_name // imports and wraps everything in a namespace
-- Auto manages infinite imports like ex: ```import "otherlibrary.slate"``` and inside ```otherlibrary.slate``` it imports ```librarythatimported.slate```
+- Auto manages infinite imports like e.g., ```import "otherlibrary.slate"``` and inside ```otherlibrary.slate``` it imports ```librarythatimported.slate```
 
 # Variable Creation #
 - Keyword ```var```
@@ -242,7 +242,7 @@ doesnt work since if you print those, it will print "&__heap_0" and "&__heap_1" 
 ```
 
 **functions**
-- Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
+- Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. e.g.,
 ```slate
 fn set(a, new_value) {
     a = new_value;
