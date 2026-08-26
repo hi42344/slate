@@ -239,6 +239,7 @@ doesnt work since if you print those, it will print "&__heap_0" and "&__heap_1" 
 */
 **Added in v0.2**
 - The -> operator, same thing as (*ptr).field but easier to type
+```
 
 **functions**
 - Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
