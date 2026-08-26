@@ -26,11 +26,11 @@
 | [**Type**](#type) | Type checking and casting |
 | [**Slate**](#slate) | Language utilities/info |
 
-- ```print(contents)``` // prints whatever is in it, e.g., ```print("hello world" + 5);``` this prints "hello world5" and a new line.
+- ```print(contents)``` // prints whatever is in it, ex: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
 **Added in v0.4.0**
 - ```try(function)``` // Returns a struct with .result **(the return value)**, and .error **(Is the error code on failure (null if no failure), is "Unknown error" if the error is not a standard exception or RuntimeError)**. **(If pointers are made inside of the try block they will leak, even things with deconstructors, this is not like a try catch, it's like a lua pcall)**. 
-**E.g.,**
+**Ex:**
 ```slate
 //The function can't have any arguments
 var result_struct = try(fn() {
@@ -111,7 +111,7 @@ else {
 # Os #
 - ```os.sleep(time)``` // sleeps the program for the time in seconds
 - ```os.throw(message)``` // throws/crashes the program and prints the message
-- ```os.platform()``` // Returns the current platform, e.g., **```"windows", "linux", "macos", "ios", "android"```** else **```"unknown"```**
+- ```os.platform()``` // Returns the current platform, ex: **```"windows", "linux", "macos", "ios", "android"```** else **```"unknown"```**
 - ```os.time()``` // Returns the current UTC Unix timestamp (in seconds) since the epoch (Jan 1, 1970). Best for calendar dates and wall-clock timestamps.
 - ```os.clock()``` // Returns high-precision elapsed time (in seconds) since the program started
 - ```os.date()``` // Returns a **locally formatted string** of the current date and time
@@ -127,15 +127,15 @@ else {
 
 **Added in v0.2.0**
 - ```os.input(prompt)``` // gets user input using ```std::getline()```
-- ```os.uuid()``` // Returns a randomly generated **RFC 4122 version-4 UUID** as a string, e.g., ```"f47ac10b-58cc-4372-a567-0e02b2c3d479"```
+- ```os.uuid()``` // Returns a randomly generated **RFC 4122 version-4 UUID** as a string, ex: ```"f47ac10b-58cc-4372-a567-0e02b2c3d479"```
 - ```os.exit(exit_code)``` // Uses ```std::exit(exit_code)```
 
 **Added in v0.3.0**
 - ```os.load_plugin(path)``` // Loads a plugin/dynamic library, allowing you to use its functions
 - ```os.dir_list(path)``` // Returns an array of file/folder names inside a specified directory
-- ```os.file_extension(path)``` // Returns somethings file extension, e.g., `file.png` -> ".png", `file.txt` -> ".txt", note that *multi-extension* things will only give the last extension, e.g., `file.tar.gz` -> ".gz"
+- ```os.file_extension(path)``` // Returns somethings file extension, ex: `file.png` -> ".png", `file.txt` -> ".txt", note that *multi-extension* things will only give the last extension, ex: `file.tar.gz` -> ".gz"
 - ```os.path_join(a, b)``` // Joins two path segments using the correct platform-specific separator
-- ```os.args()``` // Returns a array of the amount of arguments and the actual arguments, e.g., `[2, ["slate", "program"]]`
+- ```os.args()``` // Returns a array of the amount of arguments and the actual arguments, ex: `[2, ["slate", "program"]]`
 - ```os.mkdir(path)``` // Makes a directory, making any sub-directory's if needed, **(returns true if successful and false if else)** 
 - ```os.execute(command)``` // Executes a shell using ```command``` and returns the exit code
 
@@ -150,8 +150,8 @@ else {
 - ```os.cwd()``` // Returns the **current working directory** as a string
 - ```os.chdir(path)``` // Changes the **current working directory**, returns **true** if successful
 - ```os.path_abs(path)``` // Converts a relative path into a full **absolute path**
-- ```os.path_dirname(path)``` // Returns the **parent directory path**, e.g., `"a/b/file.txt"` -> `"a/b"`
-- ```os.path_filename(path)``` // Returns the **file name portion** of a path, e.g., `"a/b/file.txt"` -> `"file.txt"`
+- ```os.path_dirname(path)``` // Returns the **parent directory path**, ex: `"a/b/file.txt"` -> `"a/b"`
+- ```os.path_filename(path)``` // Returns the **file name portion** of a path, ex: `"a/b/file.txt"` -> `"file.txt"`
 - ```os.execute_output(command)``` // Executes a shell command and returns its **captured standard output** as a string
 - ```os.setenv(var, val)``` // Sets or updates an **environment variable**, returns **true** if successful
 - ```os.cpu_count()``` // Returns the number of **logical CPU cores** available
@@ -172,7 +172,7 @@ else {
 - ```os.arch()``` // Returns host CPU architecture (```"x64"```, ```"x86"```, ```"arm64"```, ```"arm"```), returns **"unknown"** if unrecognized
 - ```os.env()``` // Returns a struct containing all environment variables
 - ```os.file_lwt(path)``` // Returns the last write time in milliseconds (Unix epoch), or -1 if the file is not found
-- ```os.script_path``` // Returns the script that is being ran path. **E.g., "C:\Developer\slate\Scripts\script.slate"**
+- ```os.script_path``` // Returns the script that is being ran path. **Ex: "C:\Developer\slate\Scripts\script.slate"**
 
 # File #
 
@@ -381,7 +381,7 @@ print(data.read(map2, "hp", random_save_num));
 - `net.http.respond(req_handle, status_code, body, headers)` // Sends an HTTP response and closes the connection. `headers` is a struct (optional). Returns true on success.
 - `net.http.respond_custom(req_handle, status_code, body, content_type, headers)` // Sends an HTTP response with status code, custom content type, and headers struct. Returns true on success.
 - `net.http.respond_file(req_handle, status_code, file_path, content_type)` // Zero-copy streams a static file directly from disk to the HTTP client. Returns true on success.
-- `net.http.redirect(req_handle, location_url, status_code)` // Sends an HTTP redirect response (e.g., status 301 or 302). Returns true on success.
+- `net.http.redirect(req_handle, location_url, status_code)` // Sends an HTTP redirect response (ex: status 301 or 302). Returns true on success.
 - `net.http.parse_query(target_url)` // Parses URL query parameters (`?key=val`) into a key-value struct.
 - `net.http.is_websocket(req_handle)` // Returns true if an incoming HTTP request contains a WebSocket upgrade header.
 - `net.http.upgrade_websocket(req_handle)` // Performs the HTTP-to-WebSocket handshake and returns a WebSocket handle (long).
@@ -488,7 +488,7 @@ print(data.read(map2, "hp", random_save_num));
 - ```image.draw(src_handle, dst_handle, dst_x, dst_y)``` // Blits (draws) the source buffer onto the destination buffer at `(dst_x, dst_y)` using alpha compositing.
 - ```image.transform(handle, callback)``` // Iterates over every pixel using a script callback `(x, y, r, g, b, a) -> [r, g, b, a]`. **`Returns new image handle, or -1 on failure`**.
 
-*E.g.,*
+*Ex:*
 ```rust
 var new_img = image.transform(img, fn(x, y, r, g, b, a) {
     return [b, g, r, a]; // Swaps R and B
