@@ -488,7 +488,7 @@ print(data.read(map2, "hp", random_save_num));
 - ```image.draw(src_handle, dst_handle, dst_x, dst_y)``` // Blits (draws) the source buffer onto the destination buffer at `(dst_x, dst_y)` using alpha compositing.
 - ```image.transform(handle, callback)``` // Iterates over every pixel using a script callback `(x, y, r, g, b, a) -> [r, g, b, a]`. **`Returns new image handle, or -1 on failure`**.
 
-*e.g.,*
+*E.g.,*
 ```rust
 var new_img = image.transform(img, fn(x, y, r, g, b, a) {
     return [b, g, r, a]; // Swaps R and B
