@@ -173,7 +173,7 @@ else {
 - ```os.arch()``` // Returns host CPU architecture (```"x64"```, ```"x86"```, ```"arm64"```, ```"arm"```), returns **"unknown"** if unrecognized
 - ```os.env()``` // Returns a struct containing all environment variables
 - ```os.file_lwt(path)``` // Returns the last write time in milliseconds (Unix epoch), or -1 if the file is not found
-- ```os.script_path``` // Returns the script that is being ran path. **Ex: "C:\Developer\slate\Scripts\script.slate"**
+- ```os.script_path()``` // Returns the script that is being ran path. **Ex: "C:\Developer\slate\Scripts\script.slate"**
 
 # File #
 
