@@ -19,6 +19,7 @@
 | [**Image**](#image) | Image utilities |
 | [**Color**](#color) | color utilities |
 | [**Audio**](#audio) | Audio utilities |
+| [**Regex**](#regex) | Regex utilities |
 | [**String**](#string) | String and hashing utilities |
 | [**Array**](#array) | Array utilities |
 | [**Class**](#class) | Class information |
@@ -186,6 +187,84 @@ else {
 - ```file.close(handle_id)``` // Closes an open file stream and releases its system handle
 - ```file.eof(handle_id)``` // Returns true if the file stream has reached the end of the file
 
+# String #
+- ```string.charCode(string, index)``` // Returns the ASCII value of the character at the index, Runtime error if out of bounds
+- ```string.sub(string, start, end)``` // Returns a substring from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last character, -2 is the second to last, etc```. **(Is inclusive (string.length - 1 for getting the last index is correct, not string.length))**
+- ```string.lower(string)``` // Returns a new string with all characters converted to lowercase
+- ```string.upper(string)``` // Returns a new string with all characters converted to uppercase
+- ```string.reverse(string)``` // Returns a reversed copy of the string
+- ```string.rep(string, repeat_count)``` // Returns a string that repeats the input string a number of times
+- ```string.hash(string)``` // Returns a **positive 64-bit hash integer** of a string using SipHash
+- ```string.fasthash(string)``` // Returns a **positive 64-bit hash integer** of a string using Wyhash
+
+**Added in v0.2.0**
+- ```string.split(string, delimiter)``` // Splits ```string``` on every occurrence of ```delimiter``` and returns an **array of strings**. An empty ```delimiter``` splits into individual characters
+- ```string.trim(string)``` // Returns a new string with leading and trailing whitespace removed
+- ```string.contains(string, substring)``` // Returns true if ```substring``` occurs anywhere in ```string```, otherwise false
+- ```string.find(string, substring)``` // Returns the **index of the first occurrence** of ```substring``` in ```string```, or -1 if not found
+- ```string.replace(string, old, new)``` // Returns a new string with **every occurrence** of ```old``` replaced with ```new```
+- ```string.join(array, delimiter)``` // Joins every element of ```array``` into a single string, separated by ```delimiter```
+- ```string.starts_with(string, prefix)``` // Returns true if ```string``` begins with ```prefix```, otherwise false
+- ```string.ends_with(string, suffix)``` // Returns true if ```string``` ends with ```suffix```, otherwise false
+- ```string.count(string, substring)``` // Returns the **number of non-overlapping occurrences** of ```substring``` in ```string```
+- ```string.pad_left(string, length, pad_char)``` // Pads ```string``` on the left with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
+- ```string.pad_right(string, length, pad_char)``` // Pads ```string``` on the right with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
+
+**Added in v0.3.0**
+- ```string.char(character_code)``` // Returns the character from a character code, the inverse of string.charCode
+
+**Added in v0.4.0**
+- ```string.rfind(string, substring)``` // Returns the **index of the last occurrence** of ```substring``` in ```string```, or -1 if not found
+- ```string.capitalize(string)``` // Returns a new string with the **first character converted to uppercase** and the remaining characters left unchanged
+- ```string.trim_left(string)``` // Returns a new string with **leading whitespace** removed
+- ```string.trim_right(string)``` // Returns a new string with **trailing whitespace** removed
+- ```string.is_digit(string)``` // Returns true if the string is non-empty and **consists entirely of numeric digits** (0-9), otherwise false
+- ```string.center(string, length, pad_char)``` // Centers the string within a given length by **padding both sides** evenly with ```pad_char```
+
+# Regex #
+
+>boost::regex
+
+**Added in v0.4.0**
+
+- ```regex.match(string, pattern, timeout_us)``` // Returns true if the full string matches the regex pattern, false if not, or null if the execution timeout is exceeded
+- ```regex.search(string, pattern, timeout_us)``` // Returns true if the regex pattern exists anywhere inside the string, false if not, or null if the execution timeout is exceeded
+- ```regex.find(string, pattern, timeout_us)``` // Returns an array containing the full match followed by capture groups (or [] if not found), or null if the execution timeout is exceeded
+- ```regex.find_all(string, pattern, timeout_us)``` // Returns an array of all matching substrings found in the string, or null if the execution timeout is exceeded
+- ```regex.extract(string, pattern, group_index, timeout_us)``` // Returns an array of extracted substrings for a specific capture group index across all matches, or null if the execution timeout is exceeded
+- ```regex.count(string, pattern, timeout_us)``` // Returns the total count of non-overlapping matches in the string, or null if the execution timeout is exceeded
+- ```regex.replace(string, pattern, replacement, timeout_us)``` // Returns a new string with all pattern occurrences replaced ($1, $2 backreference support), or null if the execution timeout is exceeded
+- ```regex.replace_first(string, pattern, replacement, timeout_us)``` // Returns a new string with only the first pattern occurrence replaced, or null if the execution timeout is exceeded
+- ```regex.split(string, pattern, timeout_us)``` // Returns an array of strings using the regex pattern as a delimiter, or null if the execution timeout is exceeded
+- ```regex.match_positions(string, pattern, timeout_us)``` // Returns an array of [start, end] byte offset arrays for all pattern matches, or null if the execution timeout is exceeded
+- ```regex.escape(string)``` // Escapes all special regex meta-characters in a raw string literal
+- ```regex.is_valid(pattern)``` // Returns true if a regex pattern string is syntactically valid, or false if it contains syntax errors
+
+# Array #
+ 
+**Added in v0.2.0**
+- ```array.contains(array, value)``` // Returns true if ```value``` is found anywhere in ```array```, otherwise false
+- ```array.index_of(array, value)``` // Returns the **index of the first occurrence** of ```value``` in ```array```, or -1 if not found
+- ```array.sort(array)``` // Sorts ```array``` **in place** in ascending order **(numbers and strings only)**, **```Returns true if successful and false if else```**
+- ```array.sort_by(array, comparator)``` // Sorts ```array``` **in place** using ```comparator(a, b)```, a function returning true if ```a``` should come before ```b```, **```Returns true if successful and false if else```**
+- ```array.reverse(array)``` // Reverses ```array``` **in place**, **```Returns true if successful and false if else```**
+- ```array.slice(array, start, end)``` // Returns a **new array** containing the elements from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last element, -2 is the second to last, etc```
+- ```array.concat(array1, array2)``` // Returns a **new array** containing every element of ```array1``` followed by every element of ```array2```
+
+**Added in v0.3.0**
+- ```array.find(array, predicate)``` // Returns the index of the first element in array that matches `predicate(value)` (`predicate(value)` needs to return a boolean), **```returns -1 if none found```**
+
+# Memory #
+
+**Added in v0.3.0**
+- ```memory.move(&var)``` // Steals the value from ```var``` and returns it, setting ```var``` to null (std::move)
+- ```memory.swap(&a, &b)``` // Swaps the values of variables ```a``` and ```b``` in-place
+- ```memory.pool_create(factory_fn, initial_capacity, max_capacity)``` // Creates a new ```object pool handle``` using a ```factory function```, ```initial capacity```, and ```maximum capacity``` **(```-1``` for unlimited)**
+- ```memory.pool_take(pool_id)``` // Retrieves an available object from the ```pool``` **(or constructs a new one if empty)**
+- ```memory.pool_release(pool_id, item)``` // Recycles ```item``` back into the ```pool```
+- ```memory.pool_size(pool_id)``` // Returns an array ```[available_count, in_use_count]``` for the specified pool
+- ```memory.pool_destroy(pool_id)``` // Deletes a object pool
+
 # Input #
 
 **Added in v0.2.0**
@@ -254,66 +333,6 @@ data.save(map, SaveManager, random_save_num);
 var map2 = data.load(SaveManager, 1);
 print(data.read(map2, "hp", random_save_num));
 ```
-
-# String #
-- ```string.charCode(string, index)``` // Returns the ASCII value of the character at the index, Runtime error if out of bounds
-- ```string.sub(string, start, end)``` // Returns a substring from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last character, -2 is the second to last, etc```. **(Is inclusive (string.length - 1 for getting the last index is correct, not string.length))**
-- ```string.lower(string)``` // Returns a new string with all characters converted to lowercase
-- ```string.upper(string)``` // Returns a new string with all characters converted to uppercase
-- ```string.reverse(string)``` // Returns a reversed copy of the string
-- ```string.rep(string, repeat_count)``` // Returns a string that repeats the input string a number of times
-- ```string.hash(string)``` // Returns a **positive 64-bit hash integer** of a string using SipHash
-- ```string.fasthash(string)``` // Returns a **positive 64-bit hash integer** of a string using Wyhash
-
-**Added in v0.2.0**
-- ```string.split(string, delimiter)``` // Splits ```string``` on every occurrence of ```delimiter``` and returns an **array of strings**. An empty ```delimiter``` splits into individual characters
-- ```string.trim(string)``` // Returns a new string with leading and trailing whitespace removed
-- ```string.contains(string, substring)``` // Returns true if ```substring``` occurs anywhere in ```string```, otherwise false
-- ```string.find(string, substring)``` // Returns the **index of the first occurrence** of ```substring``` in ```string```, or -1 if not found
-- ```string.replace(string, old, new)``` // Returns a new string with **every occurrence** of ```old``` replaced with ```new```
-- ```string.join(array, delimiter)``` // Joins every element of ```array``` into a single string, separated by ```delimiter```
-- ```string.starts_with(string, prefix)``` // Returns true if ```string``` begins with ```prefix```, otherwise false
-- ```string.ends_with(string, suffix)``` // Returns true if ```string``` ends with ```suffix```, otherwise false
-- ```string.count(string, substring)``` // Returns the **number of non-overlapping occurrences** of ```substring``` in ```string```
-- ```string.pad_left(string, length, pad_char)``` // Pads ```string``` on the left with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
-- ```string.pad_right(string, length, pad_char)``` // Pads ```string``` on the right with ```pad_char``` until it reaches ```length```, returns ```string``` unchanged if it's already that long or longer
-
-**Added in v0.3.0**
-- ```string.char(character_code)``` // Returns the character from a character code, the inverse of string.charCode
-
-**Added in v0.4.0**
-- ```string.regex(string, pattern)``` // Returns true if the regular expression pattern matches the string exactly, or throws an error if the pattern syntax is invald **(uses std::regex)**
-- ```string.rfind(string, substring)``` // Returns the **index of the last occurrence** of ```substring``` in ```string```, or -1 if not found
-- ```string.capitalize(string)``` // Returns a new string with the **first character converted to uppercase** and the remaining characters left unchanged
-- ```string.trim_left(string)``` // Returns a new string with **leading whitespace** removed
-- ```string.trim_right(string)``` // Returns a new string with **trailing whitespace** removed
-- ```string.is_digit(string)``` // Returns true if the string is non-empty and **consists entirely of numeric digits** (0-9), otherwise false
-- ```string.center(string, length, pad_char)``` // Centers the string within a given length by **padding both sides** evenly with ```pad_char```
-
-# Array #
- 
-**Added in v0.2.0**
-- ```array.contains(array, value)``` // Returns true if ```value``` is found anywhere in ```array```, otherwise false
-- ```array.index_of(array, value)``` // Returns the **index of the first occurrence** of ```value``` in ```array```, or -1 if not found
-- ```array.sort(array)``` // Sorts ```array``` **in place** in ascending order **(numbers and strings only)**, **```Returns true if successful and false if else```**
-- ```array.sort_by(array, comparator)``` // Sorts ```array``` **in place** using ```comparator(a, b)```, a function returning true if ```a``` should come before ```b```, **```Returns true if successful and false if else```**
-- ```array.reverse(array)``` // Reverses ```array``` **in place**, **```Returns true if successful and false if else```**
-- ```array.slice(array, start, end)``` // Returns a **new array** containing the elements from the start index to the end index, auto clamps index and **supports negative indexing**, ```-1 is the last element, -2 is the second to last, etc```
-- ```array.concat(array1, array2)``` // Returns a **new array** containing every element of ```array1``` followed by every element of ```array2```
-
-**Added in v0.3.0**
-- ```array.find(array, predicate)``` // Returns the index of the first element in array that matches `predicate(value)` (`predicate(value)` needs to return a boolean), **```returns -1 if none found```**
-
-# Memory #
-
-**Added in v0.3.0**
-- ```memory.move(&var)``` // Steals the value from ```var``` and returns it, setting ```var``` to null (std::move)
-- ```memory.swap(&a, &b)``` // Swaps the values of variables ```a``` and ```b``` in-place
-- ```memory.pool_create(factory_fn, initial_capacity, max_capacity)``` // Creates a new ```object pool handle``` using a ```factory function```, ```initial capacity```, and ```maximum capacity``` **(```-1``` for unlimited)**
-- ```memory.pool_take(pool_id)``` // Retrieves an available object from the ```pool``` **(or constructs a new one if empty)**
-- ```memory.pool_release(pool_id, item)``` // Recycles ```item``` back into the ```pool```
-- ```memory.pool_size(pool_id)``` // Returns an array ```[available_count, in_use_count]``` for the specified pool
-- ```memory.pool_destroy(pool_id)``` // Deletes a object pool
 
 # json #
 
