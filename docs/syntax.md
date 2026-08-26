@@ -21,7 +21,7 @@
 # imports #
 - import "path.slate" // Goes to the librarys folder first (my_library) or (folder(or folders)/my_library) otherwise just uses the path
 - import "path.slate" as namespace_name // imports and wraps everything in a namespace
-- Auto manages infinite imports like e.g., ```import "otherlibrary.slate"``` and inside ```otherlibrary.slate``` it imports ```librarythatimported.slate```
+- Auto manages infinite imports like ex: ```import "otherlibrary.slate"``` and inside ```otherlibrary.slate``` it imports ```librarythatimported.slate```
 
 # Variable Creation #
 - Keyword ```var```
@@ -137,7 +137,7 @@ while (coroutine.status(co) != "dead") {
     print(coroutine.resume(co)); // prints 0, 1, 2 across three separate resumes
 }
 ```
-- You will get a compile error with yield inside any [native class methods](#classes) or a struct/class field initializer, normal methods like e.g., ```fn important() { print("hello world"); }``` can have ***yield's***.
+- You will get a compile error with yield inside any [native class methods](#classes) or a struct/class field initializer, normal methods like ex: ```fn important() { print("hello world"); }``` can have ***yield's***.
 
 # Operators #
 - +, -, *, /, %
@@ -242,7 +242,7 @@ doesnt work since if you print those, it will print "&__heap_0" and "&__heap_1" 
 ```
 
 **functions**
-- Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. e.g.,
+- Passing in a refrence of a variable lets the function have/modify the actual value, you do not need to use the * dereference operator unless it's a pointer you pass in. ex:
 ```slate
 fn set(a, new_value) {
     a = new_value;
@@ -318,7 +318,7 @@ print(b); // prints 100 since b is actually in the array
 
 **Classes have 5 default methods**
 - Constructer // class name
-- Deconstructor // class name with a ! before it, e.g., "!person()"
+- Deconstructor // class name with a ! before it, ex: "!person()"
 - Copied // in code it's the "copy()" method
 - Referenced (lowercase in code)
 - Dereferenced (lowercase in code)
@@ -345,7 +345,7 @@ class person {
         // In v0.1.0 you'd use the assignment(new_value) { code } function (note that new_value couldn't be used)
         operator = (new_value) {
         /*Added in version 0.2.0 you can use the new value and return inside the assignment operator to change what gets assigned
-        e.g., "return new_value * 2;" or "return null;" */
+        ex: "return new_value * 2;" or "return null;" */
             print("assigned");
         }
         referenced() {
