@@ -33,7 +33,7 @@ print(name);
 ```
 
 **Five basic types**
-- *long long* ```var name = 10;```
+- *long long* ```var name = 10;``` **(And hexadecimal, ex: "0x0")**
 - *double* ```var name = 10.5;```
 - *string* ```var name = "hello world";```
 - *boolean* ```var name = true;```
