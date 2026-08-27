@@ -280,6 +280,7 @@ print(*ptr); // prints 5
 
 **Added in v0.4.0**
 - **s"del(...)")del"** ```// Raw string literals, let you do things like s"(C:\User\Gaspe\...)" without manually escaping the back slashes, no delimiter is fine but you can not use one for string that has ")""```
+- **f"..."** ```// Interpolated strings, let you embed variables and expressions directly using braces like f"Result: {x + 1}", double braces {{}} escape literal braces``` **(Just desugars (f"I = {i}" -> "I = " + (i)), adds '(' and ')' around all variable's so math or other things will work fine)**
 
 # Arrays #
 - Assignment: ```var array = [1, 2, 3, 4, 5];```
