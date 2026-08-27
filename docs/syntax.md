@@ -33,7 +33,7 @@ print(name);
 ```
 
 **Five basic types**
-- *long long* ```var name = 10;``` **(And hexadecimal, ex: "0x0")**
+- *long long* ```var name = 10;``` **(Added in v0.4.0: Hexadecimal, ex: "0x0")**
 - *double* ```var name = 10.5;```
 - *string* ```var name = "hello world";```
 - *boolean* ```var name = true;```
@@ -277,6 +277,9 @@ print(*ptr); // prints 5
 
 **Added in v0.3.0**
 - .replace(index, new_value) ```// Returns a new string with the value at index replaced with new_value, throws a error if out of range```
+
+**Added in v0.4.0**
+- **s"del(...)")del"** ```// Raw string literals, let you do things like s"(C:\User\Gaspe\...)" without manually escaping the back slashes, no delimiter is fine but you can not use one for string that has ")""```
 
 # Arrays #
 - Assignment: ```var array = [1, 2, 3, 4, 5];```
