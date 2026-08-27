@@ -30,6 +30,8 @@
 - ```print(contents)``` // prints whatever is in it, ex: ```print("hello world" + 5);``` this prints "hello world5" and a new line.
 
 **Added in v0.4.0**
+- ```int(str, base)``` // Parses a string into an integer using the specified base **(supports bases 2 to 36, or 0 for auto-detection)** **(std::stoll)**
+- ```str(num, base)``` // Converts a number into a string representation using the specified base **(supports bases 2, 8, 10, and 16)** **(std::format)**
 - ```try(function)``` // Returns a struct with .result **(the return value)**, and .error **(Is the error code on failure (null if no failure), is "Unknown error" if the error is not a standard exception or RuntimeError)**. **(If pointers are made inside of the try block they will leak, even things with deconstructors, this is not like a try catch, it's like a lua pcall)**. 
 **Ex:**
 ```slate
