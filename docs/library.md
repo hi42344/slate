@@ -318,8 +318,8 @@ else {
 - ```data.map()``` // Makes a data map
 - ```data.write(map, "key", value)``` // Writes a value to a map
 - ```data.read(map, "key", default_value)``` // Reads a value from a map, The type of the *```default_value```* determines what type is returned. Returns *```default_value```* if the key or map is not found
-- ```data.save(map, SaveManager, save_file_number)``` // Saves a map to **disk in appdata** **(or the linux/macos equivalent)** with the **SaveManager's appname** with a **save file number**, **```Returns true if successful and false if else```**, will load backups if the main file fails to save
-- ```data.load(SaveManager, save_file_number)``` // Returns a map from the *```save file number```*
+- ```data.save(map, SaveManager, save_file_number)``` // Saves a map to **disk in appdata** **(or the linux/macos equivalent)** with the **SaveManager's appname** with a **save file number**, **```Returns true if successful and false if else```**
+- ```data.load(SaveManager, save_file_number)``` // Returns a map from the *```save file number```*'s newest save, or 0 on failure
 - ```data.delete(SaveManager, save_file_number)``` // Deletes a specific save file by its *```save file number```*, **```Returns true if successful and false if else```**
 - ```data.delete_all(SaveManager)``` // Deletes all save files managed by the SaveManager, **```Returns true if successful and false if else```**
 - ```data.free_map(map)``` // Frees the memory of a data map, **```Returns true if successful and false if else```**
