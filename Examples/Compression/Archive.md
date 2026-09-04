@@ -9,15 +9,16 @@ fn select_codec(file_path, raw_size) {
 
     // Skip compression for already-compressed media, archives, fonts, and transient build artifacts
     if (ext == ".png" || ext == ".jpg" || ext == ".jpeg" || ext == ".webp" || ext == ".ico" ||
-        ext == ".mp3" || ext == ".flac" || ext == ".ogg" || ext == ".mp4" ||
-        ext == ".zip" || ext == ".7z" || ext == ".rar" || ext == ".tar" || ext == ".gz" || ext == ".xz" ||
+        ext == ".mp3" || ext == ".flac" || ext == ".ogg" || ext == ".mp4" || ext == ".mkv" || ext == ".webm" 
+        || ext == ".m4a" || ext == ".aac" || ext == ".zip" || ext == ".7z" || ext == ".rar" || ext == ".tar" 
+        || ext == ".gz" || ext == ".xz" || ext == ".bz2" || ext == ".tgz" || ext == ".spak" ||
         ext == ".ttf" || ext == ".otf" || ext == ".woff" || ext == ".woff2" ||
         ext == ".lib" || ext == ".a" || ext == ".obj" || ext == ".o" || 
         ext == ".pdb" || ext == ".ilk" || ext == ".pch" || ext == ".suo" || ext == ".sdf") {
         return "store";
     }
 
-    // Route large files (> 65MB) to LZMA, keeping smaller files and non exe/dll files on Zstd
+    // Route large files (> 65MB) to LZMA, keeping executables and DLLs on Zstd
     if (raw_size > 68157440 && ext != ".exe" && ext != ".dll") {
         return "lzma";
     }
@@ -28,7 +29,7 @@ fn select_codec(file_path, raw_size) {
         return "lz4";
     }
 
-    // Default
+    // Default executables, DLLs, source code, and smaller files to Zstd
     return "zstd";
 }
 
@@ -81,9 +82,8 @@ fn pack_files(file_paths, output_archive_path, base_dir) {
             compressed = compression.lzma_compress(raw_data, 5); 
         } elif (codec == "zstd") {
             compressed = compression.zstd_compress(raw_data, 3);
-        } elif (codec == "deflate") {
-            compressed = compression.deflate_compress(raw_data, 6);
-        } elif (codec == "lz4") {
+        }
+        elif (codec == "lz4") {
             compressed = compression.lz4_compress(raw_data, 0);
         }
 
@@ -180,8 +180,6 @@ fn unpack_files(archive_path, output_directory) {
             decompressed = compression.lzma_decompress(compressed_chunk);
         } elif (codec == "zstd") {
             decompressed = compression.zstd_decompress(compressed_chunk);
-        } elif (codec == "deflate") {
-            decompressed = compression.deflate_decompress(compressed_chunk);
         } elif (codec == "lz4") {
             decompressed = compression.lz4_decompress(compressed_chunk);
         }
@@ -266,8 +264,6 @@ fn get_single_file(archive_path, target_file_name, base_dir) {
                 decompressed = compression.lzma_decompress(compressed_chunk);
             } elif (codec == "zstd") {
                 decompressed = compression.zstd_decompress(compressed_chunk);
-            } elif (codec == "deflate") {
-                decompressed = compression.deflate_decompress(compressed_chunk);
             } elif (codec == "lz4") {
                 decompressed = compression.lz4_decompress(compressed_chunk);
             }
