@@ -181,9 +181,9 @@ else {
 - ```os.clear_pixels()``` // Clears the entire pixel buffer to fully transparent (0x00000000), returns **true** if successful
 - ```os.draw(width, height)``` // Renders the pixel buffer to the overlay window with **alpha blending**; must be called **first** to initialize window dimensions and allocate the buffer, returns **true** if successful **(Does not reset the buffer)**
 - ```os.set_pixel(x, y, color)``` // Sets the color of a single pixel at `(x, y)` using a **color integer**, returns **true** if successful or false if out of bounds
-- ```os.get_pixel(x, y)``` // Returns the **color integer** of the pixel at `(x, y)`, or -1 if out of bounds
 - ```os.set_pixels(start_x, start_y, w, h, data)``` // Overwrites pixel colors in a rectangular area using an **array of integers**, returns **true** if successful
-- ```os.get_pixels(start_x, start_y, w, h)``` // Captures pixel colors in a rectangular area as an **array of integers**, returning 0 for out-of-bounds pixels
+- ```os.get_pixel(x, y)``` // Captures the OS desktop pixel color at screen coordinates `(x, y)` as an ARGB **color integer** (`0xAARRGGBB`). **`Returns -1 if out of screen bounds`**
+- ```os.get_pixels(start_x, start_y, w, h)``` // Captures a rectangular desktop region as an **array of ARGB color integers**. **`Out-of-bounds screen pixels return 0`**
 
 **Ex:**
 ```rust
