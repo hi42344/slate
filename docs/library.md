@@ -177,7 +177,7 @@ else {
 - ```os.file_lwt(path)``` // Returns the last write time in milliseconds (Unix epoch), or -1 if the file is not found
 - ```os.script_path()``` // Returns the script that is being ran path. **Ex: "C:\Developer\slate\Scripts\script.slate"**
 
-**Alaways on top click-through window**
+**Always on top click-through window**
 - ```os.draw(width, height)``` // Renders the pixel buffer to the overlay window with **alpha blending**; must be called **first** to initialize window dimensions and allocate the buffer, returns **true** if successful
 - ```os.set_pixel(x, y, color)``` // Sets the color of a single pixel at `(x, y)` using a **color integer**, returns **true** if successful or false if out of bounds
 - ```os.get_pixel(x, y)``` // Returns the **color integer** of the pixel at `(x, y)`, or -1 if out of bounds
