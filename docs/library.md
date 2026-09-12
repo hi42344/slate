@@ -179,7 +179,7 @@ else {
 
 **Always on top click-through window**
 - ```os.clear_pixels()``` // Clears the entire pixel buffer to fully transparent (0x00000000), returns **true** if successful
-- ```os.draw(width, height)``` // Renders the pixel buffer to the overlay window with **alpha blending**; must be called **first** to initialize window dimensions and allocate the buffer, returns **true** if successful
+- ```os.draw(width, height)``` // Renders the pixel buffer to the overlay window with **alpha blending**; must be called **first** to initialize window dimensions and allocate the buffer, returns **true** if successful **(Does not reset the buffer)**
 - ```os.set_pixel(x, y, color)``` // Sets the color of a single pixel at `(x, y)` using a **color integer**, returns **true** if successful or false if out of bounds
 - ```os.get_pixel(x, y)``` // Returns the **color integer** of the pixel at `(x, y)`, or -1 if out of bounds
 - ```os.set_pixels(start_x, start_y, w, h, data)``` // Overwrites pixel colors in a rectangular area using an **array of integers**, returns **true** if successful
