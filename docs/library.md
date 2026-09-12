@@ -220,6 +220,7 @@ print("Overlay drawn. Press Ctrl+C in terminal to exit.");
 console.flush();
 
 while (true) {
+    //You'd want the drawing inside this loop and the os.clear_pixels() but this is just a demo
     os.draw(width, height);
     os.sleep(0.016);
 }
