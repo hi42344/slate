@@ -189,15 +189,12 @@ else {
 ```rust
 var width = 400;
 var height = 300;
-os.draw(width, height); // MUST DO! This is for the buffer to set up and actually hold its starting values so you can write/read to them
+os.draw(width, height); // Initialize the overlay frame buffer
 
-// 1. Draw a solid white pixel at (50, 50)
+// 1. Draw a solid white pixel at (50, 50) on the overlay
 os.set_pixel(50, 50, 0xFFFFFFFF);
 
-var px = os.get_pixel(50, 50);
-print("Pixel at (50, 50): " + px);
-
-// 2. Prepare a 100x100 box of SOLID RED pixels (0xFFFF0000)
+// 2. Prepare a 100x100 box of SOLID RED pixels (0xFFFF0000) for the overlay
 var box_w = 100;
 var box_h = 100;
 var pixels = [];
@@ -208,19 +205,22 @@ while (i < (box_w * box_h)) {
     i = i + 1;
 }
 
-// Write the batch array
+// Write the batch array to the overlay buffer
 os.set_pixels(100, 100, box_w, box_h, pixels);
 
-// 3. Verify captured pixels
-var captured = os.get_pixels(100, 100, 10, 10);
-print("Captured pixel count: " + captured.length);
-print("Sample captured pixel: " + captured[0]);
+// 3. Sample screen pixels underneath/around the overlay
+var desktop_px = os.get_pixel(50, 50);
+print("Desktop pixel at screen (50, 50): " + desktop_px);
+
+var captured_desktop = os.get_pixels(0, 0, 10, 10);
+print("Captured desktop region pixel count: " + captured_desktop.length);
+print("Sample desktop pixel: " + captured_desktop[0]);
 
 print("Overlay drawn. Press Ctrl+C in terminal to exit.");
 console.flush();
 
 while (true) {
-    //You'd want the drawing inside this loop and the os.clear_pixels() but this is just a demo
+    // Render the buffer to the screen
     os.draw(width, height);
     os.sleep(0.016);
 }
