@@ -176,11 +176,53 @@ else {
 - ```os.env()``` // Returns a struct containing all environment variables
 - ```os.file_lwt(path)``` // Returns the last write time in milliseconds (Unix epoch), or -1 if the file is not found
 - ```os.script_path()``` // Returns the script that is being ran path. **Ex: "C:\Developer\slate\Scripts\script.slate"**
+
+**Alaways on top click-through window**
 - ```os.draw(width, height)``` // Renders the pixel buffer to the overlay window with **alpha blending**; must be called **first** to initialize window dimensions and allocate the buffer, returns **true** if successful
 - ```os.set_pixel(x, y, color)``` // Sets the color of a single pixel at `(x, y)` using a **color integer**, returns **true** if successful or false if out of bounds
 - ```os.get_pixel(x, y)``` // Returns the **color integer** of the pixel at `(x, y)`, or -1 if out of bounds
 - ```os.set_pixels(start_x, start_y, w, h, data)``` // Overwrites pixel colors in a rectangular area using an **array of integers**, returns **true** if successful
 - ```os.get_pixels(start_x, start_y, w, h)``` // Captures pixel colors in a rectangular area as an **array of integers**, returning 0 for out-of-bounds pixels
+
+**Ex:**
+```rust
+var width = 400;
+var height = 300;
+os.draw(width, height); // MUST DO! This is for the buffer to set up and actually hold its starting values so you can write/read to them
+
+// 1. Draw a solid white pixel at (50, 50)
+os.set_pixel(50, 50, 0xFFFFFFFF);
+
+var px = os.get_pixel(50, 50);
+print("Pixel at (50, 50): " + px);
+
+// 2. Prepare a 100x100 box of SOLID RED pixels (0xFFFF0000)
+var box_w = 100;
+var box_h = 100;
+var pixels = [];
+
+var i = 0;
+while (i < (box_w * box_h)) {
+    pixels.push(0xFFFF0000); // Fully opaque red
+    i = i + 1;
+}
+
+// Write the batch array
+os.set_pixels(100, 100, box_w, box_h, pixels);
+
+// 3. Verify captured pixels
+var captured = os.get_pixels(100, 100, 10, 10);
+print("Captured pixel count: " + captured.length);
+print("Sample captured pixel: " + captured[0]);
+
+print("Overlay drawn. Press Ctrl+C in terminal to exit.");
+console.flush();
+
+while (true) {
+    os.draw(width, height);
+    os.sleep(0.016);
+}
+```
 
 # File #
 
